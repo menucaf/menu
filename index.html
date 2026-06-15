@@ -7,152 +7,175 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#2d3436;line-height:1.6}
-        .header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:20px 0;position:sticky;top:0;z-index:1000}
-        .container{max-width:1200px;margin:0 auto;padding:0 20px}
-        .header .container{display:flex;justify-content:space-between;align-items:center}
-        .logo{font-size:28px;font-weight:800;display:flex;align-items:center;gap:12px}
-        .nav{display:flex;gap:24px;align-items:center}
-        .nav a{color:#fff;text-decoration:none;font-weight:500}
-        .btn-order-nav{background:#e85d04;padding:10px 24px;border-radius:25px;font-weight:600}
-        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:60px 0}
-        .hero h2{font-size:42px;margin-bottom:16px}
-        .hero-buttons{display:flex;gap:16px;justify-content:center;margin-top:24px;flex-wrap:wrap}
-        .btn{padding:14px 28px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:30px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s}
+        .header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+        .container{max-width:1200px;margin:0 auto;padding:0 16px}
+        .header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+        .logo{font-size:24px;font-weight:800;display:flex;align-items:center;gap:10px}
+        .nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+        .nav a{color:#fff;text-decoration:none;font-weight:500;font-size:14px}
+        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:40px 0}
+        .hero h2{font-size:32px;margin-bottom:8px}
+        .hero p{font-size:16px;opacity:.9}
+        .hero-buttons{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+        .btn{padding:12px 24px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:30px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s}
         .btn:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
-        .search-section{padding:30px 0}
+        .btn-solid{background:#fff;color:#e85d04;border:none}
+        .btn-solid:hover{background:#ffeaa7}
+        .music-bar{background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;padding:10px 0;text-align:center;cursor:pointer;transition:all .3s}
+        .music-bar:hover{background:linear-gradient(135deg,#5f27cd,#6c5ce7)}
+        .search-section{padding:24px 0}
         .search-bar{max-width:600px;margin:0 auto}
-        .search-bar input{width:100%;padding:14px 20px;border:2px solid #e0e0e0;border-radius:30px;font-size:16px}
+        .search-bar input{width:100%;padding:12px 20px;border:2px solid #e0e0e0;border-radius:30px;font-size:15px}
         .search-bar input:focus{outline:none;border-color:#e85d04}
-        .filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 0}
-        .filter-btn{padding:8px 20px;border:2px solid #e0e0e0;background:#fff;border-radius:20px;cursor:pointer;font-weight:500}
+        .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0}
+        .filter-btn{padding:7px 16px;border:2px solid #e0e0e0;background:#fff;border-radius:20px;cursor:pointer;font-weight:500;font-size:13px}
         .filter-btn.active,.filter-btn:hover{background:#e85d04;color:#fff;border-color:#e85d04}
-        .quick-filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-        .quick-btn{padding:8px 16px;background:#fff;border:none;border-radius:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+        .quick-filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+        .quick-btn{padding:7px 14px;background:#fff;border:none;border-radius:20px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);font-size:13px}
         .quick-btn:hover{background:#e85d04;color:#fff}
-        .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;padding:20px 0 40px}
-        .menu-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .3s;cursor:pointer}
-        .menu-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
-        .menu-card-image{width:100%;height:200px;object-fit:cover;background:#f0f0f0}
-        .menu-card-body{padding:20px}
-        .menu-card h3{font-size:18px;margin-bottom:8px}
-        .menu-card p{color:#636e72;font-size:14px;margin-bottom:16px}
+        .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px;padding:16px 0 40px}
+        .menu-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .3s;cursor:pointer}
+        .menu-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+        .menu-card-image{width:100%;height:180px;object-fit:cover;background:#f0f0f0}
+        .menu-card-body{padding:16px}
+        .menu-card h3{font-size:17px;margin-bottom:6px}
+        .menu-card .desc{color:#636e72;font-size:13px;margin-bottom:12px;line-height:1.4}
         .menu-card-footer{display:flex;justify-content:space-between;align-items:center}
-        .price{font-size:24px;font-weight:800;color:#e85d04}
-        .badges{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
-        .badge{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase}
+        .price{font-size:22px;font-weight:800;color:#e85d04}
+        .badges{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
+        .badge{padding:3px 8px;border-radius:10px;font-size:10px;font-weight:700;text-transform:uppercase}
         .badge-new{background:#00b894;color:#fff}
         .badge-popular{background:#fdcb6e;color:#2d3436}
         .badge-vegetarian{background:#55efc4;color:#2d3436}
-        .btn-order{width:100%;margin-top:12px;padding:12px;background:#e85d04;color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer}
+        .badge-secret{background:#9b59b6;color:#fff}
+        .btn-order{width:100%;margin-top:10px;padding:10px;background:#e85d04;color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:14px}
         .btn-order:hover{background:#dc2f02}
-        .location-bar{background:#fff;border-top:1px solid #e0e0e0;padding:12px 0;font-size:14px;color:#636e72}
+        .location-bar{background:#fff;border-top:1px solid #e0e0e0;padding:10px 0;font-size:13px;color:#636e72}
         .chat-widget{position:fixed;bottom:20px;right:20px;z-index:1000}
-        .chat-toggle{width:60px;height:60px;border-radius:50%;background:#e85d04;color:#fff;border:none;font-size:28px;cursor:pointer;box-shadow:0 4px 20px rgba(232,93,4,.4)}
+        .chat-toggle{width:56px;height:56px;border-radius:50%;background:#e85d04;color:#fff;border:none;font-size:26px;cursor:pointer;box-shadow:0 4px 16px rgba(232,93,4,.4)}
         .chat-toggle:hover{transform:scale(1.1)}
-        .chat-window{position:absolute;bottom:80px;right:0;width:380px;height:500px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.2);display:none;flex-direction:column;overflow:hidden}
-        .chat-header{background:#e85d04;color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:center}
-        .chat-messages{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
-        .message{max-width:80%;padding:10px 14px;border-radius:12px;font-size:14px;line-height:1.5}
+        .chat-window{position:absolute;bottom:70px;right:0;width:360px;height:480px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;overflow:hidden}
+        .chat-header{background:#e85d04;color:#fff;padding:14px;display:flex;justify-content:space-between;align-items:center}
+        .chat-messages{flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+        .message{max-width:82%;padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.5;white-space:pre-line}
         .message.user{background:#e85d04;color:#fff;align-self:flex-end}
         .message.bot{background:#f0f0f0;align-self:flex-start}
-        .chat-input-area{padding:12px;border-top:1px solid #e0e0e0;display:flex;gap:8px}
-        .chat-input-area input{flex:1;padding:10px 16px;border:1px solid #e0e0e0;border-radius:20px;font-size:14px}
-        .chat-input-area button{padding:10px 20px;background:#e85d04;color:#fff;border:none;border-radius:20px;cursor:pointer}
+        .chat-input-area{padding:10px;border-top:1px solid #e0e0e0;display:flex;gap:6px}
+        .chat-input-area input{flex:1;padding:9px 14px;border:1px solid #e0e0e0;border-radius:20px;font-size:13px}
+        .chat-input-area button{padding:9px 16px;background:#e85d04;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:14px}
         .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:2000;align-items:center;justify-content:center}
         .modal.active{display:flex}
-        .modal-content{background:#fff;border-radius:16px;padding:30px;max-width:550px;width:90%;text-align:center;position:relative;max-height:80vh;overflow-y:auto}
-        .modal-close{position:absolute;top:12px;right:12px;background:#f0f0f0;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:18px}
-        .music-player{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:20px;border-radius:12px;margin:16px 0}
-        .song-item{background:rgba(255,255,255,.1);padding:12px;border-radius:8px;margin:8px 0;cursor:pointer;transition:all .3s}
+        .modal-content{background:#fff;border-radius:14px;padding:24px;max-width:500px;width:92%;text-align:center;position:relative;max-height:85vh;overflow-y:auto}
+        .modal-close{position:absolute;top:10px;right:10px;background:#f0f0f0;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px}
+        .story-card{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);padding:16px;border-radius:10px;margin:12px 0;text-align:left}
+        .fun-fact{background:#00b894;color:#fff;padding:10px;border-radius:8px;margin-top:10px;font-weight:600;font-size:13px}
+        .music-player{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px;border-radius:10px;margin:12px 0}
+        .song-item{background:rgba(255,255,255,.1);padding:10px;border-radius:8px;margin:6px 0;cursor:pointer;transition:all .3s;text-align:left}
         .song-item:hover{background:rgba(255,255,255,.2)}
-        .story-card{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);padding:20px;border-radius:12px;margin:16px 0;text-align:left}
-        .fun-fact{background:#00b894;color:#fff;padding:12px;border-radius:8px;margin-top:12px;font-weight:600}
-        .footer{background:#1a1a2e;color:#fff;padding:40px 0;text-align:center;margin-top:60px}
-        .footer a{color:#b2bec3;text-decoration:none;margin:0 12px}
-        .loading{text-align:center;padding:60px 0}
-        .spinner{width:40px;height:40px;border:4px solid #f0f0f0;border-top-color:#e85d04;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+        .footer{background:#1a1a2e;color:#fff;padding:30px 0;text-align:center;margin-top:40px}
+        .footer a{color:#b2bec3;text-decoration:none;margin:0 10px;font-size:13px}
+        .loading{text-align:center;padding:50px 0}
+        .spinner{width:36px;height:36px;border:4px solid #f0f0f0;border-top-color:#e85d04;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px}
         @keyframes spin{to{transform:rotate(360deg)}}
-        @media(max-width:768px){.hero h2{font-size:28px}.chat-window{width:calc(100vw - 40px);height:60vh}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}}
+        @media(max-width:768px){.hero h2{font-size:26px}.chat-window{width:calc(100vw - 32px);height:55vh;right:4px}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}}
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="logo"><span>🍽️</span><span>Premium Restaurant</span></div>
-            <nav class="nav"><a href="index.html">Menu</a><a href="contact.html">Locations</a><a href="#" class="btn-order-nav">Order Now</a></nav>
+            <nav class="nav"><a href="index.html">Menu</a><a href="contact.html">Locations</a><a href="#" class="btn-order-nav" style="background:#e85d04;padding:8px 18px;border-radius:20px">Order Now</a></nav>
         </div>
     </header>
+
+    <div class="music-bar" onclick="openPlaylist()">
+        <div class="container">🎵 Click here for our curated Italian playlist — Free music while you dine!</div>
+    </div>
 
     <section class="hero">
         <div class="container">
             <h2>Discover Your Perfect Dish</h2>
-            <p>AI-powered menu with music & stories</p>
+            <p>AI-powered menu with music & food stories</p>
             <div class="hero-buttons">
                 <button class="btn" onclick="feelingLucky()">🎲 I'm Feeling Lucky</button>
-                <button class="btn" onclick="openMoodMatcher()">🎭 Food Mood Matcher</button>
+                <button class="btn btn-solid" onclick="openMoodMatcher()">🎭 Food Mood</button>
+                <button class="btn" onclick="toggleChat(true)">💬 Ask AI</button>
             </div>
         </div>
     </section>
 
     <section class="search-section">
         <div class="container">
-            <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search menu..." oninput="filterMenu()"></div>
+            <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search menu items..." oninput="filterMenu()"></div>
             <div class="filters" id="categoryFilters"></div>
             <div class="quick-filters">
                 <button class="quick-btn" onclick="quickFilter('under10')">💰 Under $10</button>
                 <button class="quick-btn" onclick="quickFilter('vegetarian')">🥬 Vegetarian</button>
                 <button class="quick-btn" onclick="quickFilter('new')">🆕 New</button>
                 <button class="quick-btn" onclick="quickFilter('popular')">⭐ Popular</button>
+                <button class="quick-btn" onclick="quickFilter('secret')">🤫 Secret</button>
             </div>
         </div>
     </section>
 
     <main class="container">
-        <div class="menu-grid" id="menuGrid"><div class="loading"><div class="spinner"></div><p>Loading menu...</p></div></div>
+        <div class="menu-grid" id="menuGrid"><div class="loading"><div class="spinner"></div><p>Loading delicious options...</p></div></div>
     </main>
 
     <div class="location-bar"><div class="container" id="locationText">📍 Detecting nearest branch...</div></div>
 
+    <!-- Chat Widget -->
     <div class="chat-widget">
         <button class="chat-toggle" onclick="toggleChat()">💬</button>
         <div class="chat-window" id="chatWindow">
-            <div class="chat-header"><div><strong>🤖 Menu Assistant</strong><div style="font-size:12px;opacity:.9">Online · Instant replies</div></div><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button></div>
-            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 I'm your menu assistant. Ask me about our dishes, get recommendations, or try the mood matcher! What interests you? 🍕✨</div></div>
+            <div class="chat-header"><div><strong>🤖 Menu Assistant</strong><div style="font-size:11px;opacity:.9">Online · Instant replies</div></div><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">✕</button></div>
+            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 I'm your menu guide!\n\n🍕 Recommend dishes\n🎭 Match food to mood\n📖 Share food stories\n🤫 Reveal secret menu\n\nWhat interests you?</div></div>
             <div class="chat-input-area"><input type="text" id="chatInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">Send</button></div>
         </div>
     </div>
 
-    <!-- Order Modal with Story + Music -->
+    <!-- Order Modal -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('orderModal')">✕</span>
-            <div style="font-size:64px">✅</div>
+            <div style="font-size:50px">✅</div>
             <h2>Order Confirmed!</h2>
-            <p id="orderItemName" style="margin:12px 0;font-size:18px"></p>
+            <p id="orderItemName" style="margin:8px 0;font-size:17px"></p>
             <div id="foodStory"></div>
             <div id="musicSection"></div>
-            <button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:12px" onclick="closeModal('orderModal')">Continue Browsing</button>
+            <button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:10px" onclick="closeModal('orderModal')">Continue Browsing</button>
         </div>
     </div>
 
-    <!-- Mood Matcher Modal -->
+    <!-- Playlist Modal -->
+    <div class="modal" id="playlistModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('playlistModal')">✕</span>
+            <div style="font-size:40px">🎵</div>
+            <h2>Our Italian Playlist</h2>
+            <p style="color:#636e72;margin:8px 0">Enjoy while you dine!</p>
+            <div id="playlistContent"></div>
+        </div>
+    </div>
+
+    <!-- Mood Modal -->
     <div class="modal" id="moodModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('moodModal')">✕</span>
             <h2>What's Your Food Mood? 🎭</h2>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px">
-                <div onclick="matchMood('tired')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer"><div style="font-size:40px">😴</div><h3>Tired</h3><p style="color:#636e72">Need energy</p></div>
-                <div onclick="matchMood('happy')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer"><div style="font-size:40px">😊</div><h3>Happy</h3><p style="color:#636e72">Celebrate!</p></div>
-                <div onclick="matchMood('comfort')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer"><div style="font-size:40px">🤗</div><h3>Comfort</h3><p style="color:#636e72">Warm food</p></div>
-                <div onclick="matchMood('adventurous')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer"><div style="font-size:40px">🌍</div><h3>Adventurous</h3><p style="color:#636e72">Try new</p></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px">
+                <div onclick="matchMood('tired')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">😴</div><h3>Tired</h3><p style="color:#636e72;font-size:13px">Need energy boost</p></div>
+                <div onclick="matchMood('happy')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">😊</div><h3>Happy</h3><p style="color:#636e72;font-size:13px">Time to celebrate!</p></div>
+                <div onclick="matchMood('comfort')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">🤗</div><h3>Comfort</h3><p style="color:#636e72;font-size:13px">Warm & cozy food</p></div>
+                <div onclick="matchMood('adventurous')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">🌍</div><h3>Adventurous</h3><p style="color:#636e72;font-size:13px">Try something new</p></div>
             </div>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container">
-            <p style="margin-bottom:12px">Powered by <strong>AddisPower</strong></p>
-            <div><a href="contact.html">Contact</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+            <p style="margin-bottom:8px">Powered by <strong>AddisPower</strong></p>
+            <div><a href="contact.html">Contact & Locations</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
         </div>
     </footer>
 
@@ -166,7 +189,7 @@
                 const d = await r.json();
                 if (d.success) { menuItems = d.data.items; renderCategories(d.data.categories); renderMenu(menuItems); }
             } catch(e) {
-                document.getElementById('menuGrid').innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><p>Unable to load menu.</p><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:12px" onclick="loadMenu()">Retry</button></div>';
+                document.getElementById('menuGrid').innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><p>Unable to load menu.</p><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:10px" onclick="loadMenu()">Retry</button></div>';
             }
         }
 
@@ -176,15 +199,15 @@
 
         function renderMenu(items) {
             const g = document.getElementById('menuGrid');
-            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><div style="font-size:48px">🍽️</div><h3>No items found</h3></div>'; return; }
+            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><div style="font-size:40px">🍽️</div><h3>No items found</h3><p>Try adjusting filters</p></div>'; return; }
             g.innerHTML = items.map(i => `
                 <div class="menu-card" onclick="askAboutItem('${i.id}')">
                     <img class="menu-card-image" src="${i.image}" alt="${i.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Food'">
                     <div class="menu-card-body">
-                        <div class="badges">${i.isNew?'<span class="badge badge-new">🆕 New</span>':''}${i.isPopular?'<span class="badge badge-popular">⭐ Popular</span>':''}${i.isVegetarian?'<span class="badge badge-vegetarian">🥬 Veg</span>':''}</div>
-                        <h3>${i.name}</h3><p>${i.description}</p>
-                        <div class="menu-card-footer"><span class="price">$${i.price.toFixed(2)}</span>${i.waitTime?`<span style="font-size:12px;color:#636e72">⏱️ ${i.waitTime}min</span>`:''}</div>
-                        <button class="btn-order" onclick="event.stopPropagation();placeOrder('${i.id}')">Order Now</button>
+                        <div class="badges">${i.isNew?'<span class="badge badge-new">🆕 New</span>':''}${i.isPopular?'<span class="badge badge-popular">⭐ Popular</span>':''}${i.isVegetarian?'<span class="badge badge-vegetarian">🥬 Veg</span>':''}${i.isSecret?'<span class="badge badge-secret">🤫 Secret</span>':''}</div>
+                        <h3>${i.name}</h3><p class="desc">${i.description}</p>
+                        <div class="menu-card-footer"><span class="price">$${i.price.toFixed(2)}</span>${i.waitTime?`<span style="font-size:11px;color:#636e72">⏱️ ${i.waitTime}min</span>`:''}</div>
+                        <button class="btn-order" onclick="event.stopPropagation();placeOrder('${i.id}')">🛒 Order Now</button>
                     </div>
                 </div>
             `).join('');
@@ -203,6 +226,7 @@
             else if (qf === 'vegetarian') f = f.filter(i => i.isVegetarian);
             else if (qf === 'new') f = f.filter(i => i.isNew);
             else if (qf === 'popular') f = f.filter(i => i.isPopular);
+            else if (qf === 'secret') f = f.filter(i => i.isSecret);
             renderMenu(f);
         }
 
@@ -229,45 +253,55 @@
             setTimeout(() => { document.getElementById('chatInput').value = `Tell me about the ${item.name}`; sendMessage(); }, 300);
         }
 
-        // 🎵 PLACE ORDER WITH STORY + MUSIC
+        // 🎵 Open Playlist
+        async function openPlaylist() {
+            document.getElementById('playlistModal').classList.add('active');
+            document.getElementById('playlistContent').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            try {
+                const r = await fetch(WORKER_URL + '/api/playlist');
+                const d = await r.json();
+                if (d.success) {
+                    document.getElementById('playlistContent').innerHTML = `
+                        <div class="music-player">
+                            <h3>🎵 ${d.data.title}</h3>
+                            ${d.data.songs.map(s => `
+                                <div class="song-item" onclick="window.open('${s.url}','_blank')">
+                                    🎶 <strong>${s.title}</strong> — ${s.artist}
+                                </div>
+                            `).join('')}
+                        </div>
+                        <p style="font-size:12px;color:#636e72;margin-top:8px">Click any song to open in YouTube</p>
+                    `;
+                }
+            } catch(e) { document.getElementById('playlistContent').innerHTML = '<p>Unable to load playlist.</p>'; }
+        }
+
+        // 🛒 Place Order
         async function placeOrder(id) {
             const item = menuItems.find(i => i.id === id);
             if (!item) return;
             document.getElementById('orderItemName').textContent = `You ordered: ${item.name}`;
+            document.getElementById('foodStory').innerHTML = '';
+            document.getElementById('musicSection').innerHTML = '';
             
-            // Get story
-            const storyKey = item.name.toLowerCase().includes('pizza') ? 'pizza' : item.name.toLowerCase().includes('salad') ? 'salad' : item.name.toLowerCase().includes('pasta') ? 'pasta' : item.name.toLowerCase().includes('tiramisu') ? 'tiramisu' : item.name.toLowerCase().includes('bruschetta') ? 'bruschetta' : item.name.toLowerCase().includes('espresso') ? 'espresso' : item.name.toLowerCase().includes('lemonade') ? 'lemonade' : 'pizza';
+            const storyKey = item.name.toLowerCase().includes('pizza') ? 'pizza' : item.name.toLowerCase().includes('salad') ? 'salad' : item.name.toLowerCase().includes('pasta') ? 'pasta' : item.name.toLowerCase().includes('tiramisu') ? 'tiramisu' : item.name.toLowerCase().includes('bruschetta') ? 'bruschetta' : item.name.toLowerCase().includes('espresso') ? 'espresso' : item.name.toLowerCase().includes('lemonade') ? 'lemonade' : item.isSecret ? 'secret' : 'pizza';
             
             try {
-                const storyRes = await fetch(`${WORKER_URL}/api/story?item=${storyKey}`);
-                const storyData = await storyRes.json();
-                if (storyData.success) {
+                const sRes = await fetch(`${WORKER_URL}/api/story?item=${storyKey}`);
+                const sData = await sRes.json();
+                if (sData.success) {
                     document.getElementById('foodStory').innerHTML = `
-                        <div class="story-card">
-                            <h3>${storyData.data.title}</h3>
-                            <p style="margin-top:8px;line-height:1.6">${storyData.data.story}</p>
-                            <div class="fun-fact">💡 ${storyData.data.funFact}</div>
-                        </div>
+                        <div class="story-card"><h3>${sData.data.title}</h3><p style="margin-top:6px;line-height:1.6;font-size:14px">${sData.data.story}</p><div class="fun-fact">💡 ${sData.data.funFact}</div></div>
                     `;
                 }
             } catch(e) {}
 
-            // Get music playlist
-            const mood = item.mood ? item.mood[0] : 'happy';
             try {
-                const musicRes = await fetch(`${WORKER_URL}/api/music?mood=${mood}`);
-                const musicData = await musicRes.json();
-                if (musicData.success) {
+                const mRes = await fetch(`${WORKER_URL}/api/playlist`);
+                const mData = await mRes.json();
+                if (mData.success) {
                     document.getElementById('musicSection').innerHTML = `
-                        <div class="music-player">
-                            <h3>🎵 ${musicData.data.mood}</h3>
-                            <p style="font-size:14px;margin:8px 0">Enjoy while you wait!</p>
-                            ${musicData.data.songs.map(s => `
-                                <div class="song-item" onclick="window.open('${s.url}','_blank')">
-                                    🎶 ${s.title} - ${s.artist}
-                                </div>
-                            `).join('')}
-                        </div>
+                        <div class="music-player"><h3>🎵 Enjoy our playlist while you wait!</h3>${mData.data.songs.slice(0,3).map(s => `<div class="song-item" onclick="window.open('${s.url}','_blank')">🎶 ${s.title} — ${s.artist}</div>`).join('')}</div>
                     `;
                 }
             } catch(e) {}
@@ -300,9 +334,9 @@
                 navigator.geolocation.getCurrentPosition(async (pos) => {
                     try {
                         const r = await fetch(WORKER_URL + '/api/branches'), d = await r.json();
-                        if (d.success) { let nearest = null, minDist = Infinity; d.data.branches.forEach(b => { const dist = calcDist(pos.coords.latitude, pos.coords.longitude, b.coordinates.lat, b.coordinates.lng); if (dist < minDist) { minDist = dist; nearest = b; } }); if (nearest) document.getElementById('locationText').textContent = `📍 Nearest: ${nearest.name} - ${minDist.toFixed(1)} miles`; }
+                        if (d.success) { let nearest = null, minDist = Infinity; d.data.branches.forEach(b => { const dist = calcDist(pos.coords.latitude, pos.coords.longitude, b.coordinates.lat, b.coordinates.lng); if (dist < minDist) { minDist = dist; nearest = b; } }); if (nearest) document.getElementById('locationText').textContent = `📍 Nearest: ${nearest.name} — ${minDist.toFixed(1)} miles`; }
                     } catch(e) {}
-                }, () => { document.getElementById('locationText').textContent = '📍 Enable location for nearest branch'; });
+                }, () => { document.getElementById('locationText').textContent = '📍 Select location for nearest branch'; });
             }
         }
         function calcDist(lat1, lon1, lat2, lon2) { const R = 3959, dLat = (lat2-lat1)*Math.PI/180, dLon = (lon2-lon1)*Math.PI/180, a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2; return R*2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); }
