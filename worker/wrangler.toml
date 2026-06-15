@@ -1,22 +1,13 @@
+# ============================================
+# FILE: worker/wrangler.toml
+# DEPLOY TO: Cloudflare Workers (via wrangler publish)
+# ============================================
+
 name = "restaurant-menu-api"
 main = "src/index.js"
 compatibility_date = "2024-01-15"
 
-# KV Namespace binding
-[[kv_namespaces]]
-binding = "MENU_STORE"
-id = "your-kv-namespace-id"
-preview_id = "your-kv-preview-id"
-
-# Environment variables
+# Environment Variables - SET THESE BEFORE DEPLOYING
 [vars]
-ADMIN_PASSWORD = "your-secure-admin-password"
-
-# Production environment
-[env.production]
-vars = { ADMIN_PASSWORD = "prod-secure-password" }
-
-# Routes (optional custom domain)
-# routes = [
-#   { pattern = "api.yourrestaurant.com/*", zone_name = "yourrestaurant.com" }
-# ]
+ADMIN_PASSWORD = "your-secure-admin-password-here"
+HF_TOKEN = "hf_your_huggingface_token_here"
