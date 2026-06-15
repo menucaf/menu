@@ -3,245 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Branches | Restaurant</title>
+    <title>Our Locations - Premium Restaurant</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background: #fef8f0;
-            color: #1a1a2e;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header {
+        .contact-hero {
+            background: linear-gradient(135deg, #1A1A2E, #0F3460);
+            color: white;
+            padding: 60px 0;
             text-align: center;
-            margin-bottom: 40px;
         }
-
-        .restaurant-name {
-            font-size: 2.5rem;
-            color: #e67e22;
-            margin-bottom: 8px;
-        }
-
+        
         .branches-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
-            margin-bottom: 40px;
+            margin: 40px 0;
         }
-
+        
         .branch-card {
             background: white;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
-
+        
         .branch-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
-
+        
+        .branch-map {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+        }
+        
+        .branch-info {
+            padding: 24px;
+        }
+        
         .branch-name {
-            font-size: 1.5rem;
-            color: #e67e22;
+            font-size: 24px;
+            font-weight: 700;
             margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
-
+        
         .branch-detail {
-            margin: 12px 0;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #555;
+            align-items: start;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #636e72;
         }
-
+        
         .branch-detail .icon {
-            font-size: 1.2rem;
+            font-size: 18px;
             min-width: 24px;
         }
-
-        .hours {
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 16px;
-            margin: 16px 0;
-            font-size: 0.9rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #e67e22;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 40px;
-            text-decoration: none;
-            margin-top: 12px;
-            margin-right: 10px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .btn:hover {
-            background: #d35400;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #e67e22;
-            color: #e67e22;
-        }
-
-        .map-placeholder {
-            background: #e9ecef;
-            height: 200px;
-            border-radius: 16px;
+        
+        .branch-actions {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: 8px;
             margin-top: 16px;
-            color: #888;
         }
-
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            color: #aaa;
-            font-size: 12px;
+        
+        .btn-call, .btn-directions {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-
-        @media (max-width: 700px) {
-            .branches-grid {
-                grid-template-columns: 1fr;
-            }
+        
+        .btn-call {
+            background: #E85D04;
+            color: white;
+        }
+        
+        .btn-directions {
+            background: #f0f0f0;
+            color: #2d3436;
+        }
+        
+        .btn-call:hover, .btn-directions:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1 class="restaurant-name" id="restaurantName">Queen's Kitchen</h1>
-        <p>📍 4 branches · Same amazing food · Different locations</p>
-    </div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🍽️</span>
+                    <h1>Restaurant Name</h1>
+                </div>
+                <nav class="nav">
+                    <a href="index.html">Menu</a>
+                    <a href="contact.html" class="active">Locations</a>
+                    <a href="#" class="btn-order">Order Now</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-    <div class="branches-grid" id="branchesGrid">
-        Loading branches...
-    </div>
+    <section class="contact-hero">
+        <div class="container">
+            <h2>Our Locations</h2>
+            <p>Visit us at any of our 4 locations across the city</p>
+        </div>
+    </section>
 
-    <div class="footer">Powered by AddisPower</div>
-</div>
+    <main class="container">
+        <div class="branches-grid" id="branchesGrid">
+            <!-- Loaded dynamically -->
+        </div>
+    </main>
 
-<script>
-    // ============================================
-    // CONFIGURATION — CHANGE THIS
-    // ============================================
-    const WORKER_URL = "https://restaurant-menu-api.workers.dev"; // CHANGE THIS
-    
-    // Optional: Change restaurant name
-    const RESTAURANT_NAME = "Queen's Kitchen";
-    
-    // ============================================
-    // BRANCH DATA (same as Worker)
-    // ============================================
-    // Note: This matches the branches in your Worker.
-    // If you change branches in Worker, update here too.
-    const branches = [
-        {
-            id: 1,
-            name: "Downtown",
-            address: "123 Main Street",
-            city: "Downtown",
-            hours: "Mon-Sun: 11am - 10pm",
-            phone: "(555) 111-2222",
-            parking: "Street parking available",
-            mapLink: "https://maps.google.com/?q=123+Main+Street"
-        },
-        {
-            id: 2,
-            name: "Northside",
-            address: "456 Oak Avenue",
-            city: "Northside",
-            hours: "Mon-Sun: 12pm - 9pm",
-            phone: "(555) 333-4444",
-            parking: "Free parking lot",
-            mapLink: "https://maps.google.com/?q=456+Oak+Avenue"
-        },
-        {
-            id: 3,
-            name: "Westend",
-            address: "789 Pine Road",
-            city: "Westend",
-            hours: "Mon-Sun: 11am - 9pm",
-            phone: "(555) 555-6666",
-            parking: "Valet parking",
-            mapLink: "https://maps.google.com/?q=789+Pine+Road"
-        },
-        {
-            id: 4,
-            name: "Eastside",
-            address: "321 Elm Street",
-            city: "Eastside",
-            hours: "Mon-Sun: 10am - 8pm",
-            phone: "(555) 777-8888",
-            parking: "Street + lot parking",
-            mapLink: "https://maps.google.com/?q=321+Elm+Street"
-        }
-    ];
-
-    document.getElementById("restaurantName").innerText = RESTAURANT_NAME;
-
-    function renderBranches() {
-        const container = document.getElementById("branchesGrid");
-        
-        container.innerHTML = branches.map(branch => `
-            <div class="branch-card">
-                <div class="branch-name">
-                    <span>🏠</span> ${branch.name}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    <p>Powered by <strong>AddisPower</strong></p>
                 </div>
-                <div class="branch-detail">
-                    <span class="icon">📍</span>
-                    <span>${branch.address}</span>
-                </div>
-                <div class="branch-detail">
-                    <span class="icon">🕐</span>
-                    <span>${branch.hours}</span>
-                </div>
-                <div class="branch-detail">
-                    <span class="icon">📞</span>
-                    <span>${branch.phone}</span>
-                </div>
-                <div class="branch-detail">
-                    <span class="icon">🅿️</span>
-                    <span>${branch.parking}</span>
-                </div>
-                <div>
-                    <a href="tel:${branch.phone.replace(/\D/g, '')}" class="btn">📞 Call</a>
-                    <a href="${branch.mapLink}" target="_blank" class="btn btn-outline">🗺️ Directions</a>
-                </div>
-                <div class="map-placeholder">
-                    🗺️ Google Maps link above
+                <div class="footer-links">
+                    <a href="index.html">Menu</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Privacy Policy</a>
                 </div>
             </div>
-        `).join("");
-    }
+        </div>
+    </footer>
 
-    renderBranches();
-</script>
+    <script>
+        const WORKER_URL = 'https://your-worker.workers.dev'; // Replace with your URL
+
+        async function loadBranches() {
+            try {
+                const response = await fetch(`${WORKER_URL}/api/branches`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    renderBranches(data.data.branches);
+                }
+            } catch (error) {
+                console.error('Failed to load branches:', error);
+                document.getElementById('branchesGrid').innerHTML = `
+                    <p style="text-align:center; padding:40px;">Unable to load locations. Please try again.</p>
+                `;
+            }
+        }
+
+        function renderBranches(branches) {
+            const grid = document.getElementById('branchesGrid');
+            
+            grid.innerHTML = branches.map(branch => `
+                <div class="branch-card">
+                    <div class="branch-map" style="background: url('https://maps.googleapis.com/maps/api/staticmap?center=${branch.coordinates.lat},${branch.coordinates.lng}&zoom=15&size=400x200&markers=color:red%7C${branch.coordinates.lat},${branch.coordinates.lng}&key=YOUR_API_KEY') center/cover;">
+                    </div>
+                    <div class="branch-info">
+                        <h3 class="branch-name">${branch.name}</h3>
+                        <div class="branch-detail">
+                            <span class="icon">📍</span>
+                            <span>${branch.address}</span>
+                        </div>
+                        <div class="branch-detail">
+                            <span class="icon">📞</span>
+                            <span>${branch.phone}</span>
+                        </div>
+                        <div class="branch-detail">
+                            <span class="icon">🕐</span>
+                            <span>${branch.hours}</span>
+                        </div>
+                        <div class="branch-detail">
+                            <span class="icon">🅿️</span>
+                            <span>${branch.parking}</span>
+                        </div>
+                        <div class="branch-actions">
+                            <button class="btn-call" onclick="window.location.href='tel:${branch.phone.replace(/[^0-9]/g, '')}'">
+                                📞 Call Now
+                            </button>
+                            <button class="btn-directions" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${branch.coordinates.lat},${branch.coordinates.lng}', '_blank')">
+                                🗺️ Directions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadBranches);
+    </script>
 </body>
 </html>
