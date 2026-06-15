@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Restaurant - AI Menu</title>
+    <meta name="description" content="AI-Powered Restaurant Menu - Chat with our menu assistant">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #2d3436; line-height: 1.6; }
+        
+        .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 20px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 800; display: flex; align-items: center; gap: 12px; }
+        .nav { display: flex; gap: 24px; align-items: center; }
+        .nav a { color: white; text-decoration: none; font-weight: 500; transition: opacity 0.3s; }
+        .nav a:hover { opacity: 0.8; }
+        .btn-order-nav { background: #e85d04; padding: 10px 24px; border-radius: 25px; font-weight: 600; }
+        
+        .hero { background: linear-gradient(135deg, #e85d04 0%, #dc2f02 100%); color: white; text-align: center; padding: 60px 0; }
+        .hero h2 { font-size: 42px; margin-bottom: 16px; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+        .btn { padding: 14px 28px; border: 2px solid white; background: rgba(255,255,255,0.1); color: white; border-radius: 30px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; backdrop-filter: blur(10px); }
+        .btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        
+        .search-section { padding: 30px 0; }
+        .search-bar { position: relative; max-width: 600px; margin: 0 auto; }
+        .search-bar input { width: 100%; padding: 14px 20px; border: 2px solid #e0e0e0; border-radius: 30px; font-size: 16px; transition: border-color 0.3s; }
+        .search-bar input:focus { outline: none; border-color: #e85d04; }
+        
+        .filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+        .filter-btn { padding: 8px 20px; border: 2px solid #e0e0e0; background: white; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-weight: 500; }
+        .filter-btn:hover, .filter-btn.active { background: #e85d04; color: white; border-color: #e85d04; }
+        .quick-filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .quick-btn { padding: 8px 16px; background: white; border: none; border-radius: 20px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .quick-btn:hover { background: #e85d04; color: white; transform: translateY(-1px); }
+        
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; padding: 20px 0 40px; }
+        .menu-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; }
+        .menu-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .menu-card-image { width: 100%; height: 200px; object-fit: cover; background: #f0f0f0; }
+        .menu-card-body { padding: 20px; }
+        .menu-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .menu-card p { color: #636e72; font-size: 14px; margin-bottom: 16px; }
+        .menu-card-footer { display: flex; justify-content: space-between; align-items: center; }
+        .price { font-size: 24px; font-weight: 800; color: #e85d04; }
+        .badges { display: flex; gap: 6px; margin-bottom: 12px; }
+        .badge { padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .badge-new { background: #00b894; color: white; }
+        .badge-popular { background: #fdcb6e; color: #2d3436; }
+        .badge-vegetarian { background: #55efc4; color: #2d3436; }
+        .btn-order { width: 100%; margin-top: 12px; padding: 12px; background: #e85d04; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .btn-order:hover { background: #dc2f02; }
+        
+        .location-bar { background: white; border-top: 1px solid #e0e0e0; padding: 12px 0; font-size: 14px; color: #636e72; }
+        
+        .chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+        .chat-toggle { width: 60px; height: 60px; border-radius: 50%; background: #e85d04; color: white; border: none; font-size: 28px; cursor: pointer; box-shadow: 0 4px 20px rgba(232, 93, 4, 0.4); transition: transform 0.3s; }
+        .chat-toggle:hover { transform: scale(1.1); }
+        .chat-window { position: absolute; bottom: 80px; right: 0; width: 380px; height: 500px; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2); display: none; flex-direction: column; overflow: hidden; }
+        .chat-header { background: #e85d04; color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .chat-messages { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .message { max-width: 80%; padding: 10px 14px; border-radius: 12px; font-size: 14px; line-height: 1.5; }
+        .message.user { background: #e85d04; color: white; align-self: flex-end; }
+        .message.bot { background: #f0f0f0; align-self: flex-start; }
+        .chat-input-area { padding: 12px; border-top: 1px solid #e0e0e0; display: flex; gap: 8px; }
+        .chat-input-area input { flex: 1; padding: 10px 16px; border: 1px solid #e0e0e0; border-radius: 20px; font-size: 14px; }
+        .chat-input-area button { padding: 10px 20px; background: #e85d04; color: white; border: none; border-radius: 20px; cursor: pointer; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 16px; padding: 40px; max-width: 500px; width: 90%; text-align: center; position: relative; }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: #f0f0f0; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 18px; }
+        
+        .footer { background: #1a1a2e; color: white; padding: 40px 0; text-align: center; margin-top: 60px; }
+        .footer a { color: #b2bec3; text-decoration: none; margin: 0 12px; }
+        
+        .loading { text-align: center; padding: 60px 0; }
+        .spinner { width: 40px; height: 40px; border: 4px solid #f0f0f0; border-top-color: #e85d04; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 28px; }
+            .chat-window { width: calc(100vw - 40px); height: 60vh; }
+            .menu-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><span>🍽️</span><span>Premium Restaurant</span></div>
+            <nav class="nav">
+                <a href="index.html">Menu</a>
+                <a href="contact.html">Locations</a>
+                <a href="#" class="btn-order-nav">Order Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Discover Your Perfect Dish</h2>
+            <p>Let AI help you find exactly what you're craving</p>
+            <div class="hero-buttons">
+                <button class="btn" onclick="feelingLucky()">🎲 I'm Feeling Lucky</button>
+                <button class="btn" onclick="openMoodMatcher()">🎭 Food Mood Matcher</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 Search menu items..." oninput="filterMenu()">
+            </div>
+            <div class="filters" id="categoryFilters">
+                <button class="filter-btn active" onclick="filterByCategory('all')">All</button>
+            </div>
+            <div class="quick-filters">
+                <button class="quick-btn" onclick="quickFilter('under10')">💰 Under $10</button>
+                <button class="quick-btn" onclick="quickFilter('vegetarian')">🥬 Vegetarian</button>
+                <button class="quick-btn" onclick="quickFilter('new')">🆕 New Items</button>
+                <button class="quick-btn" onclick="quickFilter('popular')">⭐ Popular</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="menu-grid" id="menuGrid">
+            <div class="loading"><div class="spinner"></div><p>Loading delicious options...</p></div>
+        </div>
+    </main>
+
+    <div class="location-bar">
+        <div class="container" id="locationText">📍 Detecting nearest branch...</div>
+    </div>
+
+    <div class="chat-widget">
+        <button class="chat-toggle" onclick="toggleChat()">💬</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div><strong>🤖 Menu Assistant</strong><div style="font-size:12px;opacity:0.9;">Online · Instant replies</div></div>
+                <button onclick="toggleChat()" style="background:none;border:none;color:white;font-size:20px;cursor:pointer;">✕</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hi there! 👋 I'm your menu assistant. I can help you find the perfect dish, recommend based on your mood, or tell you about our locations. What interests you? 🍕✨</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')sendMessage()">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('orderModal')">✕</span>
+            <div style="font-size:64px;margin-bottom:16px;">✅</div>
+            <h2>Order Confirmed!</h2>
+            <p id="orderItemName" style="margin:16px 0;"></p>
+            <div id="foodFact" style="background:#ffeaa7;padding:20px;border-radius:12px;margin:20px 0;"></div>
+            <button class="btn" style="background:#e85d04;color:white;border:none;" onclick="closeModal('orderModal')">Continue Browsing</button>
+        </div>
+    </div>
+
+    <div class="modal" id="moodModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('moodModal')">✕</span>
+            <h2>What's Your Food Mood? 🎭</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
+                <div onclick="matchMood('tired')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer;"><div style="font-size:40px;">😴</div><h3>Feeling Tired</h3><p style="color:#636e72;">Need energy boost</p></div>
+                <div onclick="matchMood('happy')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer;"><div style="font-size:40px;">😊</div><h3>Feeling Happy</h3><p style="color:#636e72;">Time to celebrate!</p></div>
+                <div onclick="matchMood('comfort')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer;"><div style="font-size:40px;">🤗</div><h3>Need Comfort</h3><p style="color:#636e72;">Warm & cozy food</p></div>
+                <div onclick="matchMood('adventurous')" style="padding:20px;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer;"><div style="font-size:40px;">🌍</div><h3>Feeling Adventurous</h3><p style="color:#636e72;">Try something new</p></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom:12px;">Powered by <strong>AddisPower</strong></p>
+            <div><a href="contact.html">Contact & Locations</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+        </div>
+    </footer>
+
+    <script>
+        // ✅ YOUR PRODUCTION WORKER URL
+        const WORKER_URL = 'https://restaurant-menu-api.ai-menu-d29.workers.dev';
+        
+        let menuItems = [];
+        let currentCategory = 'all';
+
+        async function loadMenu() {
+            try {
+                const response = await fetch(`${WORKER_URL}/api/menu`);
+                const data = await response.json();
+                if (data.success) {
+                    menuItems = data.data.items;
+                    renderCategories(data.data.categories);
+                    renderMenu(menuItems);
+                }
+            } catch (error) {
+                document.getElementById('menuGrid').innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1;"><p>Unable to load menu. Please refresh the page.</p><button class="btn" style="background:#e85d04;color:white;border:none;margin-top:12px;" onclick="loadMenu()">Retry</button></div>';
+            }
+        }
+
+        function renderCategories(categories) {
+            const container = document.getElementById('categoryFilters');
+            container.innerHTML = `<button class="filter-btn active" onclick="filterByCategory('all')">All</button>${categories.map(cat => `<button class="filter-btn" onclick="filterByCategory('${cat}')">${cat}</button>`).join('')}`;
+        }
+
+        function renderMenu(items) {
+            const grid = document.getElementById('menuGrid');
+            if (!items.length) {
+                grid.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1;"><div style="font-size:48px;">🍽️</div><h3>No items found</h3><p>Try adjusting your search or filters</p></div>';
+                return;
+            }
+            grid.innerHTML = items.map(item => `
+                <div class="menu-card" onclick="askAboutItem('${item.id}')">
+                    <img class="menu-card-image" src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(item.name)}'">
+                    <div class="menu-card-body">
+                        <div class="badges">
+                            ${item.isNew ? '<span class="badge badge-new">🆕 New</span>' : ''}
+                            ${item.isPopular ? '<span class="badge badge-popular">⭐ Popular</span>' : ''}
+                            ${item.isVegetarian ? '<span class="badge badge-vegetarian">🥬 Vegetarian</span>' : ''}
+                        </div>
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <div class="menu-card-footer">
+                            <span class="price">$${item.price.toFixed(2)}</span>
+                            ${item.waitTime ? `<span style="font-size:12px;color:#636e72;">⏱️ ${item.waitTime}min</span>` : ''}
+                        </div>
+                        <button class="btn-order" onclick="event.stopPropagation();placeOrder('${item.id}')">Order Now</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.trim() === category || (category === 'all' && btn.textContent.trim() === 'All'));
+            });
+            applyFilters();
+        }
+
+        function filterMenu() { applyFilters(); }
+
+        function quickFilter(type) { applyFilters(type); }
+
+        function applyFilters(quickFilterType = null) {
+            let filtered = [...menuItems];
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            if (currentCategory !== 'all') filtered = filtered.filter(item => item.category === currentCategory);
+            if (searchQuery) filtered = filtered.filter(item => item.name.toLowerCase().includes(searchQuery) || item.description.toLowerCase().includes(searchQuery));
+            if (quickFilterType === 'under10') filtered = filtered.filter(item => item.price < 10);
+            else if (quickFilterType === 'vegetarian') filtered = filtered.filter(item => item.isVegetarian);
+            else if (quickFilterType === 'new') filtered = filtered.filter(item => item.isNew);
+            else if (quickFilterType === 'popular') filtered = filtered.filter(item => item.isPopular);
+            renderMenu(filtered);
+        }
+
+        function feelingLucky() {
+            if (!menuItems.length) return;
+            const random = menuItems[Math.floor(Math.random() * menuItems.length)];
+            toggleChat(true);
+            setTimeout(() => { document.getElementById('chatInput').value = `I'm feeling lucky! Tell me about the ${random.name} 🎲`; sendMessage(); }, 300);
+        }
+
+        function openMoodMatcher() { document.getElementById('moodModal').classList.add('active'); }
+
+        function matchMood(mood) {
+            closeModal('moodModal');
+            const messages = { tired: "I'm feeling tired and need an energy boost! ☕", happy: "I'm feeling happy and want to celebrate! 🎉", comfort: "I need some comfort food right now 🤗", adventurous: "I'm feeling adventurous! Surprise me 🌍" };
+            toggleChat(true);
+            setTimeout(() => { document.getElementById('chatInput').value = messages[mood]; sendMessage(); }, 300);
+        }
+
+        function askAboutItem(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            if (!item) return;
+            toggleChat(true);
+            setTimeout(() => { document.getElementById('chatInput').value = `Tell me more about the ${item.name}`; sendMessage(); }, 300);
+        }
+
+        function placeOrder(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            if (!item) return;
+            document.getElementById('orderItemName').textContent = `You ordered: ${item.name}`;
+            const facts = ['Fun Fact: Pizza was named after Queen Margherita of Italy in 1889! 🇮🇹', 'Did you know? Pasta comes in over 600 different shapes worldwide! 🍝', 'Food fact: The Caesar salad was invented in Mexico, not Italy! 🥗', 'Interesting: Tiramisu means "pick me up" in Italian! ☕', 'Fun fact: The Margherita pizza represents the Italian flag: red (tomato), white (mozzarella), green (basil)! 🇮🇹'];
+            document.getElementById('foodFact').innerHTML = `<p style="font-weight:600;">${facts[Math.floor(Math.random() * facts.length)]}</p>`;
+            document.getElementById('orderModal').classList.add('active');
+        }
+
+        function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); }
+
+        let chatOpen = false;
+        let chatHistory = [];
+
+        function toggleChat(forceOpen = null) {
+            chatOpen = forceOpen !== null ? forceOpen : !chatOpen;
+            document.getElementById('chatWindow').style.display = chatOpen ? 'flex' : 'none';
+            if (chatOpen) document.getElementById('chatInput').focus();
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            input.value = '';
+            addMessage('user', message);
+            chatHistory.push({ role: 'user', content: message });
+            addMessage('bot', '...');
+            try {
+                const response = await fetch(`${WORKER_URL}/api/chat`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message, history: chatHistory }) });
+                const data = await response.json();
+                removeLastBotMessage();
+                if (data.success) { addMessage('bot', data.response); chatHistory.push({ role: 'assistant', content: data.response }); }
+            } catch (error) { removeLastBotMessage(); addMessage('bot', 'Sorry, I had a small hiccup! Please try again 😅'); }
+        }
+
+        function addMessage(type, text) {
+            const container = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = `message ${type}`;
+            div.textContent = text;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function removeLastBotMessage() {
+            const messages = document.getElementById('chatMessages');
+            const lastBot = messages.querySelector('.message.bot:last-child');
+            if (lastBot && lastBot.textContent === '...') lastBot.remove();
+        }
+
+        function detectLocation() {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    try {
+                        const response = await fetch(`${WORKER_URL}/api/branches`);
+                        const data = await response.json();
+                        if (data.success) {
+                            const nearest = findNearest(position.coords.latitude, position.coords.longitude, data.data.branches);
+                            if (nearest) {
+                                const distance = calculateDistance(position.coords.latitude, position.coords.longitude, nearest.coordinates.lat, nearest.coordinates.lng);
+                                document.getElementById('locationText').textContent = `📍 Nearest: ${nearest.name} - ${distance.toFixed(1)} miles (${Math.round(distance * 20)} min walk)`;
+                            }
+                        }
+                    } catch (error) { console.log('Location detection failed'); }
+                }, () => { document.getElementById('locationText').textContent = '📍 Enable location for nearest branch info'; });
+            }
+        }
+
+        function findNearest(userLat, userLng, branches) {
+            let nearest = null, minDist = Infinity;
+            branches.forEach(branch => { const dist = calculateDistance(userLat, userLng, branch.coordinates.lat, branch.coordinates.lng); if (dist < minDist) { minDist = dist; nearest = branch; } });
+            return nearest;
+        }
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 3959, dLat = (lat2 - lat1) * Math.PI / 180, dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon/2) ** 2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => { loadMenu(); detectLocation(); });
+        document.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active')); });
+    </script>
+</body>
+</html>
