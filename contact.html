@@ -1,146 +1,161 @@
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-    const path = url.pathname;
-    const headers = {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    };
-    if (request.method === 'OPTIONS') return new Response(null, { headers });
-
-    // GET /api/menu - 37 Items
-    if (path === '/api/menu' && request.method === 'GET') {
-      const menu = {
-        success: true, data: {
-          categories: ['🔥 Hot Starters','❄️ Cold Starters','🍕 Pizza','🍝 Pasta','🥩 Mains','🥗 Salads','🍰 Desserts','☕ Hot Drinks','🧊 Cold Drinks'],
-          items: [
-            { id:'1',name:'Bruschetta Classica',price:7.99,category:'🔥 Hot Starters',description:'Toasted ciabatta, fresh tomatoes, garlic, basil, extra virgin olive oil',image:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400',portionSize:'4 pieces',waitTime:7,temperature:'hot',isVegetarian:true,isPopular:true },
-            { id:'2',name:'Garlic Bread',price:5.99,category:'🔥 Hot Starters',description:'Wood-fired bread with roasted garlic butter, parmesan, herbs',image:'https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=400',portionSize:'6 slices',waitTime:6,temperature:'hot',isVegetarian:true },
-            { id:'3',name:'Arancini',price:8.99,category:'🔥 Hot Starters',description:'Crispy fried risotto balls stuffed with mozzarella and ragu',image:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400',portionSize:'5 pieces',waitTime:10,temperature:'hot',isNew:true },
-            { id:'4',name:'Calamari Fritti',price:10.99,category:'🔥 Hot Starters',description:'Lightly battered squid rings, lemon aioli, marinara sauce',image:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',portionSize:'Generous portion',waitTime:9,temperature:'hot',isPopular:true },
-            { id:'5',name:'Stuffed Mushrooms',price:8.49,category:'🔥 Hot Starters',description:'Button mushrooms filled with herbed ricotta, spinach, baked golden',image:'https://images.unsplash.com/photo-1635094496696-7e3c2b9a7a8f?w=400',portionSize:'6 pieces',waitTime:11,temperature:'hot',isVegetarian:true },
-            { id:'6',name:'Caprese Salad',price:9.99,category:'❄️ Cold Starters',description:'Buffalo mozzarella, vine tomatoes, fresh basil, balsamic glaze',image:'https://images.unsplash.com/photo-1608032077018-c9aad9565d2b?w=400',portionSize:'Medium plate',waitTime:5,temperature:'cold',isVegetarian:true,isPopular:true },
-            { id:'7',name:'Prosciutto e Melone',price:11.99,category:'❄️ Cold Starters',description:'Parma ham with sweet cantaloupe melon, mint, balsamic pearls',image:'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=400',portionSize:'Elegant plate',waitTime:5,temperature:'cold' },
-            { id:'8',name:'Carpaccio di Manzo',price:13.99,category:'❄️ Cold Starters',description:'Thinly sliced beef tenderloin, arugula, parmesan shavings, truffle oil',image:'https://images.unsplash.com/photo-1603073206124-2da28bfb0948?w=400',portionSize:'Artisan plate',waitTime:7,temperature:'cold',isNew:true },
-            { id:'9',name:'Antipasto Platter',price:14.99,category:'❄️ Cold Starters',description:'Selection of Italian cured meats, cheeses, olives, artichokes, grissini',image:'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400',portionSize:'Sharing board',waitTime:6,temperature:'cold',isPopular:true },
-            { id:'10',name:'Margherita Pizza',price:12.99,category:'🍕 Pizza',description:'San Marzano tomatoes, fresh mozzarella, basil on wood-fired crust',image:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',portionSize:'12 inches, serves 1-2',waitTime:12,temperature:'hot',isVegetarian:true,isPopular:true },
-            { id:'11',name:'Diavola Pizza',price:13.99,category:'🍕 Pizza',description:'Spicy salami, chili flakes, mozzarella, tomato sauce',image:'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',portionSize:'12 inches, serves 1-2',waitTime:14,temperature:'hot',isPopular:true },
-            { id:'12',name:'Quattro Formaggi',price:14.99,category:'🍕 Pizza',description:"Mozzarella, gorgonzola, fontina, parmesan — cheese lover's dream",image:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400',portionSize:'12 inches, serves 1-2',waitTime:13,temperature:'hot',isVegetarian:true },
-            { id:'13',name:'Prosciutto & Arugula',price:15.99,category:'🍕 Pizza',description:'Mozzarella base topped with Parma ham, fresh arugula, parmesan',image:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400',portionSize:'12 inches, serves 1-2',waitTime:14,temperature:'hot',isNew:true },
-            { id:'14',name:'Pizza Marinara',price:10.99,category:'🍕 Pizza',description:'Tomato, garlic, oregano, extra virgin olive oil — simple perfection',image:'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400',portionSize:'12 inches, serves 1-2',waitTime:11,temperature:'hot',isVegetarian:true },
-            { id:'15',name:'Pasta Carbonara',price:14.99,category:'🍝 Pasta',description:'Creamy egg sauce, pancetta, pecorino romano, black pepper',image:'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400',portionSize:'Large plate, serves 1',waitTime:15,temperature:'hot',isPopular:true },
-            { id:'16',name:'Penne Arrabiata',price:11.99,category:'🍝 Pasta',description:'Penne in spicy tomato sauce with garlic, chili, fresh basil',image:'https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?w=400',portionSize:'Large plate, serves 1',waitTime:12,temperature:'hot',isVegetarian:true },
-            { id:'17',name:'Linguine Frutti di Mare',price:17.99,category:'🍝 Pasta',description:'Fresh mussels, clams, shrimp, calamari in white wine garlic sauce',image:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400',portionSize:'Large plate, serves 1',waitTime:18,temperature:'hot',isNew:true },
-            { id:'18',name:'Lasagna al Forno',price:15.99,category:'🍝 Pasta',description:'Layers of pasta, beef ragu, béchamel, mozzarella, baked golden',image:'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400',portionSize:'Large portion, serves 1-2',waitTime:20,temperature:'hot',isPopular:true },
-            { id:'19',name:'Gnocchi al Pesto',price:13.99,category:'🍝 Pasta',description:'Potato gnocchi in fresh basil pesto, pine nuts, parmesan',image:'https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?w=400',portionSize:'Medium plate, serves 1',waitTime:14,temperature:'hot',isVegetarian:true },
-            { id:'20',name:'Chicken Parmigiana',price:16.99,category:'🥩 Mains',description:'Breaded chicken breast, tomato sauce, melted mozzarella, spaghetti',image:'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400',portionSize:'Large plate, serves 1',waitTime:18,temperature:'hot',isPopular:true },
-            { id:'21',name:'Grilled Salmon',price:19.99,category:'🥩 Mains',description:'Atlantic salmon, lemon butter, capers, roasted vegetables',image:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400',portionSize:'Elegant plate, serves 1',waitTime:20,temperature:'hot',isNew:true },
-            { id:'22',name:'Osso Buco',price:22.99,category:'🥩 Mains',description:'Slow-braised veal shank, gremolata, saffron risotto',image:'https://images.unsplash.com/photo-1544025162-d76694265947?w=400',portionSize:'Premium plate, serves 1',waitTime:25,temperature:'hot' },
-            { id:'23',name:'Caesar Salad',price:9.99,category:'🥗 Salads',description:'Crisp romaine, parmesan, croutons, house-made dressing',image:'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400',portionSize:'Large bowl',waitTime:8,temperature:'cold',isPopular:true },
-            { id:'24',name:'Mediterranean Salad',price:10.99,category:'🥗 Salads',description:'Mixed greens, feta, olives, sun-dried tomatoes, red onion, oregano vinaigrette',image:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400',portionSize:'Large bowl',waitTime:7,temperature:'cold',isVegetarian:true },
-            { id:'25',name:'Spinach & Walnut',price:10.49,category:'🥗 Salads',description:'Baby spinach, candied walnuts, goat cheese, balsamic dressing',image:'https://images.unsplash.com/photo-1572449043416-55f6a5a1cb4a?w=400',portionSize:'Medium bowl',waitTime:7,temperature:'cold',isVegetarian:true,isNew:true },
-            { id:'26',name:'Tiramisu',price:8.99,category:'🍰 Desserts',description:'Classic Italian dessert, espresso-soaked ladyfingers, mascarpone',image:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400',portionSize:'Single serving',waitTime:5,temperature:'cold',isPopular:true,isVegetarian:true },
-            { id:'27',name:'Panna Cotta',price:7.99,category:'🍰 Desserts',description:'Vanilla cream dessert with strawberry coulis, fresh mint',image:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400',portionSize:'Single serving',waitTime:4,temperature:'cold',isVegetarian:true },
-            { id:'28',name:'Cannoli Siciliani',price:8.49,category:'🍰 Desserts',description:'Crispy pastry shells filled with sweet ricotta, chocolate chips, pistachio',image:'https://images.unsplash.com/photo-1607937234387-75d435b3a51d?w=400',portionSize:'3 pieces',waitTime:5,temperature:'cold',isNew:true },
-            { id:'29',name:'Chocolate Lava Cake',price:9.99,category:'🍰 Desserts',description:'Warm chocolate cake with molten center, vanilla gelato',image:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400',portionSize:'Single serving',waitTime:12,temperature:'hot',isPopular:true },
-            { id:'30',name:'Espresso',price:3.99,category:'☕ Hot Drinks',description:'Rich Italian dark roast, perfectly extracted crema',image:'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400',portionSize:'Single shot',waitTime:3,temperature:'hot',isPopular:true },
-            { id:'31',name:'Cappuccino',price:4.99,category:'☕ Hot Drinks',description:'Espresso with steamed milk and thick foam, dusted with cocoa',image:'https://images.unsplash.com/photo-1534778101976-62847782c213?w=400',portionSize:'8oz cup',waitTime:4,temperature:'hot',isPopular:true },
-            { id:'32',name:'Hot Chocolate Italiano',price:5.49,category:'☕ Hot Drinks',description:'Thick Italian hot chocolate, whipped cream, chocolate shavings',image:'https://images.unsplash.com/photo-1542990253-0d0f5be5f80b?w=400',portionSize:'8oz cup',waitTime:4,temperature:'hot',isVegetarian:true },
-            { id:'33',name:'Fresh Lemonade',price:4.99,category:'🧊 Cold Drinks',description:'Fresh squeezed Sorrento lemons with mint, served ice cold',image:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold',isVegetarian:true },
-            { id:'34',name:'Iced Latte',price:5.49,category:'🧊 Cold Drinks',description:'Double espresso over ice with cold milk, optional vanilla',image:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold' },
-            { id:'35',name:'Italian Soda',price:4.49,category:'🧊 Cold Drinks',description:'Sparkling water with choice of raspberry, peach, or blood orange syrup',image:'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold',isVegetarian:true },
-            { id:'36',name:'Aperol Spritz',price:9.99,category:'🧊 Cold Drinks',description:'Aperol, prosecco, soda, orange slice — the Italian classic',image:'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400',portionSize:'12oz glass',waitTime:4,temperature:'cold',isPopular:true },
-            { id:'99',name:'Secret Truffle Pasta',price:24.99,category:'🍝 Pasta',description:'🤫 Hand-made tagliatelle with fresh black truffle cream sauce',image:'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=400',portionSize:'Premium plate, serves 1',waitTime:20,temperature:'hot',isSecret:true }
-          ]
-        }
-      };
-      return new Response(JSON.stringify(menu), { headers });
-    }
-
-    // GET /api/branches
-    if (path === '/api/branches') {
-      return new Response(JSON.stringify({ success:true, data:{ branches:[
-        { id:1,name:'Downtown',address:'123 Main Street, Downtown',phone:'(555) 123-4567',hours:'Mon-Sun: 11AM-10PM',parking:'Street parking',coordinates:{lat:40.7128,lng:-74.0060},features:['Outdoor Seating','Full Bar','Takeout'] },
-        { id:2,name:'Uptown',address:'456 Park Avenue, Uptown',phone:'(555) 234-5678',hours:'Mon-Sat: 10AM-11PM, Sun: 11AM-9PM',parking:'Free parking lot',coordinates:{lat:40.7831,lng:-73.9712},features:['Private Events','Wine Cellar','Delivery'] },
-        { id:3,name:'Westside',address:'789 Broadway, Westside',phone:'(555) 345-6789',hours:'Daily: 11:30AM-10:30PM',parking:'Valet parking',coordinates:{lat:40.7489,lng:-73.9856},features:['Rooftop Dining','Live Music','Catering'] },
-        { id:4,name:'Eastside',address:'321 Oak Lane, Eastside',phone:'(555) 456-7890',hours:'Tue-Sun: 12PM-10PM (Closed Mon)',parking:'Mall parking',coordinates:{lat:40.7549,lng:-73.9840},features:['Family Friendly','Kids Menu','Takeout'] }
-      ]}}), { headers });
-    }
-
-    // GET /api/playlist
-    if (path === '/api/playlist') {
-      return new Response(JSON.stringify({ success:true, data:{
-        title:'🎷 Radio Swiss Jazz — Live 24/7',
-        liveRadio:{ name:'Radio Swiss Jazz',streamUrl:'https://stream.srg-ssr.ch/m/rsj/mp3_128',website:'https://www.radioswissjazz.ch/en',description:'Non-stop jazz from Switzerland — the perfect dinner soundtrack' },
-        songs:[
-          { title:'🔴 LIVE — Radio Swiss Jazz',artist:'24/7 Non-Stop Jazz Stream',url:'https://www.radioswissjazz.ch/en',isLive:true },
-          { title:'Italian Dinner Jazz',artist:'Relaxing Vibes',url:'https://www.youtube.com/watch?v=4udavF0PIko' },
-          { title:'Romantic Italian Cafe',artist:'Bistro Beats',url:'https://www.youtube.com/watch?v=MV_3Dpw-BRY' },
-          { title:'Soft Jazz for Dining',artist:'Ambient Lounge',url:'https://www.youtube.com/watch?v=kFJBNPc5BPg' }
-        ]
-      }}), { headers });
-    }
-
-    // GET /api/story
-    if (path === '/api/story') {
-      const item = url.searchParams.get('item') || 'pizza';
-      const stories = {
-        pizza:{ title:'🍕 The Story of Pizza',story:"Pizza was born in Naples, Italy in the 18th century! In 1889, chef Raffaele Esposito created the Margherita pizza for Queen Margherita. The red tomato, white mozzarella, and green basil represented the Italian flag! 🇮🇹",funFact:"The world's largest pizza was 131 feet in diameter!" },
-        salad:{ title:'🥗 Caesar Salad Origins',story:"Caesar salad was invented in Tijuana, Mexico in 1924 by chef Caesar Cardini! He threw it together on July 4th when his kitchen was running low. The original had no anchovies!",funFact:'The original Caesar salad was eaten with fingers, not forks!' },
-        pasta:{ title:'🍝 Carbonara History',story:'Carbonara was born in Rome during WWII! American soldiers brought bacon and eggs, and Roman chefs combined them with pasta. The name comes from "carbonaro" — charcoal worker.',funFact:'Real Italian carbonara NEVER uses cream — only eggs and cheese!' },
-        tiramisu:{ title:'🍰 Tiramisu Love Story',story:'Tiramisu means "pick me up" in Italian! Invented in the 1960s in Treviso. The combination of coffee, cocoa, and mascarpone was meant to give energy and happiness.',funFact:'The original recipe had no alcohol — just coffee, eggs, and mascarpone!' },
-        bruschetta:{ title:'🥖 Bruschetta Origins',story:'Bruschetta comes from "bruscare" — to roast over coals. Italian farmers would toast bread and top it with fresh olive oil to test the season\'s first pressing. Simple perfection!',funFact:'Real bruschetta is always made with day-old bread!' },
-        espresso:{ title:'☕ Espresso Revolution',story:'Espresso was invented in 1901 by Luigi Bezzera in Milan! He wanted faster coffee for workers. A perfect shot takes exactly 25-30 seconds. Italians drink 14 billion espressos yearly!',funFact:'Espresso has LESS caffeine than regular drip coffee!' },
-        lemonade:{ title:'🍋 Lemonade Legacy',story:"Lemonade dates back to medieval Egypt! In Italy, it's made with Sorrento lemons — the best in the world. These lemons are so sweet you can eat them raw like an apple!",funFact:'A Sorrento lemon can weigh up to 3 pounds!' },
-        secret:{ title:'🤫 The Secret Truffle',story:'Truffles have been mysterious treasures for thousands of years! Romans believed lightning created them. White truffles sell for over $3,000 per pound! Our secret pasta uses the finest black truffles from Umbria.',funFact:'Truffle hunters use dogs because truffles smell like pig pheromones!' }
-      };
-      return new Response(JSON.stringify({ success:true, data: stories[item] || stories.pizza }), { headers });
-    }
-
-    // POST /api/chat
-    if (path === '/api/chat' && request.method === 'POST') {
-      try {
-        const body = await request.json();
-        const message = (body.message || '').trim();
-        if (!message) return new Response(JSON.stringify({ error:'Message required' }), { status:400, headers });
-
-        if (env.HF_TOKEN) {
-          try {
-            const hfRes = await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen2.5-7B-Instruct/v1/chat/completions', {
-              method:'POST',
-              headers:{ 'Authorization':`Bearer ${env.HF_TOKEN}`, 'Content-Type':'application/json' },
-              body: JSON.stringify({ model:'Qwen/Qwen2.5-7B-Instruct', messages:[{ role:'system', content:'You are a warm Italian restaurant menu assistant. Be specific with prices. Use emojis. Keep under 100 words. 37 items: Hot/Cold Starters, 5 Pizzas, 5 Pastas, 3 Mains, 3 Salads, 4 Desserts, Hot/Cold Drinks. Secret Truffle Pasta $24.99. Radio Swiss Jazz plays live.' },{ role:'user', content:message }], max_tokens:200, temperature:0.9 })
-            });
-            if (hfRes.ok) { const d = await hfRes.json(); if (d.choices?.[0]) return new Response(JSON.stringify({ success:true, response:d.choices[0].message.content }), { headers }); }
-          } catch(e) {}
-        }
-
-        const msg = message.toLowerCase(); let reply='';
-        if (msg.includes('adventurous')||msg.includes('surprise')) reply="Love your adventurous spirit! 🌍\n\n🥖 Bruschetta ($7.99)\n🔥 Diavola Pizza ($13.99)\n🍰 Tiramisu ($8.99)\n\nTotal: $30.97! Want to know our secret menu? 🤫";
-        else if (msg.includes('tired')||msg.includes('energy')) reply="Energy boost! ⚡\n\n☕ Espresso ($3.99)\n🥗 Caesar Salad ($9.99)\n\nTotal: $13.98! 🎵 Live jazz playing!";
-        else if (msg.includes('happy')||msg.includes('celebrate')) reply="Celebrate! 🎉\n\n🍕 Margherita Pizza ($12.99)\n🍋 Lemonade ($4.99)\n\nTotal: $17.98! Perfect with our live jazz! 🎷";
-        else if (msg.includes('comfort')||msg.includes('warm')) reply="Comfort food! 🤗\n\n🍝 Carbonara ($14.99)\n🍰 Tiramisu ($8.99)\n\nTotal: $23.98! Enjoy Radio Swiss Jazz! 🎵";
-        else if (msg.includes('secret')||msg.includes('hidden')) reply="🤫 Secret Truffle Pasta ($24.99)! Hand-made tagliatelle with black truffle cream. Only for special customers! Want to try?";
-        else if (msg.includes('vegetarian')||msg.includes('veggie')) reply="Vegetarian picks! 🥬\n\n🍕 Margherita ($12.99)\n🥗 Caesar Salad ($9.99)\n🥖 Bruschetta ($7.99)\n🍝 Penne Arrabiata ($11.99)\n🍰 Tiramisu ($8.99)\n\nAll meat-free!";
-        else if (msg.includes('recommend')||msg.includes('best')||msg.includes('popular')) reply="Our stars! ⭐\n\n🥇 Margherita Pizza ($12.99)\n🥈 Carbonara ($14.99)\n🥉 Diavola Pizza ($13.99)\n🍰 Tiramisu ($8.99)\n\nDon't miss our live jazz! 🎷";
-        else if (msg.includes('pizza')) reply="5 wood-fired pizzas! 🍕\n\n✨ Margherita ($12.99)\n🔥 Diavola ($13.99)\n🧀 Quattro Formaggi ($14.99)\n🍖 Prosciutto & Arugula ($15.99)\n🌿 Marinara ($10.99)\n\nAll 12 inches!";
-        else if (msg.includes('pasta')) reply="5 amazing pastas! 🍝\n\n🥓 Carbonara ($14.99)\n🌶️ Penne Arrabiata ($11.99)\n🦐 Frutti di Mare ($17.99)\n🧀 Lasagna ($15.99)\n🌿 Gnocchi Pesto ($13.99)";
-        else if (msg.includes('music')||msg.includes('radio')||msg.includes('jazz')) reply="🎷 Radio Swiss Jazz playing LIVE 24/7! Non-stop jazz from Switzerland — the perfect dinner ambiance. Tap the purple music bar at the top to listen!";
-        else if (msg.includes('location')||msg.includes('where')) reply="4 locations! 📍 Downtown (123 Main), Uptown (456 Park), Westside (789 Broadway-rooftop!), Eastside (321 Oak). All with free parking!";
-        else if (msg.includes('hot')||msg.includes('warm')) reply="Hot items! 🔥\n\nStarters: Bruschetta, Arancini, Calamari\nPizzas: All 5 wood-fired!\nPastas: Carbonara, Arrabiata, Lasagna\nMains: Chicken Parm, Salmon, Osso Buco\nDrinks: Espresso, Cappuccino, Hot Chocolate";
-        else if (msg.includes('cold')||msg.includes('cool')) reply="Cold items! ❄️\n\nStarters: Caprese, Prosciutto e Melone, Carpaccio, Antipasto\nSalads: Caesar, Mediterranean, Spinach\nDesserts: Tiramisu, Panna Cotta, Cannoli\nDrinks: Lemonade, Iced Latte, Italian Soda, Aperol Spritz";
-        else if (msg.includes('hello')||msg.includes('hi')||msg.includes('ciao')) reply="Ciao! 👋 I can help with:\n\n🍕 37 dishes across 9 categories\n🎭 Food mood matching\n📖 Food stories\n🤫 Secret menu\n🎵 Live Radio Swiss Jazz\n🎤 Voice chat available!\n\nWhat interests you?";
-        else reply="I'm here! 😊 Try:\n\n• \"What's hot?\" 🔥\n• \"Show cold items\" ❄️\n• \"I'm feeling adventurous\" 🌍\n• \"Recommend something\" ⭐\n• \"Secret menu\" 🤫\n• \"Tell me about the music\" 🎷";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Locations - Premium Restaurant</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#2d3436}
+        .header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px 0;position:sticky;top:0;z-index:1000}
+        .container{max-width:1000px;margin:0 auto;padding:0 16px}
+        .header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+        .logo{font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px}
+        .nav{display:flex;gap:14px;align-items:center}
+        .nav a{color:#fff;text-decoration:none;font-weight:500;font-size:14px}
+        .nav a.active{border-bottom:2px solid #e85d04;padding-bottom:2px}
+        .btn-order{background:#e85d04;padding:6px 14px;border-radius:16px;font-weight:600;font-size:13px}
         
-        return new Response(JSON.stringify({ success:true, response:reply }), { headers });
-      } catch(e) {
-        return new Response(JSON.stringify({ success:true, response:"Ciao! 😊 Try asking: 'What do you recommend?' or 'I'm feeling adventurous!' 🍕🎵" }), { headers });
-      }
-    }
+        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:40px 0}
+        .hero h2{font-size:32px;margin-bottom:6px}
+        .hero p{font-size:15px;opacity:.9}
+        
+        .branches-section{padding:30px 0}
+        .branches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+        .branch-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:all .3s}
+        .branch-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+        .branch-header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px 20px}
+        .branch-header h3{font-size:20px}
+        .branch-body{padding:20px}
+        .info-row{display:flex;gap:8px;margin-bottom:10px;color:#636e72;font-size:14px;align-items:start}
+        .info-row .icon{min-width:20px;font-size:16px}
+        .features{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+        .feature-tag{background:#f0f0f0;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:500}
+        .branch-actions{display:flex;gap:8px;margin-top:16px}
+        .btn-call,.btn-directions{flex:1;padding:10px;border:none;border-radius:8px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;font-size:13px;transition:all .3s}
+        .btn-call{background:#e85d04;color:#fff}
+        .btn-call:hover{background:#dc2f02}
+        .btn-directions{background:#f0f0f0;color:#2d3436}
+        .btn-directions:hover{background:#e0e0e0}
+        
+        .info-bar{background:#fff;border-top:1px solid #e0e0e0;padding:12px 0;text-align:center;font-size:13px;color:#636e72;margin-top:20px}
+        
+        .footer{background:#1a1a2e;color:#fff;padding:24px 0;text-align:center;margin-top:40px}
+        .footer a{color:#b2bec3;text-decoration:none;margin:0 8px;font-size:12px}
+        
+        .loading{text-align:center;padding:40px}
+        .spinner{width:32px;height:32px;border:3px solid #f0f0f0;border-top-color:#e85d04;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        
+        @media(max-width:768px){.hero h2{font-size:26px}.branches-grid{grid-template-columns:1fr}.branch-actions{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><span>🍽️</span><span>Premium Restaurant</span></div>
+            <nav class="nav">
+                <a href="index.html">Menu</a>
+                <a href="contact.html" class="active">Locations</a>
+                <a href="index.html" class="btn-order">Order Now</a>
+            </nav>
+        </div>
+    </header>
 
-    if (path === '/') return new Response(JSON.stringify({ message:'Restaurant AI Menu API v3.0', endpoints:{ menu:'/api/menu', branches:'/api/branches', chat:'/api/chat', playlist:'/api/playlist', story:'/api/story' } }), { headers });
-    return new Response(JSON.stringify({ error:'Not found' }), { status:404, headers });
-  }
-};
+    <section class="hero">
+        <div class="container">
+            <h2>📍 Our Locations</h2>
+            <p>4 beautiful branches across the city — all with free parking</p>
+        </div>
+    </section>
+
+    <section class="branches-section">
+        <div class="container">
+            <div class="branches-grid" id="branchesGrid">
+                <div class="loading"><div class="spinner"></div><p>Loading locations...</p></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="info-bar">
+        <div class="container">🕐 All locations accept: Cash, Credit Cards, Apple Pay & Google Pay</div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="margin-bottom:6px">Powered by <strong>AddisPower</strong></p>
+            <div>
+                <a href="index.html">Menu</a>
+                <a href="contact.html">Locations</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const WORKER_URL = 'https://restaurant-menu-api.ai-menu-d29.workers.dev';
+
+        async function loadBranches() {
+            try {
+                const response = await fetch(`${WORKER_URL}/api/branches`);
+                const data = await response.json();
+                
+                if (data.success && data.data.branches) {
+                    renderBranches(data.data.branches);
+                } else {
+                    throw new Error('No branches data');
+                }
+            } catch (error) {
+                document.getElementById('branchesGrid').innerHTML = `
+                    <div style="text-align:center;padding:40px;grid-column:1/-1">
+                        <p>Unable to load locations. Please refresh.</p>
+                        <button onclick="loadBranches()" style="margin-top:12px;padding:10px 20px;background:#e85d04;color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:600">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        function renderBranches(branches) {
+            const grid = document.getElementById('branchesGrid');
+            
+            grid.innerHTML = branches.map(branch => `
+                <div class="branch-card">
+                    <div class="branch-header">
+                        <h3>${branch.name}</h3>
+                    </div>
+                    <div class="branch-body">
+                        <div class="info-row">
+                            <span class="icon">📍</span>
+                            <span>${branch.address}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="icon">📞</span>
+                            <span><a href="tel:${branch.phone.replace(/[^0-9]/g,'')}" style="color:#e85d04;text-decoration:none;font-weight:600">${branch.phone}</a></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="icon">🕐</span>
+                            <span>${branch.hours}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="icon">🅿️</span>
+                            <span>${branch.parking}</span>
+                        </div>
+                        ${branch.features ? `
+                        <div class="features">
+                            ${branch.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                        </div>` : ''}
+                        <div class="branch-actions">
+                            <a href="tel:${branch.phone.replace(/[^0-9]/g,'')}" class="btn-call">📞 Call Now</a>
+                            <a href="https://maps.google.com/?q=${branch.coordinates.lat},${branch.coordinates.lng}" target="_blank" class="btn-directions">🗺️ Directions</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load branches on page load
+        document.addEventListener('DOMContentLoaded', loadBranches);
+    </script>
+</body>
+</html>
