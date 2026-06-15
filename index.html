@@ -7,106 +7,131 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#2d3436;line-height:1.6}
-        .header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+        .header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:14px 0;position:sticky;top:0;z-index:1000}
         .container{max-width:1200px;margin:0 auto;padding:0 16px}
-        .header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-        .logo{font-size:24px;font-weight:800;display:flex;align-items:center;gap:10px}
-        .nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-        .nav a{color:#fff;text-decoration:none;font-weight:500;font-size:14px}
-        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:40px 0}
-        .hero h2{font-size:32px;margin-bottom:8px}
-        .hero p{font-size:16px;opacity:.9}
-        .hero-buttons{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
-        .btn{padding:12px 24px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:30px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s}
-        .btn:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+        .header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+        .logo{font-size:22px;font-weight:800;display:flex;align-items:center;gap:8px}
+        .nav{display:flex;gap:14px;align-items:center}
+        .nav a{color:#fff;text-decoration:none;font-weight:500;font-size:13px}
+        
+        .radio-bar{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:14px 0;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+        .radio-bar:hover{background:linear-gradient(135deg,#1a0a3e,#5f27cd)}
+        .radio-bar .container{display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap}
+        .radio-live{background:#ff0000;color:#fff;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700;animation:pulse 2s infinite;display:inline-flex;align-items:center;gap:4px}
+        .radio-live::before{content:'';width:6px;height:6px;background:#fff;border-radius:50%}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+        .radio-info{text-align:left}
+        .radio-info strong{font-size:15px;display:block}
+        .radio-info span{font-size:12px;opacity:.8}
+        .radio-btn{background:#fff;color:#6c5ce7;padding:8px 18px;border-radius:20px;font-weight:700;font-size:13px;border:none;cursor:pointer;text-decoration:none}
+        
+        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:36px 0}
+        .hero h2{font-size:30px;margin-bottom:6px}
+        .hero p{font-size:15px;opacity:.9}
+        .hero-buttons{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+        .btn{padding:10px 20px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s}
+        .btn:hover{background:rgba(255,255,255,.2)}
         .btn-solid{background:#fff;color:#e85d04;border:none}
-        .btn-solid:hover{background:#ffeaa7}
-        .music-bar{background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;padding:10px 0;text-align:center;cursor:pointer;transition:all .3s}
-        .music-bar:hover{background:linear-gradient(135deg,#5f27cd,#6c5ce7)}
-        .search-section{padding:24px 0}
+        
+        .search-section{padding:20px 0}
         .search-bar{max-width:600px;margin:0 auto}
-        .search-bar input{width:100%;padding:12px 20px;border:2px solid #e0e0e0;border-radius:30px;font-size:15px}
+        .search-bar input{width:100%;padding:11px 18px;border:2px solid #e0e0e0;border-radius:25px;font-size:14px}
         .search-bar input:focus{outline:none;border-color:#e85d04}
-        .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0}
-        .filter-btn{padding:7px 16px;border:2px solid #e0e0e0;background:#fff;border-radius:20px;cursor:pointer;font-weight:500;font-size:13px}
+        .filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:14px 0}
+        .filter-btn{padding:6px 14px;border:2px solid #e0e0e0;background:#fff;border-radius:18px;cursor:pointer;font-weight:500;font-size:12px}
         .filter-btn.active,.filter-btn:hover{background:#e85d04;color:#fff;border-color:#e85d04}
-        .quick-filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-        .quick-btn{padding:7px 14px;background:#fff;border:none;border-radius:20px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.08);font-size:13px}
+        .quick-filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+        .quick-btn{padding:6px 12px;background:#fff;border:none;border-radius:18px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:12px}
         .quick-btn:hover{background:#e85d04;color:#fff}
-        .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px;padding:16px 0 40px}
-        .menu-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:all .3s;cursor:pointer}
-        .menu-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-        .menu-card-image{width:100%;height:180px;object-fit:cover;background:#f0f0f0}
-        .menu-card-body{padding:16px}
-        .menu-card h3{font-size:17px;margin-bottom:6px}
-        .menu-card .desc{color:#636e72;font-size:13px;margin-bottom:12px;line-height:1.4}
+        
+        .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;padding:14px 0 36px}
+        .menu-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06);transition:all .3s;cursor:pointer}
+        .menu-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+        .menu-card-image{width:100%;height:170px;object-fit:cover;background:#f0f0f0}
+        .menu-card-body{padding:14px}
+        .menu-card h3{font-size:16px;margin-bottom:4px}
+        .menu-card .desc{color:#636e72;font-size:12px;margin-bottom:10px;line-height:1.4}
         .menu-card-footer{display:flex;justify-content:space-between;align-items:center}
-        .price{font-size:22px;font-weight:800;color:#e85d04}
-        .badges{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
-        .badge{padding:3px 8px;border-radius:10px;font-size:10px;font-weight:700;text-transform:uppercase}
+        .price{font-size:20px;font-weight:800;color:#e85d04}
+        .badges{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+        .badge{padding:2px 7px;border-radius:8px;font-size:10px;font-weight:700;text-transform:uppercase}
         .badge-new{background:#00b894;color:#fff}
         .badge-popular{background:#fdcb6e;color:#2d3436}
         .badge-vegetarian{background:#55efc4;color:#2d3436}
         .badge-secret{background:#9b59b6;color:#fff}
-        .btn-order{width:100%;margin-top:10px;padding:10px;background:#e85d04;color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:14px}
+        .btn-order{width:100%;margin-top:8px;padding:9px;background:#e85d04;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px}
         .btn-order:hover{background:#dc2f02}
-        .location-bar{background:#fff;border-top:1px solid #e0e0e0;padding:10px 0;font-size:13px;color:#636e72}
-        .chat-widget{position:fixed;bottom:20px;right:20px;z-index:1000}
-        .chat-toggle{width:56px;height:56px;border-radius:50%;background:#e85d04;color:#fff;border:none;font-size:26px;cursor:pointer;box-shadow:0 4px 16px rgba(232,93,4,.4)}
+        
+        .location-bar{background:#fff;border-top:1px solid #e0e0e0;padding:8px 0;font-size:12px;color:#636e72}
+        
+        .chat-widget{position:fixed;bottom:16px;right:16px;z-index:1000}
+        .chat-toggle{width:52px;height:52px;border-radius:50%;background:#e85d04;color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 3px 12px rgba(232,93,4,.4)}
         .chat-toggle:hover{transform:scale(1.1)}
-        .chat-window{position:absolute;bottom:70px;right:0;width:360px;height:480px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;flex-direction:column;overflow:hidden}
-        .chat-header{background:#e85d04;color:#fff;padding:14px;display:flex;justify-content:space-between;align-items:center}
-        .chat-messages{flex:1;padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-        .message{max-width:82%;padding:9px 13px;border-radius:12px;font-size:13px;line-height:1.5;white-space:pre-line}
+        .chat-window{position:absolute;bottom:64px;right:0;width:340px;height:440px;background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
+        .chat-header{background:#e85d04;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center}
+        .chat-messages{flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+        .message{max-width:84%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.5;white-space:pre-line}
         .message.user{background:#e85d04;color:#fff;align-self:flex-end}
         .message.bot{background:#f0f0f0;align-self:flex-start}
-        .chat-input-area{padding:10px;border-top:1px solid #e0e0e0;display:flex;gap:6px}
-        .chat-input-area input{flex:1;padding:9px 14px;border:1px solid #e0e0e0;border-radius:20px;font-size:13px}
-        .chat-input-area button{padding:9px 16px;background:#e85d04;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:14px}
+        .chat-input-area{padding:8px;border-top:1px solid #e0e0e0;display:flex;gap:5px}
+        .chat-input-area input{flex:1;padding:8px 12px;border:1px solid #e0e0e0;border-radius:18px;font-size:12px}
+        .chat-input-area button{padding:8px 14px;background:#e85d04;color:#fff;border:none;border-radius:18px;cursor:pointer;font-size:13px}
+        
         .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:2000;align-items:center;justify-content:center}
         .modal.active{display:flex}
-        .modal-content{background:#fff;border-radius:14px;padding:24px;max-width:500px;width:92%;text-align:center;position:relative;max-height:85vh;overflow-y:auto}
-        .modal-close{position:absolute;top:10px;right:10px;background:#f0f0f0;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px}
-        .story-card{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);padding:16px;border-radius:10px;margin:12px 0;text-align:left}
-        .fun-fact{background:#00b894;color:#fff;padding:10px;border-radius:8px;margin-top:10px;font-weight:600;font-size:13px}
-        .music-player{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px;border-radius:10px;margin:12px 0}
-        .song-item{background:rgba(255,255,255,.1);padding:10px;border-radius:8px;margin:6px 0;cursor:pointer;transition:all .3s;text-align:left}
+        .modal-content{background:#fff;border-radius:12px;padding:22px;max-width:480px;width:92%;text-align:center;position:relative;max-height:80vh;overflow-y:auto}
+        .modal-close{position:absolute;top:8px;right:8px;background:#f0f0f0;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px}
+        .story-card{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);padding:14px;border-radius:8px;margin:10px 0;text-align:left}
+        .fun-fact{background:#00b894;color:#fff;padding:8px;border-radius:6px;margin-top:8px;font-weight:600;font-size:12px}
+        .music-player{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:14px;border-radius:8px;margin:10px 0}
+        .song-item{background:rgba(255,255,255,.1);padding:8px;border-radius:6px;margin:4px 0;cursor:pointer;transition:all .3s;text-align:left}
         .song-item:hover{background:rgba(255,255,255,.2)}
-        .footer{background:#1a1a2e;color:#fff;padding:30px 0;text-align:center;margin-top:40px}
-        .footer a{color:#b2bec3;text-decoration:none;margin:0 10px;font-size:13px}
-        .loading{text-align:center;padding:50px 0}
-        .spinner{width:36px;height:36px;border:4px solid #f0f0f0;border-top-color:#e85d04;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px}
+        .song-item.live{background:rgba(255,0,0,.3);border:1px solid rgba(255,255,255,.3)}
+        .song-item.live:hover{background:rgba(255,0,0,.5)}
+        
+        .footer{background:#1a1a2e;color:#fff;padding:24px 0;text-align:center;margin-top:32px}
+        .footer a{color:#b2bec3;text-decoration:none;margin:0 8px;font-size:12px}
+        .loading{text-align:center;padding:40px 0}
+        .spinner{width:32px;height:32px;border:3px solid #f0f0f0;border-top-color:#e85d04;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
         @keyframes spin{to{transform:rotate(360deg)}}
-        @media(max-width:768px){.hero h2{font-size:26px}.chat-window{width:calc(100vw - 32px);height:55vh;right:4px}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}}
+        @media(max-width:768px){.hero h2{font-size:24px}.chat-window{width:calc(100vw - 28px);height:50vh;right:2px}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}.radio-bar .container{flex-direction:column;text-align:center}}
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="logo"><span>🍽️</span><span>Premium Restaurant</span></div>
-            <nav class="nav"><a href="index.html">Menu</a><a href="contact.html">Locations</a><a href="#" class="btn-order-nav" style="background:#e85d04;padding:8px 18px;border-radius:20px">Order Now</a></nav>
+            <nav class="nav"><a href="index.html">Menu</a><a href="contact.html">Locations</a><a href="#" style="background:#e85d04;padding:6px 14px;border-radius:16px">Order Now</a></nav>
         </div>
     </header>
 
-    <div class="music-bar" onclick="openPlaylist()">
-        <div class="container">🎵 Click here for our curated Italian playlist — Free music while you dine!</div>
+    <!-- 🎵 RADIO SWISS JAZZ BAR -->
+    <div class="radio-bar" onclick="openPlaylist()">
+        <div class="container">
+            <span class="radio-live">● LIVE</span>
+            <div class="radio-info">
+                <strong>🎷 Radio Swiss Jazz</strong>
+                <span>24/7 Non-stop jazz — Tap to listen</span>
+            </div>
+            <button class="radio-btn">▶ Listen Now</button>
+        </div>
     </div>
 
     <section class="hero">
         <div class="container">
             <h2>Discover Your Perfect Dish</h2>
-            <p>AI-powered menu with music & food stories</p>
+            <p>AI-powered menu • Live jazz • Food stories</p>
             <div class="hero-buttons">
                 <button class="btn" onclick="feelingLucky()">🎲 I'm Feeling Lucky</button>
                 <button class="btn btn-solid" onclick="openMoodMatcher()">🎭 Food Mood</button>
-                <button class="btn" onclick="toggleChat(true)">💬 Ask AI</button>
+                <button class="btn" onclick="toggleChat(true)">💬 Chat with AI</button>
             </div>
         </div>
     </section>
 
     <section class="search-section">
         <div class="container">
-            <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search menu items..." oninput="filterMenu()"></div>
+            <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search menu..." oninput="filterMenu()"></div>
             <div class="filters" id="categoryFilters"></div>
             <div class="quick-filters">
                 <button class="quick-btn" onclick="quickFilter('under10')">💰 Under $10</button>
@@ -119,17 +144,16 @@
     </section>
 
     <main class="container">
-        <div class="menu-grid" id="menuGrid"><div class="loading"><div class="spinner"></div><p>Loading delicious options...</p></div></div>
+        <div class="menu-grid" id="menuGrid"><div class="loading"><div class="spinner"></div><p>Loading menu...</p></div></div>
     </main>
 
-    <div class="location-bar"><div class="container" id="locationText">📍 Detecting nearest branch...</div></div>
+    <div class="location-bar"><div class="container" id="locationText">📍 Premium Restaurant — 4 locations across the city</div></div>
 
-    <!-- Chat Widget -->
     <div class="chat-widget">
         <button class="chat-toggle" onclick="toggleChat()">💬</button>
         <div class="chat-window" id="chatWindow">
-            <div class="chat-header"><div><strong>🤖 Menu Assistant</strong><div style="font-size:11px;opacity:.9">Online · Instant replies</div></div><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">✕</button></div>
-            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 I'm your menu guide!\n\n🍕 Recommend dishes\n🎭 Match food to mood\n📖 Share food stories\n🤫 Reveal secret menu\n\nWhat interests you?</div></div>
+            <div class="chat-header"><div><strong>🤖 Menu Assistant</strong><div style="font-size:10px;opacity:.9">Online · Instant replies</div></div><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:16px;cursor:pointer">✕</button></div>
+            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 I'm your menu guide!\n\n🍕 Recommend dishes\n🎭 Match food to mood\n📖 Food stories\n🤫 Secret menu\n🎵 Live jazz info\n\nWhat interests you?</div></div>
             <div class="chat-input-area"><input type="text" id="chatInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">Send</button></div>
         </div>
     </div>
@@ -138,12 +162,12 @@
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('orderModal')">✕</span>
-            <div style="font-size:50px">✅</div>
+            <div style="font-size:44px">✅</div>
             <h2>Order Confirmed!</h2>
-            <p id="orderItemName" style="margin:8px 0;font-size:17px"></p>
+            <p id="orderItemName" style="margin:6px 0;font-size:16px"></p>
             <div id="foodStory"></div>
             <div id="musicSection"></div>
-            <button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:10px" onclick="closeModal('orderModal')">Continue Browsing</button>
+            <button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:8px;padding:10px 24px" onclick="closeModal('orderModal')">Continue Browsing</button>
         </div>
     </div>
 
@@ -151,9 +175,9 @@
     <div class="modal" id="playlistModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('playlistModal')">✕</span>
-            <div style="font-size:40px">🎵</div>
-            <h2>Our Italian Playlist</h2>
-            <p style="color:#636e72;margin:8px 0">Enjoy while you dine!</p>
+            <div style="font-size:36px">🎷</div>
+            <h2>Radio Swiss Jazz</h2>
+            <p style="color:#636e72;margin:6px 0;font-size:13px">Live 24/7 — Perfect dinner music</p>
             <div id="playlistContent"></div>
         </div>
     </div>
@@ -163,18 +187,18 @@
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('moodModal')">✕</span>
             <h2>What's Your Food Mood? 🎭</h2>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px">
-                <div onclick="matchMood('tired')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">😴</div><h3>Tired</h3><p style="color:#636e72;font-size:13px">Need energy boost</p></div>
-                <div onclick="matchMood('happy')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">😊</div><h3>Happy</h3><p style="color:#636e72;font-size:13px">Time to celebrate!</p></div>
-                <div onclick="matchMood('comfort')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">🤗</div><h3>Comfort</h3><p style="color:#636e72;font-size:13px">Warm & cozy food</p></div>
-                <div onclick="matchMood('adventurous')" style="padding:16px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer"><div style="font-size:36px">🌍</div><h3>Adventurous</h3><p style="color:#636e72;font-size:13px">Try something new</p></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+                <div onclick="matchMood('tired')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😴</div><h3>Tired</h3><p style="color:#636e72;font-size:12px">Need energy</p></div>
+                <div onclick="matchMood('happy')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😊</div><h3>Happy</h3><p style="color:#636e72;font-size:12px">Celebrate!</p></div>
+                <div onclick="matchMood('comfort')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🤗</div><h3>Comfort</h3><p style="color:#636e72;font-size:12px">Warm food</p></div>
+                <div onclick="matchMood('adventurous')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🌍</div><h3>Adventurous</h3><p style="color:#636e72;font-size:12px">Try new</p></div>
             </div>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container">
-            <p style="margin-bottom:8px">Powered by <strong>AddisPower</strong></p>
+            <p style="margin-bottom:6px">Powered by <strong>AddisPower</strong></p>
             <div><a href="contact.html">Contact & Locations</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
         </div>
     </footer>
@@ -189,7 +213,7 @@
                 const d = await r.json();
                 if (d.success) { menuItems = d.data.items; renderCategories(d.data.categories); renderMenu(menuItems); }
             } catch(e) {
-                document.getElementById('menuGrid').innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><p>Unable to load menu.</p><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:10px" onclick="loadMenu()">Retry</button></div>';
+                document.getElementById('menuGrid').innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><p>Unable to load menu.</p><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:8px" onclick="loadMenu()">Retry</button></div>';
             }
         }
 
@@ -199,14 +223,14 @@
 
         function renderMenu(items) {
             const g = document.getElementById('menuGrid');
-            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><div style="font-size:40px">🍽️</div><h3>No items found</h3><p>Try adjusting filters</p></div>'; return; }
+            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><div style="font-size:36px">🍽️</div><h3>No items found</h3><p>Try adjusting filters</p></div>'; return; }
             g.innerHTML = items.map(i => `
                 <div class="menu-card" onclick="askAboutItem('${i.id}')">
                     <img class="menu-card-image" src="${i.image}" alt="${i.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Food'">
                     <div class="menu-card-body">
                         <div class="badges">${i.isNew?'<span class="badge badge-new">🆕 New</span>':''}${i.isPopular?'<span class="badge badge-popular">⭐ Popular</span>':''}${i.isVegetarian?'<span class="badge badge-vegetarian">🥬 Veg</span>':''}${i.isSecret?'<span class="badge badge-secret">🤫 Secret</span>':''}</div>
                         <h3>${i.name}</h3><p class="desc">${i.description}</p>
-                        <div class="menu-card-footer"><span class="price">$${i.price.toFixed(2)}</span>${i.waitTime?`<span style="font-size:11px;color:#636e72">⏱️ ${i.waitTime}min</span>`:''}</div>
+                        <div class="menu-card-footer"><span class="price">$${i.price.toFixed(2)}</span>${i.waitTime?`<span style="font-size:10px;color:#636e72">⏱️ ${i.waitTime}min</span>`:''}</div>
                         <button class="btn-order" onclick="event.stopPropagation();placeOrder('${i.id}')">🛒 Order Now</button>
                     </div>
                 </div>
@@ -253,7 +277,6 @@
             setTimeout(() => { document.getElementById('chatInput').value = `Tell me about the ${item.name}`; sendMessage(); }, 300);
         }
 
-        // 🎵 Open Playlist
         async function openPlaylist() {
             document.getElementById('playlistModal').classList.add('active');
             document.getElementById('playlistContent').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
@@ -263,20 +286,23 @@
                 if (d.success) {
                     document.getElementById('playlistContent').innerHTML = `
                         <div class="music-player">
-                            <h3>🎵 ${d.data.title}</h3>
-                            ${d.data.songs.map(s => `
+                            <h3>🔴 ${d.data.title}</h3>
+                            <p style="font-size:12px;margin:4px 0">${d.data.liveRadio.description}</p>
+                            <div class="song-item live" onclick="window.open('${d.data.liveRadio.website}','_blank')">
+                                🔴 <strong>LIVE NOW</strong> — Radio Swiss Jazz<br><small>24/7 Non-Stop Jazz Stream</small>
+                            </div>
+                            ${d.data.songs.filter(s => !s.isLive).map(s => `
                                 <div class="song-item" onclick="window.open('${s.url}','_blank')">
                                     🎶 <strong>${s.title}</strong> — ${s.artist}
                                 </div>
                             `).join('')}
                         </div>
-                        <p style="font-size:12px;color:#636e72;margin-top:8px">Click any song to open in YouTube</p>
+                        <p style="font-size:11px;color:#636e72;margin-top:6px">Click any song to open</p>
                     `;
                 }
             } catch(e) { document.getElementById('playlistContent').innerHTML = '<p>Unable to load playlist.</p>'; }
         }
 
-        // 🛒 Place Order
         async function placeOrder(id) {
             const item = menuItems.find(i => i.id === id);
             if (!item) return;
@@ -290,28 +316,24 @@
                 const sRes = await fetch(`${WORKER_URL}/api/story?item=${storyKey}`);
                 const sData = await sRes.json();
                 if (sData.success) {
-                    document.getElementById('foodStory').innerHTML = `
-                        <div class="story-card"><h3>${sData.data.title}</h3><p style="margin-top:6px;line-height:1.6;font-size:14px">${sData.data.story}</p><div class="fun-fact">💡 ${sData.data.funFact}</div></div>
-                    `;
+                    document.getElementById('foodStory').innerHTML = `<div class="story-card"><h3>${sData.data.title}</h3><p style="margin-top:4px;line-height:1.5;font-size:13px">${sData.data.story}</p><div class="fun-fact">💡 ${sData.data.funFact}</div></div>`;
                 }
             } catch(e) {}
 
-            try {
-                const mRes = await fetch(`${WORKER_URL}/api/playlist`);
-                const mData = await mRes.json();
-                if (mData.success) {
-                    document.getElementById('musicSection').innerHTML = `
-                        <div class="music-player"><h3>🎵 Enjoy our playlist while you wait!</h3>${mData.data.songs.slice(0,3).map(s => `<div class="song-item" onclick="window.open('${s.url}','_blank')">🎶 ${s.title} — ${s.artist}</div>`).join('')}</div>
-                    `;
-                }
-            } catch(e) {}
+            document.getElementById('musicSection').innerHTML = `
+                <div class="music-player">
+                    <h3>🎷 Listen while you wait!</h3>
+                    <div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">
+                        🔴 <strong>Radio Swiss Jazz</strong> — Live Now
+                    </div>
+                </div>
+            `;
             
             document.getElementById('orderModal').classList.add('active');
         }
 
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-        // Chat
         let chatOpen = false, chatHistory = [];
         function toggleChat(f = null) { chatOpen = f !== null ? f : !chatOpen; document.getElementById('chatWindow').style.display = chatOpen ? 'flex' : 'none'; if (chatOpen) document.getElementById('chatInput').focus(); }
 
@@ -329,19 +351,7 @@
         function addMessage(type, text) { const c = document.getElementById('chatMessages'), div = document.createElement('div'); div.className = `message ${type}`; div.textContent = text; c.appendChild(div); c.scrollTop = c.scrollHeight; }
         function removeLastBot() { const msgs = document.querySelectorAll('.message.bot'), last = msgs[msgs.length - 1]; if (last && last.textContent === '...') last.remove(); }
 
-        function detectLocation() {
-            if ('geolocation' in navigator) {
-                navigator.geolocation.getCurrentPosition(async (pos) => {
-                    try {
-                        const r = await fetch(WORKER_URL + '/api/branches'), d = await r.json();
-                        if (d.success) { let nearest = null, minDist = Infinity; d.data.branches.forEach(b => { const dist = calcDist(pos.coords.latitude, pos.coords.longitude, b.coordinates.lat, b.coordinates.lng); if (dist < minDist) { minDist = dist; nearest = b; } }); if (nearest) document.getElementById('locationText').textContent = `📍 Nearest: ${nearest.name} — ${minDist.toFixed(1)} miles`; }
-                    } catch(e) {}
-                }, () => { document.getElementById('locationText').textContent = '📍 Select location for nearest branch'; });
-            }
-        }
-        function calcDist(lat1, lon1, lat2, lon2) { const R = 3959, dLat = (lat2-lat1)*Math.PI/180, dLon = (lon2-lon1)*Math.PI/180, a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2; return R*2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); }
-
-        document.addEventListener('DOMContentLoaded', () => { loadMenu(); detectLocation(); });
+        document.addEventListener('DOMContentLoaded', () => { loadMenu(); });
         document.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active')); });
     </script>
