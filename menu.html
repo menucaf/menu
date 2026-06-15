@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Our Menu | Restaurant AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #fef8f0;
+            color: #1a1a2e;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .restaurant-name {
+            font-size: 2.5rem;
+            color: #e67e22;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            background: white;
+            padding: 16px;
+            border-radius: 48px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .search-box {
+            flex: 2;
+            min-width: 200px;
+            padding: 12px 20px;
+            border-radius: 40px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .filter-btn.active {
+            background: #e67e22;
+            color: white;
+        }
+
+        .lucky-btn {
+            background: #ffd966;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .menu-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .menu-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #e67e22;
+        }
+
+        .menu-desc {
+            color: #666;
+            font-size: 0.85rem;
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .badge-new {
+            background: #ffd966;
+            color: #7a5c00;
+        }
+
+        .badge-time {
+            background: #e6f7ff;
+            color: #0077b6;
+        }
+
+        .order-btn {
+            background: #e67e22;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: 0.2s;
+        }
+
+        .order-btn:hover {
+            background: #d35400;
+        }
+
+        /* AI Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            background: #e67e22;
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: 0.2s;
+            font-size: 28px;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.05);
+            background: #d35400;
+        }
+
+        .chat-panel {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            width: 350px;
+            max-width: calc(100vw - 48px);
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            max-height: 500px;
+        }
+
+        .chat-panel.open {
+            display: flex;
+        }
+
+        .chat-header {
+            background: #e67e22;
+            color: white;
+            padding: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-close {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 16px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            padding: 10px 14px;
+            border-radius: 18px;
+            max-width: 85%;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .user-message {
+            background: #e67e22;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai-message {
+            background: white;
+            border: 1px solid #ddd;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 12px;
+            border-top: 1px solid #ddd;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 40px;
+            border: 1px solid #ddd;
+        }
+
+        .chat-send {
+            background: #e67e22;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .location-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 8px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            border-top: 1px solid #eee;
+        }
+
+        .quick-reply {
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+                border-radius: 24px;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 class="restaurant-name" id="restaurantName">Queen's Kitchen</h1>
+        <p class="tagline">🍽️ Amazing food · Warm vibes · AI assistant</p>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search menu... 🔍">
+        <div class="filter-group" id="filterGroup"></div>
+        <button class="lucky-btn" id="luckyBtn">🍀 I'm Feeling Lucky</button>
+    </div>
+
+    <div id="menuGrid" class="menu-grid">Loading menu...</div>
+
+    <div class="footer">Powered by AddisPower</div>
+</div>
+
+<!-- AI Chat Widget -->
+<div class="chat-widget">
+    <div class="chat-button" id="chatButton">💬</div>
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <span>🍕 AddisPower AI Assistant</span>
+            <span class="chat-close" id="chatClose">✕</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai-message">Hey! 😊 Welcome to our menu! Ask me about anything — food, prices, branches, or just say hi! 🍕</div>
+        </div>
+        <div class="quick-replies" id="quickReplies">
+            <div class="quick-reply" data-msg="What's your best seller?">⭐ Bestseller</div>
+            <div class="quick-reply" data-msg="What's under $10?">💰 Under $10</div>
+            <div class="quick-reply" data-msg="What's vegetarian?">🥗 Vegetarian</div>
+            <div class="quick-reply" data-msg="Where's the closest branch?">📍 Nearest branch</div>
+        </div>
+        <div class="chat-input-area">
+            <button class="location-btn" id="locationBtn">📍</button>
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything...">
+            <button class="chat-send" id="chatSend">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ============================================
+    // CONFIGURATION
+    // ============================================
+    const WORKER_URL = "https://restaurant-menu-api.workers.dev"; // CHANGE THIS
+    const RESTAURANT_NAME = "Queen's Kitchen"; // Change to client's name
+    
+    let menuData = [];
+    let categories = [];
+    let currentFilter = "All";
+    let customerLocation = null;
+    let chatHistory = [];
+    
+    document.getElementById("restaurantName").innerText = RESTAURANT_NAME;
+    
+    // ============================================
+    // LOAD MENU
+    // ============================================
+    async function loadMenu() {
+        try {
+            const res = await fetch(`${WORKER_URL}/menu`);
+            const data = await res.json();
+            menuData = data.menu || [];
+            categories = ["All", ...new Set(menuData.map(item => item.category))];
+            renderFilters();
+            renderMenu();
+        } catch (err) {
+            document.getElementById("menuGrid").innerHTML = "<p>⚠️ Unable to load menu. Please refresh.</p>";
+        }
+    }
+    
+    function renderFilters() {
+        const container = document.getElementById("filterGroup");
+        container.innerHTML = categories.map(cat => 
+            `<button class="filter-btn ${currentFilter === cat ? 'active' : ''}" data-cat="${cat}">${cat}</button>`
+        ).join("");
+        
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                currentFilter = btn.dataset.cat;
+                renderFilters();
+                renderMenu();
+            });
+        });
+    }
+    
+    function renderMenu() {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        let filtered = menuData.filter(item => {
+            if (currentFilter !== "All" && item.category !== currentFilter) return false;
+            if (searchTerm && !item.name.toLowerCase().includes(searchTerm) && !item.description.toLowerCase().includes(searchTerm)) return false;
+            return true;
+        });
+        
+        const grid = document.getElementById("menuGrid");
+        if (filtered.length === 0) {
+            grid.innerHTML = "<p>😢 No items found. Try another search!</p>";
+            return;
+        }
+        
+        grid.innerHTML = filtered.map(item => `
+            <div class="menu-card">
+                <img class="menu-img" src="${item.image || 'https://placehold.co/400x300?text=Yummy'}" onerror="this.src='https://placehold.co/400x300?text=Food+Image'">
+                <div class="menu-info">
+                    <div class="menu-header">
+                        <span class="menu-name">${escapeHtml(item.name)}</span>
+                        <span class="menu-price">$${item.price}</span>
+                    </div>
+                    <div class="menu-desc">${escapeHtml(item.description)}</div>
+                    <div class="badges">
+                        ${item.isNew ? '<span class="badge badge-new">🔥 NEW</span>' : ''}
+                        <span class="badge badge-time">⏱️ ${item.waitTime || 10} min</span>
+                        <span class="badge">🍽️ ${item.portions || "Serves 1"}</span>
+                    </div>
+                    <button class="order-btn" data-name="${escapeHtml(item.name)}" data-price="${item.price}" data-wait="${item.waitTime || 10}">I want this! 😋</button>
+                </div>
+            </div>
+        `).join("");
+        
+        // Add order buttons event
+        document.querySelectorAll(".order-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const name = btn.dataset.name;
+                const price = btn.dataset.price;
+                const wait = btn.dataset.wait;
+                sendOrderMessage(name, price, wait);
+            });
+        });
+    }
+    
+    function sendOrderMessage(itemName, price, waitTime) {
+        addToChat("user", `I'll take the ${itemName} 😋`);
+        sendToAI(`I want to order ${itemName}.`, true);
+    }
+    
+    // ============================================
+    // AI CHAT
+    // ============================================
+    async function sendToAI(message, isOrder = false) {
+        addToChat("user", message);
+        
+        try {
+            let body = { message };
+            if (customerLocation) {
+                body.customerLat = customerLocation.lat;
+                body.customerLng = customerLocation.lng;
+            }
+            
+            const res = await fetch(`${WORKER_URL}/chat`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+            const data = await res.json();
+            addToChat("ai", data.reply || "Wow, something went wrong! 😊 Try again?");
+        } catch (err) {
+            addToChat("ai", "Hey! 😊 I'm having a moment. Please ask again!");
+        }
+    }
+    
+    function addToChat(role, text) {
+        const container = document.getElementById("chatMessages");
+        const div = document.createElement("div");
+        div.className = `message ${role === "user" ? "user-message" : "ai-message"}`;
+        div.innerText = text;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+        chatHistory.push({ role, text });
+    }
+    
+    // ============================================
+    // LOCATION (for distance)
+    // ============================================
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(pos => {
+                customerLocation = {
+                    lat: pos.coords.latitude,
+                    lng: pos.coords.longitude
+                };
+                addToChat("ai", "📍 Got your location! Now I can tell you the closest branch and walking distance. 😊");
+            }, () => {
+                addToChat("ai", "⚠️ Couldn't get your location. You can still ask about branches by name!");
+            });
+        } else {
+            addToChat("ai", "Your browser doesn't support location. Ask me for branch addresses instead!");
+        }
+    }
+    
+    // ============================================
+    // "I'M FEELING LUCKY"
+    // ============================================
+    function feelingLucky() {
+        if (menuData.length === 0) return;
+        const random = menuData[Math.floor(Math.random() * menuData.length)];
+        addToChat("ai", `🍀 Lucky you! I recommend our ${random.name} — only $${random.price}! 😋 Ready in ${random.waitTime} min. Want to order?`);
+    }
+    
+    // ============================================
+    // EVENT LISTENERS
+    // ============================================
+    document.getElementById("searchInput").addEventListener("input", () => renderMenu());
+    document.getElementById("luckyBtn").addEventListener("click", feelingLucky);
+    document.getElementById("chatSend").addEventListener("click", () => {
+        const input = document.getElementById("chatInput");
+        if (input.value.trim()) {
+            sendToAI(input.value.trim());
+            input.value = "";
+        }
+    });
+    document.getElementById("chatInput").addEventListener("keypress", (e) => {
+        if (e.key === "Enter") document.getElementById("chatSend").click();
+    });
+    document.getElementById("chatButton").addEventListener("click", () => {
+        document.getElementById("chatPanel").classList.toggle("open");
+    });
+    document.getElementById("chatClose").addEventListener("click", () => {
+        document.getElementById("chatPanel").classList.remove("open");
+    });
+    document.getElementById("locationBtn").addEventListener("click", getLocation);
+    
+    document.querySelectorAll(".quick-reply").forEach(btn => {
+        btn.addEventListener("click", () => {
+            sendToAI(btn.dataset.msg);
+        });
+    });
+    
+    function escapeHtml(str) {
+        if (!str) return "";
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === "&") return "&amp;";
+            if (m === "<") return "&lt;";
+            if (m === ">") return "&gt;";
+            return m;
+        });
+    }
+    
+    loadMenu();
+</script>
+</body>
+</html>
