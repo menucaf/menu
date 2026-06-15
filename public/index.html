@@ -1,446 +1,188 @@
-// ============================================
-// RESTAURANT AI MENU SYSTEM - Cloudflare Worker
-// Production-ready with caching, rate limiting, error handling
-// ============================================
-
-export default {
-  async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-    const method = request.method;
-    
-    // CORS headers
-    const corsHeaders = {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Max-Age': '86400',
-    };
-
-    // Handle preflight
-    if (method === 'OPTIONS') {
-      return new Response(null, { headers: corsHeaders });
-    }
-
-    try {
-      // Route: GET /api/menu
-      if (url.pathname === '/api/menu' && method === 'GET') {
-        return await handleGetMenu(env, corsHeaders, ctx);
-      }
-
-      // Route: GET /api/branches
-      if (url.pathname === '/api/branches' && method === 'GET') {
-        return await handleGetBranches(env, corsHeaders);
-      }
-
-      // Route: POST /api/chat
-      if (url.pathname === '/api/chat' && method === 'POST') {
-        return await handleChat(request, env, corsHeaders);
-      }
-
-      // Route: POST /api/admin/update
-      if (url.pathname === '/api/admin/update' && method === 'POST') {
-        return await handleAdminUpdate(request, env, corsHeaders);
-      }
-
-      // Route: POST /api/admin/upload
-      if (url.pathname === '/api/admin/upload' && method === 'POST') {
-        return await handleImageUpload(request, env, corsHeaders);
-      }
-
-      // 404
-      return new Response(JSON.stringify({ error: 'Not found' }), {
-        status: 404,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
-
-    } catch (error) {
-      console.error('Worker error:', error);
-      return new Response(JSON.stringify({ 
-        error: 'Internal server error',
-        message: error.message 
-      }), {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
-    }
-  }
-};
-
-// ============================================
-// HANDLERS
-// ============================================
-
-async function handleGetMenu(env, corsHeaders, ctx) {
-  const cacheKey = new Request('https://cache/menu');
-  const cache = caches.default;
-  
-  // Check cache first
-  let response = await cache.match(cacheKey);
-  if (response) {
-    return response;
-  }
-
-  // Fetch from KV
-  const menuData = await env.MENU_STORE.get('current-menu', { type: 'json' });
-  
-  if (!menuData) {
-    return new Response(JSON.stringify({ error: 'Menu not found' }), {
-      status: 404,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
-
-  const responseData = new Response(JSON.stringify({
-    success: true,
-    data: menuData,
-    timestamp: Date.now()
-  }), {
-    headers: {
-      ...corsHeaders,
-      'Content-Type': 'application/json',
-      'Cache-Control': 'public, max-age=300' // 5 min cache
-    }
-  });
-
-  // Cache for 5 minutes (300 seconds)
-  ctx.waitUntil(cache.put(cacheKey, responseData.clone()));
-  
-  return responseData;
-}
-
-async function handleGetBranches(env, corsHeaders) {
-  const branches = {
-    success: true,
-    data: {
-      branches: [
-        {
-          id: 1,
-          name: 'Downtown',
-          address: '123 Main Street, Downtown',
-          phone: '(555) 123-4567',
-          hours: 'Mon-Sun: 11:00 AM - 10:00 PM',
-          parking: 'Street parking available',
-          coordinates: { lat: 40.7128, lng: -74.0060 },
-          deliveryZones: ['Downtown', 'Midtown', 'Financial District']
-        },
-        {
-          id: 2,
-          name: 'Uptown',
-          address: '456 Park Avenue, Uptown',
-          phone: '(555) 234-5678',
-          hours: 'Mon-Sat: 10:00 AM - 11:00 PM, Sun: 11:00 AM - 9:00 PM',
-          parking: 'Free parking lot behind building',
-          coordinates: { lat: 40.7831, lng: -73.9712 }
-        },
-        {
-          id: 3,
-          name: 'Westside',
-          address: '789 Broadway, Westside',
-          phone: '(555) 345-6789',
-          hours: 'Daily: 11:30 AM - 10:30 PM',
-          parking: 'Valet parking available',
-          coordinates: { lat: 40.7489, lng: -73.9856 }
-        },
-        {
-          id: 4,
-          name: 'Eastside',
-          address: '321 Oak Lane, Eastside',
-          phone: '(555) 456-7890',
-          hours: 'Tue-Sun: 12:00 PM - 10:00 PM (Closed Monday)',
-          parking: 'Mall parking structure',
-          coordinates: { lat: 40.7549, lng: -73.9840 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Locations - Premium Restaurant</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 20px 0;
         }
-      ]
-    }
-  };
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .nav { display: flex; gap: 24px; }
+        .nav a { color: white; text-decoration: none; font-weight: 500; }
+        
+        .hero {
+            background: linear-gradient(135deg, #e85d04, #dc2f02);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .hero h2 { font-size: 42px; margin-bottom: 16px; }
+        
+        .branches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 40px 0;
+        }
+        
+        .branch-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .branch-info {
+            padding: 24px;
+        }
+        
+        .branch-info h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .info-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: #636e72;
+            font-size: 14px;
+        }
+        
+        .btn-call {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #e85d04;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+        
+        .btn-directions {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span>🍽️</span>
+                <span>Premium Restaurant</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Menu</a>
+                <a href="contact.html">Locations</a>
+            </nav>
+        </div>
+    </header>
 
-  return new Response(JSON.stringify(branches), {
-    headers: {
-      ...corsHeaders,
-      'Content-Type': 'application/json',
-      'Cache-Control': 'public, max-age=3600'
-    }
-  });
-}
+    <section class="hero">
+        <div class="container">
+            <h2>Our Locations</h2>
+            <p>Visit us at any of our 4 locations</p>
+        </div>
+    </section>
 
-async function handleChat(request, env, corsHeaders) {
-  const { message, conversationHistory = [] } = await request.json();
+    <main class="container">
+        <div class="branches" id="branchesGrid">
+            <div style="text-align:center;padding:40px;">Loading locations...</div>
+        </div>
+    </main>
 
-  if (!message || message.trim().length === 0) {
-    return new Response(JSON.stringify({ error: 'Message is required' }), {
-      status: 400,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
+    <footer class="footer">
+        <div class="container">
+            <p>Powered by <strong>AddisPower</strong></p>
+        </div>
+    </footer>
 
-  // Get current menu data to inject context
-  const menuData = await env.MENU_STORE.get('current-menu', { type: 'json' });
-  const branches = [
-    { name: 'Downtown', address: '123 Main Street', hours: '11AM-10PM' },
-    { name: 'Uptown', address: '456 Park Avenue', hours: '10AM-11PM' },
-    { name: 'Westside', address: '789 Broadway', hours: '11:30AM-10:30PM' },
-    { name: 'Eastside', address: '321 Oak Lane', hours: '12PM-10PM' }
-  ];
+    <script>
+        // ⚠️ REPLACE WITH YOUR WORKER URL
+        const WORKER_URL = 'https://YOUR-WORKER-NAME.YOUR-USERNAME.workers.dev';
 
-  // Rate limiting check
-  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  const rateLimitKey = `ratelimit:${ip}`;
-  const requestCount = await env.MENU_STORE.get(rateLimitKey);
-  
-  if (requestCount && parseInt(requestCount) > 30) {
-    return new Response(JSON.stringify({ 
-      error: 'Rate limit exceeded. Please try again later.',
-      code: 'RATE_LIMIT'
-    }), {
-      status: 429,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
+        async function loadBranches() {
+            try {
+                const response = await fetch(`${WORKER_URL}/api/branches`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    renderBranches(data.data.branches);
+                }
+            } catch (error) {
+                document.getElementById('branchesGrid').innerHTML = 
+                    '<p style="text-align:center;padding:40px;">Unable to load locations.</p>';
+            }
+        }
 
-  // Increment rate limit counter
-  ctx.waitUntil(
-    env.MENU_STORE.put(rateLimitKey, (parseInt(requestCount || 0) + 1).toString(), {
-      expirationTtl: 3600
-    })
-  );
+        function renderBranches(branches) {
+            document.getElementById('branchesGrid').innerHTML = branches.map(b => `
+                <div class="branch-card">
+                    <div class="branch-info">
+                        <h3>${b.name}</h3>
+                        <div class="info-row">📍 ${b.address}</div>
+                        <div class="info-row">📞 ${b.phone}</div>
+                        <div class="info-row">🕐 ${b.hours}</div>
+                        <div class="info-row">🅿️ ${b.parking}</div>
+                        <button class="btn-call" onclick="location.href='tel:${b.phone.replace(/[^0-9]/g,'')}'">
+                            📞 Call Now
+                        </button>
+                        <button class="btn-directions" onclick="window.open('https://maps.google.com/?q=${b.coordinates.lat},${b.coordinates.lng}')">
+                            🗺️ Get Directions
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-  // Build system prompt with menu data
-  const systemPrompt = buildSystemPrompt(menuData, branches);
-
-  // Call Hugging Face API
-  try {
-    const aiResponse = await callAI(message, systemPrompt, conversationHistory, env.HF_TOKEN);
-    
-    return new Response(JSON.stringify({
-      success: true,
-      response: aiResponse,
-      timestamp: Date.now()
-    }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  } catch (error) {
-    console.error('AI API error:', error);
-    return new Response(JSON.stringify({
-      success: true,
-      response: "I'm having a moment in the kitchen! 😅 Could you ask me again? Our team is working on making my responses even better!",
-      fallback: true
-    }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
-}
-
-async function handleAdminUpdate(request, env, corsHeaders) {
-  // Authentication check
-  const authHeader = request.headers.get('Authorization');
-  const expectedAuth = `Bearer ${env.ADMIN_PASSWORD}`;
-
-  if (!authHeader || authHeader !== expectedAuth) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-      status: 401,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
-
-  const menuData = await request.json();
-  
-  // Validate menu data structure
-  if (!menuData.categories || !menuData.items) {
-    return new Response(JSON.stringify({ error: 'Invalid menu format' }), {
-      status: 400,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
-
-  // Save with versioning
-  const currentVersion = await env.MENU_STORE.get('menu-version');
-  const newVersion = (parseInt(currentVersion || '0') + 1).toString();
-  
-  menuData.version = parseInt(newVersion);
-  menuData.lastUpdated = new Date().toISOString();
-
-  await env.MENU_STORE.put('current-menu', JSON.stringify(menuData));
-  await env.MENU_STORE.put('menu-version', newVersion);
-  
-  // Backup previous version
-  await env.MENU_STORE.put(`menu-backup-${currentVersion}`, JSON.stringify(menuData));
-
-  return new Response(JSON.stringify({
-    success: true,
-    version: newVersion,
-    message: 'Menu updated successfully'
-  }), {
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-  });
-}
-
-async function handleImageUpload(request, env, corsHeaders) {
-  const authHeader = request.headers.get('Authorization');
-  const expectedAuth = `Bearer ${env.ADMIN_PASSWORD}`;
-
-  if (!authHeader || authHeader !== expectedAuth) {
-    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-      status: 401,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
-
-  const formData = await request.formData();
-  const file = formData.get('image');
-  
-  if (!file) {
-    return new Response(JSON.stringify({ error: 'No image provided' }), {
-      status: 400,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-    });
-  }
-
-  // Upload to Cloudinary
-  const cloudinaryFormData = new FormData();
-  cloudinaryFormData.append('file', file);
-  cloudinaryFormData.append('upload_preset', env.CLOUDINARY_UPLOAD_PRESET);
-
-  const cloudinaryResponse = await fetch(
-    `https://api.cloudinary.com/v1_1/${env.CLOUDINARY_CLOUD_NAME}/image/upload`,
-    {
-      method: 'POST',
-      body: cloudinaryFormData
-    }
-  );
-
-  const result = await cloudinaryResponse.json();
-
-  if (!result.secure_url) {
-    throw new Error('Cloudinary upload failed');
-  }
-
-  return new Response(JSON.stringify({
-    success: true,
-    url: result.secure_url,
-    publicId: result.public_id
-  }), {
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-  });
-}
-
-// ============================================
-// AI HELPER FUNCTIONS
-// ============================================
-
-function buildSystemPrompt(menuData, branches) {
-  const menuItems = menuData?.items?.map(item => 
-    `- ${item.name} (${item.category}): $${item.price} - ${item.description}. ${item.isNew ? '🆕 NEW!' : ''} ${item.isSecret ? '🤫 Secret item!' : ''} Portion: ${item.portionSize || 'N/A'}, Wait time: ${item.waitTime || '15'} minutes`
-  ).join('\n') || 'Menu not available';
-
-  return `You are a warm, friendly, and enthusiastic restaurant menu assistant named "MenuBot" for a premium restaurant. Your personality is EXCITING and HELPFUL!
-
-🎯 YOUR PERSONALITY:
-- Use emojis naturally and frequently 😊🍕🥗
-- Sound genuinely excited about the food
-- Use words like "wow", "amazing", "you'll love it", "so good", "fantastic"
-- Be warm, polite, and incredibly helpful
-- Keep responses concise but full of flavor descriptions
-
-📋 CURRENT MENU:
-${menuItems}
-
-🏪 OUR BRANCHES:
-${branches.map(b => `- ${b.name}: ${b.address}, Hours: ${b.hours}`).join('\n')}
-
-🎯 WHAT YOU SHOULD ANSWER:
-1. TASTE DESCRIPTIONS: Use mouth-watering words like "creamy", "rich", "wood-fired", "crispy", "juicy", "tender", "flavorful", "aromatic"
-2. PRICES: Always mention price with enthusiasm - "Only $12 — what a great deal!"
-3. PORTIONS: "12 inches, serves 1-2 people generously"
-4. WAIT TIMES: "Ready in just 12 minutes!"
-5. DISTANCE/BRANCHES: Help customers find nearest location with specific directions
-6. PAYMENT: "We accept cash, card, Apple Pay, and Google Pay!"
-7. RECOMMENDATIONS: Based on customer preferences, mood, or dietary needs
-
-🎉 SPECIAL FEATURES:
-- Secret menu items exist! If someone asks, mention them mysteriously 🤫
-- "I'm feeling lucky" requests get a random recommendation with excitement
-- After orders, share a fun food fact or story about the dish
-- Know about vegetarian, vegan, and gluten-free options
-
-❌ WHAT YOU SHOULD NOT DO:
-- No nutritional advice or health claims
-- No medical recommendations
-- No calorie counting
-- Don't be negative about any dish
-
-💰 PRICE RANGES:
-- $: Under $10 (Budget-friendly!)
-- $$: $10-20 (Great value!)
-- $$$: $20+ (Premium experience!)
-
-Keep responses friendly, helpful, and under 150 words unless asked for details. Always end with a question or suggestion to keep the conversation going!`;
-}
-
-async function callAI(message, systemPrompt, conversationHistory, hfToken) {
-  const messages = [
-    { role: 'system', content: systemPrompt },
-    ...conversationHistory.slice(-5), // Keep last 5 messages for context
-    { role: 'user', content: message }
-  ];
-
-  // Try Hugging Face first
-  try {
-    const response = await fetch(
-      'https://api-inference.huggingface.co/models/Qwen/Qwen2.5-7B-Instruct/v1/chat/completions',
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${hfToken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'Qwen/Qwen2.5-7B-Instruct',
-          messages: messages,
-          max_tokens: 300,
-          temperature: 0.8,
-          top_p: 0.95
-        })
-      }
-    );
-
-    if (response.ok) {
-      const data = await response.json();
-      return data.choices[0].message.content;
-    }
-  } catch (error) {
-    console.log('Hugging Face failed, using fallback');
-  }
-
-  // Fallback response if AI is unavailable
-  return generateFallbackResponse(message);
-}
-
-function generateFallbackResponse(message) {
-  const lowerMessage = message.toLowerCase();
-  
-  if (lowerMessage.includes('vegetarian') || lowerMessage.includes('vegan')) {
-    return "Wonderful question! 🥬 We have amazing vegetarian options! Our Margherita Pizza is a classic favorite with fresh mozzarella and basil, and our Garden Salad is incredibly fresh. Would you like me to list all our plant-based dishes? 🌿";
-  }
-  
-  if (lowerMessage.includes('recommend') || lowerMessage.includes('suggest')) {
-    return "Oh, I'd LOVE to recommend something! 😍 Our signature Margherita Pizza is absolutely incredible — wood-fired with San Marzano tomatoes and fresh mozzarella. It's a crowd favorite for a reason! What kind of flavors are you in the mood for?";
-  }
-  
-  if (lowerMessage.includes('spicy') || lowerMessage.includes('hot')) {
-    return "You like it HOT! 🔥 Our Diavola Pizza has spicy salami that'll give you the perfect kick, and our Arrabiata Pasta is wonderfully fiery! Both are so flavorful. Feeling brave tonight?";
-  }
-  
-  if (lowerMessage.includes('price') || lowerMessage.includes('cost')) {
-    return "Great question about pricing! 💰 Our menu ranges from $8 appetizers to $25 premium mains. The Margherita Pizza is an amazing value at just $12.99! Everything is reasonably priced for the quality you get. Would you like to know about a specific dish?";
-  }
-  
-  if (lowerMessage.includes('location') || lowerMessage.includes('where') || lowerMessage.includes('address')) {
-    return "We have 4 beautiful locations! 🏪 Our Downtown spot at 123 Main Street is the original and has such a cozy vibe. Uptown, Westside, and Eastside are all amazing too! Which area is closest to you? I can help with directions! 😊";
-  }
-  
-  if (lowerMessage.includes('delivery') || lowerMessage.includes('order')) {
-    return "Absolutely, we deliver! 🛵 You can order through our website or call any of our branches directly. Delivery time is usually 25-40 minutes depending on your location. Would you like the phone number for your nearest branch?";
-  }
-
-  return "Oh, that's an excellent question! 😊 While I'm warming up my full AI capabilities, I can definitely help you explore our amazing menu, find your perfect dish, or tell you all about our locations. What interests you most — our wood-fired pizzas, fresh pastas, or maybe something else? 🍕🍝🥗";
-}
+        loadBranches();
+    </script>
+</body>
+</html>
