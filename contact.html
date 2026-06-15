@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Branches | Restaurant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #fef8f0;
+            color: #1a1a2e;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .restaurant-name {
+            font-size: 2.5rem;
+            color: #e67e22;
+            margin-bottom: 8px;
+        }
+
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .branch-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .branch-name {
+            font-size: 1.5rem;
+            color: #e67e22;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .branch-detail {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #555;
+        }
+
+        .branch-detail .icon {
+            font-size: 1.2rem;
+            min-width: 24px;
+        }
+
+        .hours {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 16px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            margin-top: 12px;
+            margin-right: 10px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: #d35400;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #e67e22;
+            color: #e67e22;
+        }
+
+        .map-placeholder {
+            background: #e9ecef;
+            height: 200px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 16px;
+            color: #888;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+            .branches-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 class="restaurant-name" id="restaurantName">Queen's Kitchen</h1>
+        <p>📍 4 branches · Same amazing food · Different locations</p>
+    </div>
+
+    <div class="branches-grid" id="branchesGrid">
+        Loading branches...
+    </div>
+
+    <div class="footer">Powered by AddisPower</div>
+</div>
+
+<script>
+    // ============================================
+    // CONFIGURATION — CHANGE THIS
+    // ============================================
+    const WORKER_URL = "https://restaurant-menu-api.workers.dev"; // CHANGE THIS
+    
+    // Optional: Change restaurant name
+    const RESTAURANT_NAME = "Queen's Kitchen";
+    
+    // ============================================
+    // BRANCH DATA (same as Worker)
+    // ============================================
+    // Note: This matches the branches in your Worker.
+    // If you change branches in Worker, update here too.
+    const branches = [
+        {
+            id: 1,
+            name: "Downtown",
+            address: "123 Main Street",
+            city: "Downtown",
+            hours: "Mon-Sun: 11am - 10pm",
+            phone: "(555) 111-2222",
+            parking: "Street parking available",
+            mapLink: "https://maps.google.com/?q=123+Main+Street"
+        },
+        {
+            id: 2,
+            name: "Northside",
+            address: "456 Oak Avenue",
+            city: "Northside",
+            hours: "Mon-Sun: 12pm - 9pm",
+            phone: "(555) 333-4444",
+            parking: "Free parking lot",
+            mapLink: "https://maps.google.com/?q=456+Oak+Avenue"
+        },
+        {
+            id: 3,
+            name: "Westend",
+            address: "789 Pine Road",
+            city: "Westend",
+            hours: "Mon-Sun: 11am - 9pm",
+            phone: "(555) 555-6666",
+            parking: "Valet parking",
+            mapLink: "https://maps.google.com/?q=789+Pine+Road"
+        },
+        {
+            id: 4,
+            name: "Eastside",
+            address: "321 Elm Street",
+            city: "Eastside",
+            hours: "Mon-Sun: 10am - 8pm",
+            phone: "(555) 777-8888",
+            parking: "Street + lot parking",
+            mapLink: "https://maps.google.com/?q=321+Elm+Street"
+        }
+    ];
+
+    document.getElementById("restaurantName").innerText = RESTAURANT_NAME;
+
+    function renderBranches() {
+        const container = document.getElementById("branchesGrid");
+        
+        container.innerHTML = branches.map(branch => `
+            <div class="branch-card">
+                <div class="branch-name">
+                    <span>🏠</span> ${branch.name}
+                </div>
+                <div class="branch-detail">
+                    <span class="icon">📍</span>
+                    <span>${branch.address}</span>
+                </div>
+                <div class="branch-detail">
+                    <span class="icon">🕐</span>
+                    <span>${branch.hours}</span>
+                </div>
+                <div class="branch-detail">
+                    <span class="icon">📞</span>
+                    <span>${branch.phone}</span>
+                </div>
+                <div class="branch-detail">
+                    <span class="icon">🅿️</span>
+                    <span>${branch.parking}</span>
+                </div>
+                <div>
+                    <a href="tel:${branch.phone.replace(/\D/g, '')}" class="btn">📞 Call</a>
+                    <a href="${branch.mapLink}" target="_blank" class="btn btn-outline">🗺️ Directions</a>
+                </div>
+                <div class="map-placeholder">
+                    🗺️ Google Maps link above
+                </div>
+            </div>
+        `).join("");
+    }
+
+    renderBranches();
+</script>
+</body>
+</html>
