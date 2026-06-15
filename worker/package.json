@@ -1,0 +1,14 @@
+{
+    "name": "restaurant-menu-api",
+    "version": "1.0.0",
+    "description": "AI-Powered Restaurant Menu API",
+    "main": "src/index.js",
+    "scripts": {
+        "deploy": "wrangler publish",
+        "dev": "wrangler dev"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "wrangler": "^3.0.0"
+    }
+}
