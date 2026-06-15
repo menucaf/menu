@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Admin — Restaurant AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .login-box, .admin-panel {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .login-box {
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        input, button {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            width: 100%;
+            margin: 10px 0;
+        }
+        button {
+            background: #e67e22;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #d35400;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .menu-card {
+            background: #f9f9f9;
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #eee;
+        }
+        .menu-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        .menu-card input, .menu-card textarea {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+        }
+        .delete-btn {
+            background: #e74c3c;
+            margin-top: 10px;
+        }
+        .add-btn {
+            background: #27ae60;
+            margin: 20px 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logout-btn {
+            background: #7f8c8d;
+            width: auto;
+            padding: 8px 16px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #888;
+            font-size: 12px;
+        }
+        h2 {
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <div class="login-box" id="loginBox">
+        <h2>🍽️ Menu Admin</h2>
+        <input type="password" id="password" placeholder="Enter admin password">
+        <button onclick="login()">Login</button>
+        <div class="footer">Powered by AddisPower</div>
+    </div>
+
+    <div class="admin-panel" id="adminPanel" style="display:none">
+        <div class="header">
+            <h2>🍕 Edit Menu</h2>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        
+        <button class="add-btn" onclick="addNewItem()">+ Add New Item</button>
+        
+        <div id="menuGrid" class="menu-grid"></div>
+        <div class="footer">Powered by AddisPower</div>
+    </div>
+</div>
+
+<script>
+    const WORKER_URL = "https://restaurant-menu-api.workers.dev"; // CHANGE THIS
+    let currentMenu = [];
+    let authToken = "";
+
+    async function login() {
+        const password = document.getElementById("password").value;
+        if (password === "") return alert("Enter password");
+        
+        authToken = password;
+        await loadMenu();
+    }
+
+    async function loadMenu() {
+        try {
+            const res = await fetch(`${WORKER_URL}/menu`);
+            const data = await res.json();
+            currentMenu = data.menu || [];
+            renderMenu();
+            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("adminPanel").style.display = "block";
+        } catch (err) {
+            alert("Login failed: " + err.message);
+        }
+    }
+
+    function renderMenu() {
+        const grid = document.getElementById("menuGrid");
+        grid.innerHTML = "";
+        
+        currentMenu.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.className = "menu-card";
+            card.innerHTML = `
+                <img src="${item.image || 'https://placehold.co/400x300?text=No+Image'}" onerror="this.src='https://placehold.co/400x300?text=No+Image'">
+                <input type="text" id="name_${index}" value="${escapeHtml(item.name)}" placeholder="Item name">
+                <input type="number" id="price_${index}" value="${item.price}" placeholder="Price">
+                <textarea id="desc_${index}" rows="2" placeholder="Description">${escapeHtml(item.description)}</textarea>
+                <select id="category_${index}">
+                    <option value="Pizza" ${item.category === "Pizza" ? "selected" : ""}>Pizza</option>
+                    <option value="Pasta" ${item.category === "Pasta" ? "selected" : ""}>Pasta</option>
+                    <option value="Salad" ${item.category === "Salad" ? "selected" : ""}>Salad</option>
+                    <option value="Burger" ${item.category === "Burger" ? "selected" : ""}>Burger</option>
+                    <option value="Drink" ${item.category === "Drink" ? "selected" : ""}>Drink</option>
+                    <option value="Dessert" ${item.category === "Dessert" ? "selected" : ""}>Dessert</option>
+                </select>
+                <input type="number" id="wait_${index}" value="${item.waitTime || 10}" placeholder="Wait time (minutes)">
+                <input type="text" id="portions_${index}" value="${item.portions || 'Serves 1'}" placeholder="Portion size">
+                <label>
+                    <input type="checkbox" id="new_${index}" ${item.isNew ? "checked" : ""}> Mark as "New"
+                </label>
+                <input type="text" id="image_${index}" value="${item.image || ''}" placeholder="Image URL">
+                <button onclick="updateItem(${index})">💾 Save</button>
+                <button class="delete-btn" onclick="deleteItem(${index})">🗑️ Delete</button>
+                <button onclick="uploadImage(${index})">🖼️ Upload Image</button>
+                <input type="file" id="file_${index}" style="display:none" accept="image/*">
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    async function uploadImage(index) {
+        const fileInput = document.getElementById(`file_${index}`);
+        fileInput.click();
+        fileInput.onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const formData = new FormData();
+            formData.append("image", file);
+            
+            const res = await fetch(`${WORKER_URL}/admin/upload`, {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${authToken}` },
+                body: formData
+            });
+            const data = await res.json();
+            if (data.url) {
+                document.getElementById(`image_${index}`).value = data.url;
+                alert("Image uploaded!");
+            } else {
+                alert("Upload failed");
+            }
+        };
+    }
+
+    async function updateItem(index) {
+        const item = currentMenu[index];
+        item.name = document.getElementById(`name_${index}`).value;
+        item.price = parseFloat(document.getElementById(`price_${index}`).value);
+        item.description = document.getElementById(`desc_${index}`).value;
+        item.category = document.getElementById(`category_${index}`).value;
+        item.waitTime = parseInt(document.getElementById(`wait_${index}`).value);
+        item.portions = document.getElementById(`portions_${index}`).value;
+        item.isNew = document.getElementById(`new_${index}`).checked;
+        item.image = document.getElementById(`image_${index}`).value;
+        
+        await saveMenu();
+        alert("Item updated!");
+    }
+
+    async function deleteItem(index) {
+        if (!confirm("Delete this item?")) return;
+        currentMenu.splice(index, 1);
+        await saveMenu();
+        renderMenu();
+    }
+
+    function addNewItem() {
+        currentMenu.push({
+            id: Date.now(),
+            name: "New Item",
+            price: 10,
+            description: "Description here",
+            category: "Pizza",
+            waitTime: 10,
+            portions: "Serves 1",
+            isNew: true,
+            image: ""
+        });
+        renderMenu();
+    }
+
+    async function saveMenu() {
+        const res = await fetch(`${WORKER_URL}/admin/update`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
+            body: JSON.stringify({ menu: currentMenu })
+        });
+        if (!res.ok) alert("Save failed!");
+    }
+
+    function logout() {
+        authToken = "";
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("adminPanel").style.display = "none";
+        document.getElementById("password").value = "";
+    }
+
+    function escapeHtml(str) {
+        if (!str) return "";
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === "&") return "&amp;";
+            if (m === "<") return "&lt;";
+            if (m === ">") return "&gt;";
+            return m;
+        });
+    }
+</script>
+</body>
+</html>
