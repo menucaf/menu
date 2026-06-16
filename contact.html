@@ -1,39 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BGS Locations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGS Locations - 7 Branches</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#1a1a2e;color:#fff}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#1a1a2e;color:#fff;min-height:100vh}
+        
         .header{background:#e85d04;padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:999}
-        .header a{color:#fff;text-decoration:none;font-size:14px}
+        .back-btn{color:#fff;text-decoration:none;font-size:20px;padding:4px}
+        .header-title{font-size:18px;font-weight:700}
+        
         .hero{text-align:center;padding:30px 16px;background:linear-gradient(135deg,#e85d04,#dc2f02)}
-        .hero h2{font-size:24px;margin-bottom:4px}
-        .branches{padding:20px 16px;display:grid;gap:12px}
-        .branch-card{background:#16213e;border-radius:10px;padding:16px}
-        .branch-card h3{color:#e85d04;margin-bottom:8px}
-        .branch-card p{font-size:13px;color:#b2bec3;margin-bottom:4px}
-        .call-btn{display:inline-block;margin-top:8px;padding:8px 16px;background:#e85d04;color:#fff;text-decoration:none;border-radius:16px;font-size:12px;margin-right:6px}
+        .hero .icon{font-size:48px;margin-bottom:8px}
+        .hero h2{font-size:26px;margin-bottom:4px}
+        .hero p{font-size:13px;opacity:.9}
+        
+        .stats{display:flex;justify-content:center;gap:20px;padding:16px;flex-wrap:wrap}
+        .stat{text-align:center;background:#16213e;padding:14px 20px;border-radius:10px;min-width:80px}
+        .stat .num{font-size:24px;font-weight:800;color:#e85d04}
+        .stat .label{font-size:10px;color:#b2bec3;margin-top:2px}
+        
+        .section-title{padding:20px 16px 8px;font-size:16px;color:#e85d04}
+        
+        .branches{display:grid;gap:12px;padding:0 16px 20px}
+        
+        .branch-card{background:#16213e;border-radius:14px;overflow:hidden;transition:transform .2s;border:1px solid rgba(255,255,255,.05)}
+        .branch-card:active{transform:scale(.98)}
+        .branch-top{display:flex;align-items:center;gap:12px;padding:16px;border-bottom:1px solid rgba(255,255,255,.05)}
+        .branch-num{width:36px;height:36px;background:#e85d04;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+        .branch-name{font-size:16px;font-weight:700}
+        .branch-body{padding:14px 16px}
+        .info-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:13px;color:#b2bec3}
+        .info-row .ico{font-size:16px;flex-shrink:0;width:20px;text-align:center}
+        .branch-actions{display:flex;gap:8px;padding:0 16px 16px}
+        .btn-action{flex:1;padding:10px;border:none;border-radius:10px;font-weight:600;font-size:12px;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+        .btn-call{background:#e85d04;color:#fff}
+        .btn-call:hover{background:#dc2f02}
+        .btn-map{background:#16213e;color:#fff;border:1px solid rgba(255,255,255,.2)}
+        .btn-map:hover{background:#1a1a2e}
+        
+        .contact-bar{background:#16213e;padding:16px;margin:0 16px 20px;border-radius:14px;text-align:center}
+        .contact-bar h3{color:#e85d04;margin-bottom:8px;font-size:14px}
+        .phones{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+        .phone-tag{background:#0f3460;padding:8px 14px;border-radius:20px;font-size:12px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:6px}
+        .phone-tag:hover{background:#e85d04}
+        
         .footer{text-align:center;padding:20px;font-size:11px;color:#b2bec3}
     </style>
 </head>
 <body>
-    <header class="header"><a href="index.html">← Menu</a><span>📍 BGS Locations</span></header>
-    <section class="hero"><h2>7 Branches</h2><p>Loyal to Quality</p></section>
-    <div class="branches" id="branchesGrid"></div>
-    <div class="footer">📞 0924131415 | 0984131415 | 0985131415</div>
+    <header class="header">
+        <a href="index.html" class="back-btn">←</a>
+        <span class="header-title">📍 BGS Locations</span>
+    </header>
+
+    <section class="hero">
+        <div class="icon">🍗</div>
+        <h2>7 Branches Across Addis</h2>
+        <p>Loyal to Quality — Always Near You</p>
+    </section>
+
+    <div class="stats">
+        <div class="stat"><div class="num">7</div><div class="label">Branches</div></div>
+        <div class="stat"><div class="num">7</div><div class="label">Phone Lines</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="label">Service</div></div>
+    </div>
+
+    <div class="section-title">🏪 Our Branches</div>
+
+    <div class="branches" id="branchesGrid">
+        <div style="text-align:center;padding:20px;color:#b2bec3">Loading locations...</div>
+    </div>
+
+    <div class="contact-bar">
+        <h3>📞 Call Any Branch</h3>
+        <div class="phones" id="phoneList"></div>
+    </div>
+
+    <div class="footer">© 2024 BGS Restaurant & Poultry Farm | All prices include 15% VAT</div>
+
     <script>
-        const branches=[
-            {n:'ሰማት ፍፀል',a:'ሰማት ፍፀል ቤት አጽራ ፊት ለፊት ሰንግድን መግቢያ',ph:'0924131415'},
-            {n:'አያት',a:'አያት ለሚከሩ ከ/ከተማ አጠንብ',ph:'0984131415'},
-            {n:'ለቡ መብቃ',a:'ለቡ መብቃ ሰፈር',ph:'0985131415'},
-            {n:'ቤተል',a:'ቤተል ቢጫ ፎቶ ሪፖ ህንፃ አጠንብ',ph:'0948131415'},
-            {n:'ና ኪሎ',a:'ና ኪሎ ት/ማርያም ቤ/ክ ፊት ለፊት',ph:'0986131415'},
-            {n:'ፍላጧን',a:'ፍላጧንን ከሆች ፊጆንሲ ፊት ለፊት',ph:'0968131415'},
-            {n:'በሌ መድንጋግለም',a:'በሌ መድንጋግለም ከቴሌ አጠንብ',ph:'0961131415'}
+        const branches = [
+            { id:1, name:'ሰማት ፍፀል', address:'ሰማት ፍፀል ቤት አጽራ ፊት ለፊት ሰንግድን መግቢያ', phone:'0924131415', hours:'Daily 8AM - 10PM' },
+            { id:2, name:'አያት', address:'አያት ለሚከሩ ከ/ከተማ አጠንብ', phone:'0984131415', hours:'Daily 8AM - 10PM' },
+            { id:3, name:'ለቡ መብቃ', address:'ለቡ መብቃ ሰፈር', phone:'0985131415', hours:'Daily 8AM - 10PM' },
+            { id:4, name:'ቤተል', address:'ቤተል ቢጫ ፎቶ ሪፖ ህንፃ አጠንብ', phone:'0948131415', hours:'Daily 8AM - 10PM' },
+            { id:5, name:'ና ኪሎ', address:'ና ኪሎ ት/ማርያም ቤ/ክ ፊት ለፊት', phone:'0986131415', hours:'Daily 8AM - 10PM' },
+            { id:6, name:'ፍላጧን', address:'ፍላጧንን ከሆች ፊጆንሲ ፊት ለፊት', phone:'0968131415', hours:'Daily 8AM - 10PM' },
+            { id:7, name:'በሌ መድንጋግለም', address:'በሌ መድንጋግለም ከቴሌ አጠንብ', phone:'0961131415', hours:'Daily 8AM - 10PM' }
         ];
-        document.getElementById('branchesGrid').innerHTML=branches.map(b=>`
-            <div class="branch-card"><h3>${b.n}</h3><p>📍 ${b.a}</p><p>📞 ${b.ph}</p><a href="tel:${b.ph}" class="call-btn">📞 Call</a></div>
+
+        // Render branch cards
+        document.getElementById('branchesGrid').innerHTML = branches.map(b => `
+            <div class="branch-card">
+                <div class="branch-top">
+                    <div class="branch-num">${b.id}</div>
+                    <div class="branch-name">${b.name}</div>
+                </div>
+                <div class="branch-body">
+                    <div class="info-row">
+                        <span class="ico">📍</span>
+                        <span>${b.address}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="ico">📞</span>
+                        <span>${b.phone}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="ico">🕐</span>
+                        <span>${b.hours}</span>
+                    </div>
+                </div>
+                <div class="branch-actions">
+                    <a href="tel:${b.phone}" class="btn-action btn-call">📞 Call</a>
+                    <a href="https://maps.google.com/?q=BGS+Restaurant+${encodeURIComponent(b.name)}+Addis+Ababa" target="_blank" class="btn-action btn-map">🗺️ Map</a>
+                </div>
+            </div>
+        `).join('');
+
+        // Render phone list
+        const phones = ['0924131415','0984131415','0985131415','0948131415','0986131415','0968131415','0961131415'];
+        document.getElementById('phoneList').innerHTML = phones.map(p => `
+            <a href="tel:${p}" class="phone-tag">📞 ${p}</a>
         `).join('');
     </script>
 </body>
