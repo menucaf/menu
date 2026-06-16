@@ -8,99 +8,128 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#1a1a2e;color:#fff;overflow-x:hidden}
         
-        /* HEADER */
         .header{background:#e85d04;padding:12px 16px;position:sticky;top:0;z-index:999;display:flex;justify-content:space-between;align-items:center}
         .logo{font-size:20px;font-weight:800;display:flex;align-items:center;gap:8px}
         .menu-btn{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:4px}
         
-        /* SIDE NAVIGATION */
-        .side-nav{position:fixed;top:0;left:-280px;width:280px;height:100%;background:#16213e;z-index:2000;transition:left .3s;overflow-y:auto;padding:20px}
+        .radio-bar{background:linear-gradient(135deg,#2d1b69,#6c5ce7);padding:10px 16px;cursor:pointer;display:flex;align-items:center;gap:10px;justify-content:center;font-size:13px}
+        .radio-dot{width:8px;height:8px;background:#00ff88;border-radius:50%}
+        .radio-text{flex:1;text-align:center}
+        .radio-play{background:#fff;color:#6c5ce7;padding:5px 14px;border-radius:14px;font-weight:700;font-size:11px;border:none;cursor:pointer}
+        
+        .side-nav{position:fixed;top:0;left:-300px;width:300px;height:100%;background:#16213e;z-index:2000;transition:left .3s;overflow-y:auto;padding:20px}
         .side-nav.open{left:0}
-        .side-nav h3{color:#e85d04;margin-bottom:20px;font-size:18px}
-        .side-nav a{display:block;color:#fff;text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px;cursor:pointer}
+        .side-nav h3{color:#e85d04;margin-bottom:16px;font-size:18px}
+        .side-nav a{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;cursor:pointer}
         .side-nav a:hover{color:#e85d04}
+        .side-nav .radio-link{color:#a29bfe!important;font-weight:600}
+        .side-nav .radio-link .live-dot{width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block}
+        .side-nav hr{border-color:rgba(255,255,255,.1);margin:12px 0}
         .overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:1500;display:none}
         .overlay.show{display:block}
         
-        /* HERO */
-        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);text-align:center;padding:40px 16px}
-        .hero h1{font-size:28px;margin-bottom:4px}
-        .hero .tagline{font-size:14px;opacity:.9;margin-bottom:16px}
+        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);text-align:center;padding:36px 16px}
+        .hero h1{font-size:26px;margin-bottom:4px}
+        .hero .tagline{font-size:13px;opacity:.9;margin-bottom:14px}
         .hero-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
         .btn{padding:8px 16px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:20px;font-size:12px;cursor:pointer}
         .btn-solid{background:#fff;color:#e85d04;border:none}
         
-        /* SEARCH */
-        .search-wrap{padding:16px}
-        .search-wrap input{width:100%;padding:10px 16px;border-radius:20px;border:none;font-size:14px;background:#16213e;color:#fff}
+        .search-wrap{padding:14px 16px}
+        .search-wrap input{width:100%;padding:10px 16px;border-radius:20px;border:none;font-size:14px;background:#16213e;color:#fff;outline:none}
+        .search-wrap input::placeholder{color:#636e72}
         
-        /* CATEGORIES */
-        .cats{display:flex;gap:6px;padding:0 16px 10px;overflow-x:auto;flex-wrap:nowrap}
-        .cat-btn{padding:5px 12px;background:#16213e;border:1px solid rgba(255,255,255,.2);border-radius:16px;color:#fff;font-size:11px;cursor:pointer;white-space:nowrap}
+        .cats{display:flex;gap:6px;padding:0 16px 10px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+        .cats::-webkit-scrollbar{display:none}
+        .cat-btn{padding:6px 12px;background:#16213e;border:1px solid rgba(255,255,255,.2);border-radius:16px;color:#fff;font-size:11px;cursor:pointer;white-space:nowrap;transition:all .2s}
         .cat-btn.active,.cat-btn:hover{background:#e85d04;border-color:#e85d04}
         
-        /* MENU GRID */
         .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:0 16px 80px}
         .card{background:#16213e;border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .2s}
-        .card:hover{transform:translateY(-2px)}
+        .card:active{transform:scale(.98)}
         .card-img{width:100%;height:120px;object-fit:cover;background:#0f3460}
         .card-body{padding:10px}
-        .card h3{font-size:13px;margin-bottom:4px}
-        .card .desc{font-size:10px;color:#b2bec3;margin-bottom:6px;line-height:1.3}
-        .card .price{font-size:16px;font-weight:800;color:#e85d04}
-        .badge{display:inline-block;padding:2px 5px;border-radius:4px;font-size:8px;margin-right:2px;background:#e85d04}
+        .card h3{font-size:13px;margin-bottom:3px;line-height:1.2}
+        .card .desc{font-size:10px;color:#b2bec3;margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+        .card .price{font-size:15px;font-weight:800;color:#e85d04}
+        .badge{display:inline-block;padding:2px 5px;border-radius:4px;font-size:8px;margin-right:3px;background:#e85d04;margin-bottom:4px}
         
-        /* BOTTOM BAR */
         .bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#16213e;display:flex;justify-content:space-around;padding:8px;z-index:998;border-top:1px solid rgba(255,255,255,.1)}
-        .bottom-btn{color:#fff;text-decoration:none;font-size:10px;text-align:center;cursor:pointer;background:none;border:none}
-        .bottom-btn span{display:block;font-size:18px}
+        .bottom-btn{color:#fff;text-decoration:none;font-size:10px;text-align:center;cursor:pointer;background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px}
+        .bottom-btn span{font-size:20px}
         
-        /* AI POPUP */
-        .ai-popup{position:fixed;bottom:60px;right:8px;width:300px;max-height:350px;background:#16213e;border-radius:12px;z-index:1500;display:none;flex-direction:column;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
+        .ai-popup{position:fixed;bottom:65px;right:8px;width:300px;max-height:350px;background:#16213e;border-radius:12px;z-index:1500;display:none;flex-direction:column;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)}
         .ai-popup.open{display:flex}
         .ai-header{background:#e85d04;padding:10px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center}
+        .ai-header strong{font-size:14px}
+        .ai-close{background:none;border:none;color:#fff;font-size:16px;cursor:pointer;padding:0 4px}
         .ai-messages{flex:1;padding:10px;overflow-y:auto;max-height:220px;display:flex;flex-direction:column;gap:6px}
-        .ai-msg{max-width:85%;padding:6px 10px;border-radius:10px;font-size:11px;white-space:pre-line}
+        .ai-messages::-webkit-scrollbar{width:4px}
+        .ai-messages::-webkit-scrollbar-thumb{background:#e85d04;border-radius:2px}
+        .ai-msg{max-width:85%;padding:7px 10px;border-radius:10px;font-size:11px;white-space:pre-line;line-height:1.4}
         .ai-msg.user{background:#e85d04;color:#fff;align-self:flex-end}
         .ai-msg.bot{background:#0f3460;align-self:flex-start}
         .ai-input{padding:8px;display:flex;gap:4px;border-top:1px solid rgba(255,255,255,.1)}
-        .ai-input input{flex:1;padding:6px 10px;border-radius:14px;border:none;font-size:11px;background:#1a1a2e;color:#fff}
-        .ai-input button{background:#e85d04;color:#fff;border:none;border-radius:14px;padding:6px 12px;font-size:11px;cursor:pointer}
+        .ai-input input{flex:1;padding:7px 10px;border-radius:14px;border:none;font-size:11px;background:#1a1a2e;color:#fff;outline:none}
+        .ai-input button{background:#e85d04;color:#fff;border:none;border-radius:14px;padding:7px 14px;font-size:11px;cursor:pointer;font-weight:600}
         
         .footer{text-align:center;padding:20px;font-size:11px;color:#b2bec3}
-        @media(min-width:768px){.menu-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}.ai-popup{width:350px;right:16px}}
+        
+        @media(min-width:768px){
+            .menu-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+            .ai-popup{width:350px;right:16px}
+            .hero h1{font-size:32px}
+        }
     </style>
 </head>
 <body>
-    <!-- SIDE NAV -->
+    <!-- SIDE NAVIGATION -->
     <div class="side-nav" id="sideNav">
         <h3>🍗 BGS Restaurant</h3>
+        
+        <a onclick="filterCategory('all');closeNav()">📋 All Menu</a>
         <a onclick="filterCategory('🥗 Fasting');closeNav()">🥗 Fasting Menu</a>
-        <a onclick="filterCategory('🥙 Sandwiches');closeNav()">🥙 Sandwiches</a>
+        <a onclick="filterCategory('🥙 Sandwiches');closeNav()">🥙 Sandwiches & Wraps</a>
         <a onclick="filterCategory('👨‍👩‍👧‍👦 Family');closeNav()">👨‍👩‍👧‍👦 Family Style</a>
         <a onclick="filterCategory('🍗 Main Course');closeNav()">🍗 Main Course</a>
         <a onclick="filterCategory('🍟 Sides');closeNav()">🍟 Sides</a>
-        <a onclick="filterCategory('🧂 Extras');closeNav()">🧂 Extras</a>
-        <a onclick="filterCategory('🧃 Juices');closeNav()">🧃 Juices</a>
+        <a onclick="filterCategory('🧂 Extras');closeNav()">🧂 Extras & Sauces</a>
+        <a onclick="filterCategory('🧃 Juices');closeNav()">🧃 Fresh Juices</a>
         <a onclick="filterCategory('🍹 Mojito');closeNav()">🍹 Mojito</a>
-        <a onclick="filterCategory('🥤 Drinks');closeNav()">🥤 Drinks</a>
-        <a onclick="filterCategory('📦 Takeaway');closeNav()">📦 Takeaway</a>
-        <a onclick="document.getElementById('aiPopup').classList.add('open');closeNav()" style="color:#e85d04">🤖 AI Assistant</a>
-        <a href="contact.html" style="color:#fdcb6e">📍 Locations</a>
+        <a onclick="filterCategory('🥤 Drinks');closeNav()">🥤 Soft Drinks & Water</a>
+        <a onclick="filterCategory('📦 Takeaway');closeNav()">📦 Takeaway Items</a>
+        
+        <hr>
+        
+        <!-- RADIO IN SIDE NAV -->
+        <a class="radio-link" onclick="openRadio();closeNav()">
+            <span class="live-dot"></span> 🎷 Radio Swiss Jazz — LIVE
+        </a>
+        
+        <a onclick="openAI();closeNav()" style="color:#e85d04">🤖 Ask AI Assistant</a>
+        <a href="contact.html" style="color:#fdcb6e">📍 7 Locations</a>
+        <a href="tel:0924131415" style="color:#00ff88">📞 Call: 0924131415</a>
     </div>
     <div class="overlay" id="overlay" onclick="closeNav()"></div>
 
     <!-- HEADER -->
     <header class="header">
         <button class="menu-btn" onclick="openNav()">☰</button>
-        <div class="logo">🍗 BGS Restaurant</div>
-        <div style="font-size:12px;opacity:.8">Loyal to Quality</div>
+        <div class="logo">🍗 BGS</div>
+        <div style="font-size:11px;opacity:.9">Loyal to Quality</div>
     </header>
+
+    <!-- RADIO BAR -->
+    <div class="radio-bar" onclick="openRadio()">
+        <div class="radio-dot"></div>
+        <span class="radio-text">🎷 Radio Swiss Jazz — Tap to listen</span>
+        <button class="radio-play">▶ Play</button>
+    </div>
 
     <!-- HERO -->
     <section class="hero">
         <h1>BGS Restaurant & Poultry Farm</h1>
-        <p class="tagline">Loyal to Quality • 7 Locations • Fresh Chicken Daily</p>
+        <p class="tagline">Fresh Chicken Daily • 7 Locations • Dine-in & Takeaway</p>
         <div class="hero-btns">
             <button class="btn" onclick="filterCategory('🍗 Main Course')">🍗 Chicken</button>
             <button class="btn btn-solid" onclick="filterCategory('🥗 Fasting')">🥗 Fasting</button>
@@ -109,39 +138,56 @@
     </section>
 
     <!-- SEARCH -->
-    <div class="search-wrap"><input type="text" id="searchInput" placeholder="🔍 Search menu..." oninput="applyFilters()"></div>
+    <div class="search-wrap"><input type="text" id="searchInput" placeholder="🔍 Search BGS menu..." oninput="applyFilters()"></div>
 
     <!-- CATEGORIES -->
     <div class="cats" id="catFilters"></div>
 
-    <!-- MENU -->
+    <!-- MENU GRID -->
     <div class="menu-grid" id="menuGrid"></div>
 
     <!-- BOTTOM BAR -->
     <div class="bottom-bar">
         <button class="bottom-btn" onclick="filterCategory('all')"><span>📋</span>All</button>
         <button class="bottom-btn" onclick="filterCategory('🍗 Main Course')"><span>🍗</span>Chicken</button>
-        <button class="bottom-btn" onclick="filterCategory('🧃 Juices')"><span>🧃</span>Juices</button>
-        <button class="bottom-btn" onclick="document.getElementById('aiPopup').classList.toggle('open')"><span>🤖</span>AI</button>
+        <button class="bottom-btn" onclick="openRadio()"><span>🎷</span>Radio</button>
+        <button class="bottom-btn" onclick="toggleAI()"><span>🤖</span>AI</button>
         <button class="bottom-btn" onclick="window.location.href='contact.html'"><span>📍</span>Branches</button>
     </div>
 
     <!-- AI POPUP -->
     <div class="ai-popup" id="aiPopup">
         <div class="ai-header">
-            <strong>🤖 BGS Assistant</strong>
-            <button onclick="document.getElementById('aiPopup').classList.remove('open')" style="background:none;border:none;color:#fff;cursor:pointer">✕</button>
+            <strong>🤖 BGS Menu Assistant</strong>
+            <button class="ai-close" onclick="toggleAI()">✕</button>
         </div>
         <div class="ai-messages" id="aiMessages">
-            <div class="ai-msg bot">Selam! 👋 Ask me about BGS menu, prices, or locations! 🍗</div>
+            <div class="ai-msg bot">Selam! 👋 Welcome to BGS!\n\nAsk me:\n• "Show chicken dishes"\n• "Fasting menu"\n• "How much is Full Chicken?"\n• "List all juices"</div>
         </div>
         <div class="ai-input">
-            <input type="text" id="aiInput" placeholder="Ask me..." onkeypress="if(event.key==='Enter')aiSend()">
+            <input type="text" id="aiInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter')aiSend()">
             <button onclick="aiSend()">Send</button>
         </div>
     </div>
 
-    <div class="footer">© 2024 BGS Restaurant & Poultry Farm | All prices include 15% VAT</div>
+    <div class="footer">© 2024 BGS Restaurant & Poultry Farm | All prices include 15% VAT | 📞 0924131415</div>
+
+    <!-- RADIO MODAL -->
+    <div id="radioModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:3000;align-items:center;justify-content:center" onclick="this.style.display='none'">
+        <div style="background:#16213e;border-radius:12px;padding:20px;max-width:400px;width:90%;text-align:center" onclick="event.stopPropagation()">
+            <h3 style="color:#e85d04;margin-bottom:12px">🎷 Radio Swiss Jazz</h3>
+            <p style="font-size:13px;margin-bottom:16px">Live 24/7 — Perfect dining music</p>
+            <div style="background:#0f3460;padding:12px;border-radius:8px;margin:8px 0;cursor:pointer;display:flex;align-items:center;gap:8px" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">
+                <span style="color:#00ff88;font-size:12px">● LIVE</span>
+                <span>Radio Swiss Jazz — Official Stream</span>
+            </div>
+            <div style="background:#0f3460;padding:12px;border-radius:8px;margin:8px 0;cursor:pointer;display:flex;align-items:center;gap:8px" onclick="window.open('https://www.youtube.com/watch?v=4udavF0PIko','_blank')">
+                <span>🎶</span>
+                <span>Italian Dinner Jazz — YouTube</span>
+            </div>
+            <button onclick="document.getElementById('radioModal').style.display='none'" style="margin-top:12px;padding:10px 24px;background:#e85d04;color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:600">Close</button>
+        </div>
+    </div>
 
     <script>
         const WORKER_URL = 'https://restaurant-menu-api.ai-menu-d29.workers.dev';
@@ -151,13 +197,24 @@
         function norm(i){ return { id:i.n,name:i.n,price:i.p,category:i.c,description:i.d,image:i.img,portionSize:i.sz,waitTime:i.wt,temperature:i.t,isVegetarian:i.v,isPopular:i.pop,tags:i.tags||[] }; }
 
         async function loadMenu(){
+            document.getElementById('menuGrid').innerHTML='<div style="text-align:center;padding:40px;grid-column:1/-1"><p>Loading menu...</p></div>';
             try{
                 const r=await fetch(WORKER_URL+'/api/menu');
                 const d=await r.json();
                 if(d.ok&&d.data) menuItems=d.data.items.map(norm);
             }catch(e){}
-            if(!menuItems.length) menuItems=[{id:'1',name:'Full Roasted Chicken',price:2800,category:'🍗 Main Course',description:'Full roasted chicken on rotisserie',image:'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400',portionSize:'Full',waitTime:40,temperature:'hot',isPopular:true},{id:'2',name:'Special Showarma',price:670,category:'🥙 Sandwiches',description:'Chicken shawarma with fries',image:'https://images.unsplash.com/photo-1561651823-34feb0220924?w=400',portionSize:'1',waitTime:15,temperature:'hot'}];
+            if(!menuItems.length) menuItems=getBackupMenu();
             renderCats(); renderMenu(menuItems);
+        }
+
+        function getBackupMenu(){
+            return [
+                {id:'1',name:'Full Roasted Chicken',price:2800,category:'🍗 Main Course',description:'Full roasted chicken on rotisserie',image:'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400',portionSize:'Full',waitTime:40,temperature:'hot',isPopular:true},
+                {id:'2',name:'Special Showarma',price:670,category:'🥙 Sandwiches',description:'Chicken shawarma with fries',image:'https://images.unsplash.com/photo-1561651823-34feb0220924?w=400',portionSize:'1',waitTime:15,temperature:'hot'},
+                {id:'3',name:'Chicken Wings',price:1700,category:'🍗 Main Course',description:'9 pieces with rice and pita',image:'https://images.unsplash.com/photo-1608039829572-9b6d5a9e2c4f?w=400',portionSize:'9 pcs',waitTime:20,temperature:'hot',isPopular:true},
+                {id:'4',name:'BGS Special Juice',price:350,category:'🧃 Juices',description:'Signature juice blend',image:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400',portionSize:'1 glass',waitTime:3,temperature:'cold',isVegetarian:true},
+                {id:'5',name:'Family Style (Full)',price:2900,category:'👨‍👩‍👧‍👦 Family',description:'Chicken Wing, Special Chicken, Rice, Pita',image:'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400',portionSize:'Family',waitTime:30,temperature:'hot'}
+            ];
         }
 
         function renderCats(){
@@ -166,10 +223,10 @@
 
         function renderMenu(items){
             const g=document.getElementById('menuGrid');
-            if(!items.length){g.innerHTML='<div style="text-align:center;padding:40px;grid-column:1/-1"><h3>No items</h3></div>';return;}
+            if(!items.length){g.innerHTML='<div style="text-align:center;padding:40px;grid-column:1/-1"><h3>No items found</h3><p style="color:#b2bec3">Try another search</p></div>';return;}
             g.innerHTML=items.map(i=>`
                 <div class="card" onclick="aiAsk('Tell me about ${i.name}')">
-                    <img class="card-img" src="${i.image}" alt="${i.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=BGS'">
+                    <img class="card-img" src="${i.image}" alt="${i.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/16213e/e85d04?text=BGS'">
                     <div class="card-body">
                         ${i.isPopular?'<span class="badge">⭐</span>':''}${i.isVegetarian?'<span class="badge">🥬</span>':''}
                         <h3>${i.name}</h3>
@@ -196,6 +253,9 @@
 
         function openNav(){document.getElementById('sideNav').classList.add('open');document.getElementById('overlay').classList.add('show')}
         function closeNav(){document.getElementById('sideNav').classList.remove('open');document.getElementById('overlay').classList.remove('show')}
+        function toggleAI(){document.getElementById('aiPopup').classList.toggle('open')}
+        function openAI(){document.getElementById('aiPopup').classList.add('open')}
+        function openRadio(){document.getElementById('radioModal').style.display='flex'}
 
         async function aiSend(){
             const input=document.getElementById('aiInput'),msg=input.value.trim();
@@ -207,14 +267,15 @@
             try{
                 const r=await fetch(WORKER_URL+'/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg})});
                 const d=await r.json();
-                b.textContent=d.ok?d.reply:(d.response||'Try again');
-            }catch(e){b.textContent='Ask: "Show chicken" or "Juices" 🍗'}
+                b.textContent=d.ok?d.reply:(d.response||'Try: "Show chicken" or "Juices"');
+            }catch(e){b.textContent='Ask: "Show chicken" or "Fasting menu" 🍗'}
             c.scrollTop=c.scrollHeight;
         }
 
-        function aiAsk(msg){document.getElementById('aiPopup').classList.add('open');document.getElementById('aiInput').value=msg;aiSend()}
+        function aiAsk(msg){openAI();document.getElementById('aiInput').value=msg;aiSend()}
 
         document.addEventListener('DOMContentLoaded',loadMenu);
+        document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeNav();document.getElementById('aiPopup').classList.remove('open');document.getElementById('radioModal').style.display='none'}});
     </script>
 </body>
 </html>
