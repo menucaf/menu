@@ -13,68 +13,67 @@
         .logo{font-size:22px;font-weight:800;display:flex;align-items:center;gap:8px}
         .nav{display:flex;gap:14px;align-items:center}
         .nav a{color:#fff;text-decoration:none;font-weight:500;font-size:13px}
-        .radio-bar{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:14px 0;cursor:pointer}
-        .radio-bar .container{display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap}
+        .radio-bar{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:12px 0;cursor:pointer}
+        .radio-bar .container{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
         .radio-live{background:#ff0000;color:#fff;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700;animation:pulse 2s infinite;display:inline-flex;align-items:center;gap:4px}
         .radio-live::before{content:'';width:6px;height:6px;background:#fff;border-radius:50%}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-        .radio-btn{background:#fff;color:#6c5ce7;padding:8px 18px;border-radius:20px;font-weight:700;font-size:13px;border:none;cursor:pointer}
-        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:36px 0}
-        .hero h2{font-size:30px;margin-bottom:6px}
-        .hero-buttons{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-        .btn{padding:10px 20px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer}
+        .radio-btn{background:#fff;color:#6c5ce7;padding:6px 14px;border-radius:20px;font-weight:700;font-size:12px;border:none;cursor:pointer}
+        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:30px 0}
+        .hero h2{font-size:28px;margin-bottom:4px}
+        .hero-buttons{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+        .btn{padding:9px 18px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:25px;font-size:12px;font-weight:600;cursor:pointer}
         .btn-solid{background:#fff;color:#e85d04;border:none}
-        .search-bar{max-width:600px;margin:20px auto}
-        .search-bar input{width:100%;padding:11px 18px;border:2px solid #e0e0e0;border-radius:25px;font-size:14px}
-        .filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:14px 0}
-        .filter-btn{padding:6px 14px;border:2px solid #e0e0e0;background:#fff;border-radius:18px;cursor:pointer;font-weight:500;font-size:12px}
+        .search-bar{max-width:600px;margin:16px auto}
+        .search-bar input{width:100%;padding:10px 16px;border:2px solid #e0e0e0;border-radius:25px;font-size:14px}
+        .filters{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+        .filter-btn{padding:5px 12px;border:2px solid #e0e0e0;background:#fff;border-radius:16px;cursor:pointer;font-weight:500;font-size:11px}
         .filter-btn.active,.filter-btn:hover{background:#e85d04;color:#fff;border-color:#e85d04}
-        .quick-filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-        .quick-btn{padding:6px 12px;background:#fff;border:none;border-radius:18px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:12px}
+        .quick-filters{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+        .quick-btn{padding:5px 10px;background:#fff;border:none;border-radius:16px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:11px}
         .quick-btn:hover{background:#e85d04;color:#fff}
-        .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;padding:14px 0 36px}
-        .menu-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06);cursor:pointer}
-        .menu-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
-        .menu-card-image{width:100%;height:170px;object-fit:cover;background:#f0f0f0}
-        .menu-card-body{padding:14px}
-        .menu-card h3{font-size:16px;margin-bottom:4px}
-        .desc{color:#636e72;font-size:12px;margin-bottom:10px}
-        .price{font-size:20px;font-weight:800;color:#e85d04}
-        .badges{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
-        .badge{padding:2px 7px;border-radius:8px;font-size:10px;font-weight:700}
+        .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;padding:10px 0 30px}
+        .menu-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06);cursor:pointer;transition:transform .2s}
+        .menu-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+        .menu-card-image{width:100%;height:160px;object-fit:cover;background:#f0f0f0}
+        .menu-card-body{padding:12px}
+        .menu-card h3{font-size:15px;margin-bottom:3px}
+        .desc{color:#636e72;font-size:11px;margin-bottom:8px;line-height:1.3}
+        .price{font-size:18px;font-weight:800;color:#e85d04}
+        .badges{display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap}
+        .badge{padding:2px 6px;border-radius:6px;font-size:9px;font-weight:700}
         .badge-hot{background:#ff6b6b;color:#fff}
         .badge-cold{background:#74b9ff;color:#fff}
         .badge-new{background:#00b894;color:#fff}
         .badge-popular{background:#fdcb6e;color:#2d3436}
         .badge-veg{background:#55efc4;color:#2d3436}
         .badge-secret{background:#9b59b6;color:#fff}
-        .btn-order{width:100%;margin-top:8px;padding:9px;background:#e85d04;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px}
-        .chat-widget{position:fixed;bottom:16px;right:16px;z-index:1000}
-        .chat-toggle{width:52px;height:52px;border-radius:50%;background:#e85d04;color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 3px 12px rgba(232,93,4,.4)}
-        .chat-window{position:absolute;bottom:64px;right:0;width:340px;height:440px;background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
-        .chat-header{background:#e85d04;color:#fff;padding:12px;display:flex;justify-content:space-between}
-        .chat-messages{flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
-        .message{max-width:84%;padding:8px 12px;border-radius:10px;font-size:12px;white-space:pre-line}
+        .btn-order{width:100%;margin-top:6px;padding:8px;background:#e85d04;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:12px}
+        .chat-widget{position:fixed;bottom:14px;right:14px;z-index:1000}
+        .chat-toggle{width:48px;height:48px;border-radius:50%;background:#e85d04;color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 3px 12px rgba(232,93,4,.4)}
+        .chat-window{position:absolute;bottom:58px;right:0;width:320px;height:420px;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
+        .chat-header{background:#e85d04;color:#fff;padding:10px;display:flex;justify-content:space-between}
+        .chat-messages{flex:1;padding:10px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+        .message{max-width:85%;padding:7px 10px;border-radius:10px;font-size:11px;white-space:pre-line}
         .message.user{background:#e85d04;color:#fff;align-self:flex-end}
         .message.bot{background:#f0f0f0;align-self:flex-start}
-        .chat-input-area{padding:8px;border-top:1px solid #e0e0e0;display:flex;gap:5px;align-items:center}
-        .chat-input-area input{flex:1;padding:8px 12px;border:1px solid #e0e0e0;border-radius:18px;font-size:12px}
-        .chat-input-area button{padding:8px 14px;background:#e85d04;color:#fff;border:none;border-radius:18px;cursor:pointer;font-size:13px}
-        .voice-btn{width:36px;height:36px;border-radius:50%;background:#6c5ce7;color:#fff;border:none;font-size:16px;cursor:pointer}
+        .chat-input-area{padding:8px;border-top:1px solid #e0e0e0;display:flex;gap:4px;align-items:center}
+        .chat-input-area input{flex:1;padding:7px 10px;border:1px solid #e0e0e0;border-radius:16px;font-size:11px}
+        .chat-input-area button{padding:7px 12px;background:#e85d04;color:#fff;border:none;border-radius:16px;cursor:pointer;font-size:12px}
+        .voice-btn{width:30px;height:30px;border-radius:50%;background:#6c5ce7;color:#fff;border:none;font-size:14px;cursor:pointer}
         .voice-btn.recording{background:#ff0000;animation:pulse 1s infinite}
         .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:2000;align-items:center;justify-content:center}
         .modal.active{display:flex}
-        .modal-content{background:#fff;border-radius:12px;padding:22px;max-width:480px;width:92%;text-align:center;position:relative;max-height:80vh;overflow-y:auto}
-        .modal-close{position:absolute;top:8px;right:8px;background:#f0f0f0;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px}
-        .story-card{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);padding:14px;border-radius:8px;margin:10px 0;text-align:left}
-        .fun-fact{background:#00b894;color:#fff;padding:8px;border-radius:6px;margin-top:8px;font-weight:600;font-size:12px}
-        .music-player{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:14px;border-radius:8px;margin:10px 0}
-        .song-item{background:rgba(255,255,255,.1);padding:8px;border-radius:6px;margin:4px 0;cursor:pointer}
+        .modal-content{background:#fff;border-radius:10px;padding:18px;max-width:450px;width:92%;text-align:center;position:relative;max-height:80vh;overflow-y:auto}
+        .modal-close{position:absolute;top:6px;right:6px;background:#f0f0f0;border:none;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:13px}
+        .story-card{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);padding:12px;border-radius:8px;margin:8px 0;text-align:left}
+        .fun-fact{background:#00b894;color:#fff;padding:6px;border-radius:6px;margin-top:6px;font-weight:600;font-size:11px}
+        .music-player{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:12px;border-radius:8px;margin:8px 0}
+        .song-item{background:rgba(255,255,255,.1);padding:7px;border-radius:6px;margin:3px 0;cursor:pointer;font-size:12px}
         .song-item.live{background:rgba(255,0,0,.3)}
-        .footer{background:#1a1a2e;color:#fff;padding:24px 0;text-align:center;margin-top:32px}
-        .footer a{color:#b2bec3;text-decoration:none;margin:0 8px;font-size:12px}
-        .voice-indicator{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#ff0000;color:#fff;padding:12px 24px;border-radius:30px;font-weight:600;display:none;z-index:3000}
-        @media(max-width:768px){.hero h2{font-size:24px}.chat-window{width:calc(100vw - 28px);height:50vh;right:2px}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}}
+        .footer{background:#1a1a2e;color:#fff;padding:20px 0;text-align:center;margin-top:30px;font-size:12px}
+        .voice-indicator{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#ff0000;color:#fff;padding:10px 20px;border-radius:25px;font-weight:600;display:none;z-index:3000;font-size:13px}
+        @media(max-width:768px){.hero h2{font-size:22px}.chat-window{width:calc(100vw - 24px);height:50vh;right:2px}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
     </style>
 </head>
 <body>
@@ -85,30 +84,30 @@
         </div>
     </header>
 
-    <div class="radio-bar" onclick="document.getElementById('playlistModal').classList.add('active');loadPlaylist();">
+    <div class="radio-bar" onclick="openPlaylist()">
         <div class="container"><span class="radio-live">● LIVE</span><span>🎷 Radio Swiss Jazz — Tap to listen</span><button class="radio-btn">▶ Listen</button></div>
     </div>
 
     <section class="hero">
         <div class="container">
             <h2>Discover Your Perfect Dish</h2>
-            <p>AI-powered menu • Live jazz • Voice chat</p>
+            <p>37 items • AI-powered • Live jazz</p>
             <div class="hero-buttons">
-                <button class="btn" onclick="feelingLucky()">🎲 I'm Feeling Lucky</button>
-                <button class="btn btn-solid" onclick="document.getElementById('moodModal').classList.add('active')">🎭 Food Mood</button>
-                <button class="btn" onclick="toggleChat(true)">💬 Chat with AI</button>
+                <button class="btn" onclick="feelingLucky()">🎲 Lucky</button>
+                <button class="btn btn-solid" onclick="document.getElementById('moodModal').classList.add('active')">🎭 Mood</button>
+                <button class="btn" onclick="toggleChat(true)">💬 Chat</button>
             </div>
         </div>
     </section>
 
     <div class="container">
-        <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search 37 menu items..." oninput="applyFilters()"></div>
+        <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search 37 items..." oninput="applyFilters()"></div>
         <div class="filters" id="categoryFilters"></div>
         <div class="quick-filters">
             <button class="quick-btn" onclick="quickFilter('under10')">💰 Under $10</button>
-            <button class="quick-btn" onclick="quickFilter('vegetarian')">🥬 Vegetarian</button>
+            <button class="quick-btn" onclick="quickFilter('vegetarian')">🥬 Veg</button>
             <button class="quick-btn" onclick="quickFilter('new')">🆕 New</button>
-            <button class="quick-btn" onclick="quickFilter('popular')">⭐ Popular</button>
+            <button class="quick-btn" onclick="quickFilter('popular')">⭐ Best</button>
             <button class="quick-btn" onclick="quickFilter('hot')">🔥 Hot</button>
             <button class="quick-btn" onclick="quickFilter('cold')">❄️ Cold</button>
             <button class="quick-btn" onclick="quickFilter('secret')">🤫 Secret</button>
@@ -120,11 +119,11 @@
     <div class="chat-widget">
         <button class="chat-toggle" onclick="toggleChat()">💬</button>
         <div class="chat-window" id="chatWindow">
-            <div class="chat-header"><strong>🤖 Menu Assistant</strong><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">✕</button></div>
-            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 I'm your menu guide! Ask me about any dish or try "I'm feeling adventurous!" 🍕</div></div>
+            <div class="chat-header"><strong>🤖 Menu AI</strong><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:16px;cursor:pointer">✕</button></div>
+            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 Ask me about any dish, or try "recommend something" or "I'm feeling adventurous!" 🍕</div></div>
             <div class="chat-input-area">
                 <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()">🎤</button>
-                <input type="text" id="chatInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')sendMessage()">
+                <input type="text" id="chatInput" placeholder="Ask me..." onkeypress="if(event.key==='Enter')sendMessage()">
                 <button onclick="sendMessage()">Send</button>
             </div>
         </div>
@@ -132,90 +131,122 @@
 
     <div class="voice-indicator" id="voiceIndicator">🎤 Listening...</div>
 
-    <!-- Order Modal -->
-    <div class="modal" id="orderModal"><div class="modal-content"><span class="modal-close" onclick="this.parentElement.parentElement.classList.remove('active')">✕</span><div style="font-size:44px">✅</div><h2>Order Confirmed!</h2><p id="orderItemName"></p><div id="foodStory"></div><div id="musicSection"></div><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:8px" onclick="this.parentElement.parentElement.classList.remove('active')">Continue</button></div></div>
+    <div class="modal" id="orderModal"><div class="modal-content"><span class="modal-close" onclick="closeModal('orderModal')">✕</span><div style="font-size:40px">✅</div><h2>Order Confirmed!</h2><p id="orderItemName"></p><div id="foodStory"></div><div id="musicSection"></div><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:8px" onclick="closeModal('orderModal')">Continue</button></div></div>
 
-    <!-- Playlist Modal -->
-    <div class="modal" id="playlistModal"><div class="modal-content"><span class="modal-close" onclick="this.parentElement.parentElement.classList.remove('active')">✕</span><div style="font-size:36px">🎷</div><h2>Radio Swiss Jazz</h2><div id="playlistContent"></div></div></div>
+    <div class="modal" id="playlistModal"><div class="modal-content"><span class="modal-close" onclick="closeModal('playlistModal')">✕</span><div style="font-size:32px">🎷</div><h2>Radio Swiss Jazz</h2><div id="playlistContent"></div></div></div>
 
-    <!-- Mood Modal -->
-    <div class="modal" id="moodModal"><div class="modal-content"><span class="modal-close" onclick="this.parentElement.parentElement.classList.remove('active')">✕</span><h2>Food Mood 🎭</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px"><div onclick="matchMood('tired')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😴</div><h3>Tired</h3></div><div onclick="matchMood('happy')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😊</div><h3>Happy</h3></div><div onclick="matchMood('comfort')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🤗</div><h3>Comfort</h3></div><div onclick="matchMood('adventurous')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🌍</div><h3>Adventurous</h3></div></div></div></div>
+    <div class="modal" id="moodModal"><div class="modal-content"><span class="modal-close" onclick="closeModal('moodModal')">✕</span><h2>Food Mood 🎭</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px"><div onclick="matchMood('tired')" style="padding:12px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:28px">😴</div><h3>Tired</h3></div><div onclick="matchMood('happy')" style="padding:12px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:28px">😊</div><h3>Happy</h3></div><div onclick="matchMood('comfort')" style="padding:12px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:28px">🤗</div><h3>Comfort</h3></div><div onclick="matchMood('adventurous')" style="padding:12px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:28px">🌍</div><h3>Adventurous</h3></div></div></div></div>
 
-    <footer class="footer"><div class="container"><p>Powered by <strong>AddisPower</strong></p><div><a href="contact.html">Locations</a></div></div></footer>
+    <footer class="footer"><div class="container"><p>Powered by <strong>AddisPower</strong></p></div></footer>
 
     <script>
-        // ============================================
-        // WORKER URL
-        // ============================================
+        // Worker URL
         const WORKER_URL = 'https://restaurant-menu-api.ai-menu-d29.workers.dev';
         
-        // ============================================
-        // BUILT-IN MENU (loads instantly)
-        // ============================================
-        const BUILTIN_MENU = [
-            { id:'1',name:'Bruschetta Classica',price:7.99,category:'🔥 Hot Starters',description:'Toasted ciabatta, fresh tomatoes, garlic, basil, EVOO',image:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400',portionSize:'4 pieces',waitTime:7,temperature:'hot',isVegetarian:true,isPopular:true },
-            { id:'2',name:'Garlic Bread',price:5.99,category:'🔥 Hot Starters',description:'Wood-fired bread, roasted garlic butter, parmesan, herbs',image:'https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=400',portionSize:'6 slices',waitTime:6,temperature:'hot',isVegetarian:true },
-            { id:'3',name:'Arancini',price:8.99,category:'🔥 Hot Starters',description:'Crispy fried risotto balls, mozzarella, ragu',image:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400',portionSize:'5 pieces',waitTime:10,temperature:'hot',isNew:true },
-            { id:'4',name:'Calamari Fritti',price:10.99,category:'🔥 Hot Starters',description:'Lightly battered squid, lemon aioli, marinara',image:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',portionSize:'Generous portion',waitTime:9,temperature:'hot',isPopular:true },
-            { id:'5',name:'Stuffed Mushrooms',price:8.49,category:'🔥 Hot Starters',description:'Button mushrooms, herbed ricotta, spinach, baked golden',image:'https://images.unsplash.com/photo-1635094496696-7e3c2b9a7a8f?w=400',portionSize:'6 pieces',waitTime:11,temperature:'hot',isVegetarian:true },
-            { id:'6',name:'Caprese Salad',price:9.99,category:'❄️ Cold Starters',description:'Buffalo mozzarella, vine tomatoes, basil, balsamic glaze',image:'https://images.unsplash.com/photo-1608032077018-c9aad9565d2b?w=400',portionSize:'Medium plate',waitTime:5,temperature:'cold',isVegetarian:true,isPopular:true },
-            { id:'7',name:'Prosciutto e Melone',price:11.99,category:'❄️ Cold Starters',description:'Parma ham, sweet cantaloupe, mint, balsamic pearls',image:'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=400',portionSize:'Elegant plate',waitTime:5,temperature:'cold' },
-            { id:'8',name:'Carpaccio di Manzo',price:13.99,category:'❄️ Cold Starters',description:'Beef tenderloin, arugula, parmesan, truffle oil',image:'https://images.unsplash.com/photo-1603073206124-2da28bfb0948?w=400',portionSize:'Artisan plate',waitTime:7,temperature:'cold',isNew:true },
-            { id:'9',name:'Antipasto Platter',price:14.99,category:'❄️ Cold Starters',description:'Italian cured meats, cheeses, olives, artichokes',image:'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400',portionSize:'Sharing board',waitTime:6,temperature:'cold',isPopular:true },
-            { id:'10',name:'Margherita Pizza',price:12.99,category:'🍕 Pizza',description:'San Marzano tomatoes, fresh mozzarella, basil, wood-fired',image:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',portionSize:'12 inches',waitTime:12,temperature:'hot',isVegetarian:true,isPopular:true },
-            { id:'11',name:'Diavola Pizza',price:13.99,category:'🍕 Pizza',description:'Spicy salami, chili flakes, mozzarella, tomato sauce',image:'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',portionSize:'12 inches',waitTime:14,temperature:'hot',isPopular:true },
-            { id:'12',name:'Quattro Formaggi',price:14.99,category:'🍕 Pizza',description:'Mozzarella, gorgonzola, fontina, parmesan',image:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400',portionSize:'12 inches',waitTime:13,temperature:'hot',isVegetarian:true },
-            { id:'13',name:'Prosciutto & Arugula Pizza',price:15.99,category:'🍕 Pizza',description:'Mozzarella, Parma ham, fresh arugula, parmesan',image:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400',portionSize:'12 inches',waitTime:14,temperature:'hot',isNew:true },
-            { id:'14',name:'Pizza Marinara',price:10.99,category:'🍕 Pizza',description:'Tomato, garlic, oregano, EVOO',image:'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400',portionSize:'12 inches',waitTime:11,temperature:'hot',isVegetarian:true },
-            { id:'15',name:'Pasta Carbonara',price:14.99,category:'🍝 Pasta',description:'Creamy egg sauce, pancetta, pecorino, black pepper',image:'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400',portionSize:'Large plate',waitTime:15,temperature:'hot',isPopular:true },
-            { id:'16',name:'Penne Arrabiata',price:11.99,category:'🍝 Pasta',description:'Penne in spicy tomato sauce, garlic, chili, basil',image:'https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?w=400',portionSize:'Large plate',waitTime:12,temperature:'hot',isVegetarian:true },
-            { id:'17',name:'Linguine Frutti di Mare',price:17.99,category:'🍝 Pasta',description:'Mussels, clams, shrimp, calamari, white wine garlic',image:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400',portionSize:'Large plate',waitTime:18,temperature:'hot',isNew:true },
-            { id:'18',name:'Lasagna al Forno',price:15.99,category:'🍝 Pasta',description:'Layers of pasta, beef ragu, béchamel, mozzarella',image:'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400',portionSize:'Large portion',waitTime:20,temperature:'hot',isPopular:true },
-            { id:'19',name:'Gnocchi al Pesto',price:13.99,category:'🍝 Pasta',description:'Potato gnocchi, fresh basil pesto, pine nuts, parmesan',image:'https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?w=400',portionSize:'Medium plate',waitTime:14,temperature:'hot',isVegetarian:true },
-            { id:'20',name:'Chicken Parmigiana',price:16.99,category:'🥩 Mains',description:'Breaded chicken, tomato sauce, mozzarella, spaghetti',image:'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400',portionSize:'Large plate',waitTime:18,temperature:'hot',isPopular:true },
-            { id:'21',name:'Grilled Salmon',price:19.99,category:'🥩 Mains',description:'Atlantic salmon, lemon butter, capers, vegetables',image:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400',portionSize:'Elegant plate',waitTime:20,temperature:'hot',isNew:true },
-            { id:'22',name:'Osso Buco',price:22.99,category:'🥩 Mains',description:'Slow-braised veal shank, gremolata, saffron risotto',image:'https://images.unsplash.com/photo-1544025162-d76694265947?w=400',portionSize:'Premium plate',waitTime:25,temperature:'hot' },
-            { id:'23',name:'Caesar Salad',price:9.99,category:'🥗 Salads',description:'Crisp romaine, parmesan, croutons, house dressing',image:'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400',portionSize:'Large bowl',waitTime:8,temperature:'cold',isPopular:true },
-            { id:'24',name:'Mediterranean Salad',price:10.99,category:'🥗 Salads',description:'Mixed greens, feta, olives, sun-dried tomatoes, oregano',image:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400',portionSize:'Large bowl',waitTime:7,temperature:'cold',isVegetarian:true },
-            { id:'25',name:'Spinach & Walnut Salad',price:10.49,category:'🥗 Salads',description:'Baby spinach, candied walnuts, goat cheese, balsamic',image:'https://images.unsplash.com/photo-1572449043416-55f6a5a1cb4a?w=400',portionSize:'Medium bowl',waitTime:7,temperature:'cold',isVegetarian:true,isNew:true },
-            { id:'26',name:'Tiramisu',price:8.99,category:'🍰 Desserts',description:'Espresso-soaked ladyfingers, mascarpone, cocoa',image:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400',portionSize:'Single serving',waitTime:5,temperature:'cold',isPopular:true,isVegetarian:true },
-            { id:'27',name:'Panna Cotta',price:7.99,category:'🍰 Desserts',description:'Vanilla cream, strawberry coulis, fresh mint',image:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400',portionSize:'Single serving',waitTime:4,temperature:'cold',isVegetarian:true },
-            { id:'28',name:'Cannoli Siciliani',price:8.49,category:'🍰 Desserts',description:'Crispy pastry, sweet ricotta, chocolate chips, pistachio',image:'https://images.unsplash.com/photo-1607937234387-75d435b3a51d?w=400',portionSize:'3 pieces',waitTime:5,temperature:'cold',isNew:true },
-            { id:'29',name:'Chocolate Lava Cake',price:9.99,category:'🍰 Desserts',description:'Warm chocolate cake, molten center, vanilla gelato',image:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400',portionSize:'Single serving',waitTime:12,temperature:'hot',isPopular:true },
-            { id:'30',name:'Espresso',price:3.99,category:'☕ Hot Drinks',description:'Rich Italian dark roast, perfectly extracted',image:'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400',portionSize:'Single shot',waitTime:3,temperature:'hot',isPopular:true },
-            { id:'31',name:'Cappuccino',price:4.99,category:'☕ Hot Drinks',description:'Espresso, steamed milk, thick foam, cocoa',image:'https://images.unsplash.com/photo-1534778101976-62847782c213?w=400',portionSize:'8oz cup',waitTime:4,temperature:'hot',isPopular:true },
-            { id:'32',name:'Hot Chocolate Italiano',price:5.49,category:'☕ Hot Drinks',description:'Thick Italian hot chocolate, whipped cream',image:'https://images.unsplash.com/photo-1542990253-0d0f5be5f80b?w=400',portionSize:'8oz cup',waitTime:4,temperature:'hot',isVegetarian:true },
-            { id:'33',name:'Fresh Lemonade',price:4.99,category:'🧊 Cold Drinks',description:'Fresh Sorrento lemons, mint, ice cold',image:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold',isVegetarian:true },
-            { id:'34',name:'Iced Latte',price:5.49,category:'🧊 Cold Drinks',description:'Double espresso, cold milk, ice',image:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold' },
-            { id:'35',name:'Italian Soda',price:4.49,category:'🧊 Cold Drinks',description:'Sparkling water, raspberry/peach/blood orange',image:'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold',isVegetarian:true },
-            { id:'36',name:'Aperol Spritz',price:9.99,category:'🧊 Cold Drinks',description:'Aperol, prosecco, soda, orange slice',image:'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400',portionSize:'12oz glass',waitTime:4,temperature:'cold',isPopular:true },
-            { id:'99',name:'Secret Truffle Pasta',price:24.99,category:'🍝 Pasta',description:'🤫 Hand-made tagliatelle, black truffle cream',image:'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=400',portionSize:'Premium plate',waitTime:20,temperature:'hot',isSecret:true }
-        ];
-        
-        const CATS = ['🔥 Hot Starters','❄️ Cold Starters','🍕 Pizza','🍝 Pasta','🥩 Mains','🥗 Salads','🍰 Desserts','☕ Hot Drinks','🧊 Cold Drinks'];
-        
-        let menuItems = [...BUILTIN_MENU];
-        let currentCategory = 'all';
-        let currentQuickFilter = null;
+        // Helper to normalize item fields (handles both short and long names)
+        function norm(item) {
+            return {
+                id: item.id || item.n || '',
+                name: item.n || item.name || '',
+                price: item.p || item.price || 0,
+                category: item.c || item.category || '',
+                description: item.d || item.description || '',
+                image: item.img || item.image || 'https://via.placeholder.com/400x300?text=Food',
+                portionSize: item.sz || item.portionSize || '',
+                waitTime: item.wt || item.waitTime || 0,
+                temperature: item.t || item.temperature || '',
+                isVegetarian: item.v || item.isVegetarian || false,
+                isPopular: item.pop || item.isPopular || false,
+                isNew: item.nw || item.isNew || false,
+                isSecret: item.sec || item.isSecret || false
+            };
+        }
 
-        // ============================================
-        // RENDER FUNCTIONS
-        // ============================================
+        const CATS = ['🔥 Hot Starters','❄️ Cold Starters','🍕 Pizza','🍝 Pasta','🥩 Mains','🥗 Salads','🍰 Desserts','☕ Hot Drinks','🧊 Cold Drinks'];
+        let menuItems = [];
+        let currentCategory = 'all', currentQuickFilter = null;
+
+        // Load menu from Worker with 5-second timeout
+        async function loadMenu() {
+            try {
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 5000);
+                const r = await fetch(WORKER_URL + '/api/menu', { signal: controller.signal });
+                clearTimeout(timeout);
+                const d = await r.json();
+                if (d.ok && d.data && d.data.items) {
+                    menuItems = d.data.items.map(norm);
+                }
+            } catch(e) {
+                // Worker failed - load from backup below
+            }
+            
+            // If still empty, use backup
+            if (!menuItems.length) {
+                menuItems = getBackupMenu();
+            }
+            
+            renderCategories();
+            renderMenu(menuItems);
+        }
+
+        function getBackupMenu() {
+            return [
+                { id:'1',name:'Bruschetta Classica',price:7.99,category:'🔥 Hot Starters',description:'Toasted ciabatta, tomatoes, garlic, basil',image:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400',portionSize:'4 pieces',waitTime:7,temperature:'hot',isVegetarian:true,isPopular:true },
+                { id:'2',name:'Garlic Bread',price:5.99,category:'🔥 Hot Starters',description:'Wood-fired, garlic butter, parmesan',image:'https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=400',portionSize:'6 slices',waitTime:6,temperature:'hot',isVegetarian:true },
+                { id:'3',name:'Arancini',price:8.99,category:'🔥 Hot Starters',description:'Crispy risotto balls, mozzarella, ragu',image:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400',portionSize:'5 pieces',waitTime:10,temperature:'hot',isNew:true },
+                { id:'4',name:'Calamari Fritti',price:10.99,category:'🔥 Hot Starters',description:'Battered squid, lemon aioli, marinara',image:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',portionSize:'Generous',waitTime:9,temperature:'hot',isPopular:true },
+                { id:'5',name:'Stuffed Mushrooms',price:8.49,category:'🔥 Hot Starters',description:'Herbed ricotta, spinach, baked',image:'https://images.unsplash.com/photo-1635094496696-7e3c2b9a7a8f?w=400',portionSize:'6 pieces',waitTime:11,temperature:'hot',isVegetarian:true },
+                { id:'6',name:'Caprese Salad',price:9.99,category:'❄️ Cold Starters',description:'Buffalo mozzarella, tomatoes, balsamic',image:'https://images.unsplash.com/photo-1608032077018-c9aad9565d2b?w=400',portionSize:'Medium',waitTime:5,temperature:'cold',isVegetarian:true,isPopular:true },
+                { id:'7',name:'Prosciutto e Melone',price:11.99,category:'❄️ Cold Starters',description:'Parma ham, cantaloupe, mint',image:'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=400',portionSize:'Elegant',waitTime:5,temperature:'cold' },
+                { id:'8',name:'Carpaccio di Manzo',price:13.99,category:'❄️ Cold Starters',description:'Beef tenderloin, arugula, truffle oil',image:'https://images.unsplash.com/photo-1603073206124-2da28bfb0948?w=400',portionSize:'Artisan',waitTime:7,temperature:'cold',isNew:true },
+                { id:'9',name:'Antipasto Platter',price:14.99,category:'❄️ Cold Starters',description:'Cured meats, cheeses, olives',image:'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400',portionSize:'Sharing',waitTime:6,temperature:'cold',isPopular:true },
+                { id:'10',name:'Margherita Pizza',price:12.99,category:'🍕 Pizza',description:'San Marzano, mozzarella, basil',image:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',portionSize:'12 inches',waitTime:12,temperature:'hot',isVegetarian:true,isPopular:true },
+                { id:'11',name:'Diavola Pizza',price:13.99,category:'🍕 Pizza',description:'Spicy salami, chili flakes',image:'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',portionSize:'12 inches',waitTime:14,temperature:'hot',isPopular:true },
+                { id:'12',name:'Quattro Formaggi',price:14.99,category:'🍕 Pizza',description:'4 cheeses: mozzarella, gorgonzola',image:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400',portionSize:'12 inches',waitTime:13,temperature:'hot',isVegetarian:true },
+                { id:'13',name:'Prosciutto & Arugula',price:15.99,category:'🍕 Pizza',description:'Parma ham, fresh arugula',image:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400',portionSize:'12 inches',waitTime:14,temperature:'hot',isNew:true },
+                { id:'14',name:'Pizza Marinara',price:10.99,category:'🍕 Pizza',description:'Tomato, garlic, oregano',image:'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400',portionSize:'12 inches',waitTime:11,temperature:'hot',isVegetarian:true },
+                { id:'15',name:'Pasta Carbonara',price:14.99,category:'🍝 Pasta',description:'Egg sauce, pancetta, pecorino',image:'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400',portionSize:'Large',waitTime:15,temperature:'hot',isPopular:true },
+                { id:'16',name:'Penne Arrabiata',price:11.99,category:'🍝 Pasta',description:'Spicy tomato, garlic, chili',image:'https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?w=400',portionSize:'Large',waitTime:12,temperature:'hot',isVegetarian:true },
+                { id:'17',name:'Frutti di Mare',price:17.99,category:'🍝 Pasta',description:'Mussels, clams, shrimp',image:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400',portionSize:'Large',waitTime:18,temperature:'hot',isNew:true },
+                { id:'18',name:'Lasagna al Forno',price:15.99,category:'🍝 Pasta',description:'Beef ragu, béchamel',image:'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400',portionSize:'Large',waitTime:20,temperature:'hot',isPopular:true },
+                { id:'19',name:'Gnocchi al Pesto',price:13.99,category:'🍝 Pasta',description:'Potato gnocchi, basil pesto',image:'https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?w=400',portionSize:'Medium',waitTime:14,temperature:'hot',isVegetarian:true },
+                { id:'20',name:'Chicken Parmigiana',price:16.99,category:'🥩 Mains',description:'Breaded chicken, mozzarella',image:'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400',portionSize:'Large',waitTime:18,temperature:'hot',isPopular:true },
+                { id:'21',name:'Grilled Salmon',price:19.99,category:'🥩 Mains',description:'Atlantic salmon, lemon butter',image:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400',portionSize:'Elegant',waitTime:20,temperature:'hot',isNew:true },
+                { id:'22',name:'Osso Buco',price:22.99,category:'🥩 Mains',description:'Braised veal shank, risotto',image:'https://images.unsplash.com/photo-1544025162-d76694265947?w=400',portionSize:'Premium',waitTime:25,temperature:'hot' },
+                { id:'23',name:'Caesar Salad',price:9.99,category:'🥗 Salads',description:'Romaine, parmesan, croutons',image:'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400',portionSize:'Large',waitTime:8,temperature:'cold',isPopular:true },
+                { id:'24',name:'Mediterranean Salad',price:10.99,category:'🥗 Salads',description:'Feta, olives, sun-dried tomatoes',image:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400',portionSize:'Large',waitTime:7,temperature:'cold',isVegetarian:true },
+                { id:'25',name:'Spinach & Walnut',price:10.49,category:'🥗 Salads',description:'Baby spinach, goat cheese',image:'https://images.unsplash.com/photo-1572449043416-55f6a5a1cb4a?w=400',portionSize:'Medium',waitTime:7,temperature:'cold',isVegetarian:true,isNew:true },
+                { id:'26',name:'Tiramisu',price:8.99,category:'🍰 Desserts',description:'Espresso, mascarpone, cocoa',image:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400',portionSize:'Single',waitTime:5,temperature:'cold',isPopular:true,isVegetarian:true },
+                { id:'27',name:'Panna Cotta',price:7.99,category:'🍰 Desserts',description:'Vanilla cream, strawberry',image:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400',portionSize:'Single',waitTime:4,temperature:'cold',isVegetarian:true },
+                { id:'28',name:'Cannoli Siciliani',price:8.49,category:'🍰 Desserts',description:'Sweet ricotta, pistachio',image:'https://images.unsplash.com/photo-1607937234387-75d435b3a51d?w=400',portionSize:'3 pieces',waitTime:5,temperature:'cold',isNew:true },
+                { id:'29',name:'Chocolate Lava Cake',price:9.99,category:'🍰 Desserts',description:'Molten center, gelato',image:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400',portionSize:'Single',waitTime:12,temperature:'hot',isPopular:true },
+                { id:'30',name:'Espresso',price:3.99,category:'☕ Hot Drinks',description:'Rich Italian dark roast',image:'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400',portionSize:'Single',waitTime:3,temperature:'hot',isPopular:true },
+                { id:'31',name:'Cappuccino',price:4.99,category:'☕ Hot Drinks',description:'Espresso, steamed milk',image:'https://images.unsplash.com/photo-1534778101976-62847782c213?w=400',portionSize:'8oz',waitTime:4,temperature:'hot',isPopular:true },
+                { id:'32',name:'Hot Chocolate',price:5.49,category:'☕ Hot Drinks',description:'Thick Italian style',image:'https://images.unsplash.com/photo-1542990253-0d0f5be5f80b?w=400',portionSize:'8oz',waitTime:4,temperature:'hot',isVegetarian:true },
+                { id:'33',name:'Fresh Lemonade',price:4.99,category:'🧊 Cold Drinks',description:'Sorrento lemons, mint',image:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400',portionSize:'16oz',waitTime:3,temperature:'cold',isVegetarian:true },
+                { id:'34',name:'Iced Latte',price:5.49,category:'🧊 Cold Drinks',description:'Double espresso, cold milk',image:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400',portionSize:'16oz',waitTime:3,temperature:'cold' },
+                { id:'35',name:'Italian Soda',price:4.49,category:'🧊 Cold Drinks',description:'Sparkling, fruit syrup',image:'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400',portionSize:'16oz',waitTime:3,temperature:'cold',isVegetarian:true },
+                { id:'36',name:'Aperol Spritz',price:9.99,category:'🧊 Cold Drinks',description:'Aperol, prosecco, orange',image:'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400',portionSize:'12oz',waitTime:4,temperature:'cold',isPopular:true },
+                { id:'99',name:'Secret Truffle Pasta',price:24.99,category:'🍝 Pasta',description:'🤫 Black truffle cream',image:'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=400',portionSize:'Premium',waitTime:20,temperature:'hot',isSecret:true }
+            ];
+        }
+
         function renderCategories() {
             document.getElementById('categoryFilters').innerHTML = '<button class="filter-btn active" onclick="filterByCategory(\'all\')">All</button>' + CATS.map(c => `<button class="filter-btn" onclick="filterByCategory('${c}')">${c}</button>`).join('');
         }
 
         function renderMenu(items) {
             const g = document.getElementById('menuGrid');
-            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><div style="font-size:40px">🍽️</div><h3>No items found</h3></div>'; return; }
+            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><h3>No items found</h3></div>'; return; }
             g.innerHTML = items.map(i => `
                 <div class="menu-card" onclick="askAbout('${i.id}')">
                     <img class="menu-card-image" src="${i.image}" alt="${i.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Food'">
                     <div class="menu-card-body">
-                        <div class="badges">${i.temperature==='hot'?'<span class="badge badge-hot">🔥 Hot</span>':''}${i.temperature==='cold'?'<span class="badge badge-cold">❄️ Cold</span>':''}${i.isNew?'<span class="badge badge-new">🆕</span>':''}${i.isPopular?'<span class="badge badge-popular">⭐</span>':''}${i.isVegetarian?'<span class="badge badge-veg">🥬</span>':''}${i.isSecret?'<span class="badge badge-secret">🤫</span>':''}</div>
+                        <div class="badges">${i.temperature==='hot'?'<span class="badge badge-hot">🔥</span>':''}${i.temperature==='cold'?'<span class="badge badge-cold">❄️</span>':''}${i.isNew?'<span class="badge badge-new">NEW</span>':''}${i.isPopular?'<span class="badge badge-popular">⭐</span>':''}${i.isVegetarian?'<span class="badge badge-veg">🥬</span>':''}${i.isSecret?'<span class="badge badge-secret">🤫</span>':''}</div>
                         <h3>${i.name}</h3><p class="desc">${i.description}</p>
-                        <div style="display:flex;justify-content:space-between;align-items:center"><span class="price">$${i.price.toFixed(2)}</span>${i.waitTime?`<span style="font-size:10px;color:#636e72">⏱️ ${i.waitTime}min</span>`:''}</div>
-                        <button class="btn-order" onclick="event.stopPropagation();placeOrder('${i.id}')">🛒 Order Now</button>
+                        <div style="display:flex;justify-content:space-between;align-items:center"><span class="price">$${i.price.toFixed(2)}</span><span style="font-size:10px;color:#636e72">⏱️ ${i.waitTime}min</span></div>
+                        <button class="btn-order" onclick="event.stopPropagation();placeOrder('${i.id}')">🛒 Order</button>
                     </div>
                 </div>
             `).join('');
@@ -226,9 +257,7 @@
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', (c==='all'&&b.textContent==='All')||b.textContent===c));
             applyFilters();
         }
-
         function quickFilter(t) { currentQuickFilter = currentQuickFilter===t ? null : t; applyFilters(); }
-
         function applyFilters() {
             let f = [...menuItems];
             const q = document.getElementById('searchInput').value.toLowerCase();
@@ -244,20 +273,17 @@
             renderMenu(f);
         }
 
-        // ============================================
-        // SPECIAL FEATURES
-        // ============================================
         function feelingLucky() {
             const r = menuItems[Math.floor(Math.random() * menuItems.length)];
             toggleChat(true);
-            setTimeout(() => { document.getElementById('chatInput').value = `Tell me about ${r.name} 🎲`; sendMessage(); }, 300);
+            setTimeout(() => { document.getElementById('chatInput').value = `Tell me about ${r.name}`; sendMessage(); }, 300);
         }
 
         function matchMood(m) {
-            document.getElementById('moodModal').classList.remove('active');
+            closeModal('moodModal');
             toggleChat(true);
-            const msgs = { tired:"I'm tired, need energy! 😴", happy:"I'm happy, let's celebrate! 🎉", comfort:"I need comfort food 🤗", adventurous:"I'm feeling adventurous! 🌍" };
-            setTimeout(() => { document.getElementById('chatInput').value = msgs[m]; sendMessage(); }, 300);
+            const ms = { tired:"I'm tired, need energy! 😴", happy:"I'm happy, celebrate! 🎉", comfort:"I need comfort food 🤗", adventurous:"I'm feeling adventurous! 🌍" };
+            setTimeout(() => { document.getElementById('chatInput').value = ms[m]; sendMessage(); }, 300);
         }
 
         function askAbout(id) {
@@ -272,129 +298,67 @@
             if (!item) return;
             document.getElementById('orderItemName').textContent = `You ordered: ${item.name}`;
             document.getElementById('foodStory').innerHTML = '';
-            document.getElementById('musicSection').innerHTML = `
-                <div class="music-player"><h3>🎷 Listen while you wait!</h3>
-                <div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">🔴 Radio Swiss Jazz — Live Now</div></div>`;
+            document.getElementById('musicSection').innerHTML = `<div class="music-player"><h3>🎷 Listen while you wait!</h3><div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">🔴 Radio Swiss Jazz — Live</div></div>`;
             document.getElementById('orderModal').classList.add('active');
         }
 
-        function loadPlaylist() {
-            document.getElementById('playlistContent').innerHTML = `
-                <div class="music-player"><h3>🎷 Radio Swiss Jazz — Live 24/7</h3>
-                <div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">🔴 LIVE NOW — Radio Swiss Jazz</div>
-                <div class="song-item" onclick="window.open('https://www.youtube.com/watch?v=4udavF0PIko','_blank')">🎶 Italian Dinner Jazz</div>
-                <div class="song-item" onclick="window.open('https://www.youtube.com/watch?v=MV_3Dpw-BRY','_blank')">🎶 Romantic Cafe</div></div>`;
+        function openPlaylist() {
+            document.getElementById('playlistModal').classList.add('active');
+            document.getElementById('playlistContent').innerHTML = `<div class="music-player"><h3>🎷 Radio Swiss Jazz — Live 24/7</h3><div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">🔴 LIVE — Radio Swiss Jazz</div><div class="song-item" onclick="window.open('https://www.youtube.com/watch?v=4udavF0PIko','_blank')">🎶 Italian Dinner Jazz</div><div class="song-item" onclick="window.open('https://www.youtube.com/watch?v=MV_3Dpw-BRY','_blank')">🎶 Romantic Cafe</div></div>`;
         }
 
-        // ============================================
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
         // CHAT
-        // ============================================
         let chatOpen = false, chatHistory = [];
-        function toggleChat(f) {
-            chatOpen = f !== undefined ? f : !chatOpen;
-            document.getElementById('chatWindow').style.display = chatOpen ? 'flex' : 'none';
-            if (chatOpen) document.getElementById('chatInput').focus();
-        }
+        function toggleChat(f) { chatOpen = f !== undefined ? f : !chatOpen; document.getElementById('chatWindow').style.display = chatOpen ? 'flex' : 'none'; if (chatOpen) document.getElementById('chatInput').focus(); }
 
         async function sendMessage() {
             const input = document.getElementById('chatInput'), msg = input.value.trim();
             if (!msg) return;
             input.value = '';
-            addMessage('user', msg);
-            chatHistory.push({ role: 'user', content: msg });
-            addMessage('bot', '...');
-            
+            addMessage('user', msg); chatHistory.push({ role: 'user', content: msg }); addMessage('bot', '...');
             try {
-                const r = await fetch(WORKER_URL + '/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: msg, history: chatHistory.slice(-4) })
-                });
-                const d = await r.json();
-                removeLastBot();
-                if (d.ok && d.reply) {
-                    addMessage('bot', d.reply);
-                    chatHistory.push({ role: 'assistant', content: d.reply });
-                } else if (d.success && d.response) {
-                    addMessage('bot', d.response);
-                    chatHistory.push({ role: 'assistant', content: d.response });
-                } else {
-                    addMessage('bot', smartFallback(msg));
-                }
-            } catch(e) {
-                removeLastBot();
-                addMessage('bot', smartFallback(msg));
-            }
+                const r = await fetch(WORKER_URL + '/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: msg, history: chatHistory.slice(-4) }) });
+                const d = await r.json(); removeLastBot();
+                const reply = d.ok ? d.reply : d.response || smartFallback(msg);
+                addMessage('bot', reply); chatHistory.push({ role: 'assistant', content: reply });
+            } catch(e) { removeLastBot(); addMessage('bot', smartFallback(msg)); }
         }
 
         function smartFallback(msg) {
             const q = msg.toLowerCase();
-            const found = menuItems.filter(i => i.name.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
+            const found = menuItems.filter(i => i.name.toLowerCase().includes(q));
             if (found.length > 0) {
                 const i = found[0];
-                return `🔥 **${i.name}** — $${i.price.toFixed(2)}\n   ${i.description}\n   📏 ${i.portionSize} | ⏱️ ${i.waitTime} min\n\nWant to order? 😋`;
+                return `${i.temperature==='hot'?'🔥':'❄️'} **${i.name}** — $${i.price.toFixed(2)}\n   ${i.description}\n   📏 ${i.portionSize} | ⏱️ ${i.waitTime} min`;
             }
-            if (q.includes('pizza')) return `🍕 Our Pizzas:\n\n${menuItems.filter(i=>i.category==='🍕 Pizza').map(i=>`• ${i.name} ($${i.price.toFixed(2)})`).join('\n')}`;
-            if (q.includes('pasta')) return `🍝 Our Pastas:\n\n${menuItems.filter(i=>i.category==='🍝 Pasta').map(i=>`• ${i.name} ($${i.price.toFixed(2)})`).join('\n')}`;
-            if (q.includes('recommend')) return `⭐ I recommend: Margherita Pizza ($12.99) 🍕, Pasta Carbonara ($14.99) 🍝, and Tiramisu ($8.99) 🍰! Total: $36.97!`;
-            return `I can help! Try:\n• Any dish name\n• "Show pizzas"\n• "Recommend"\n• "I'm feeling adventurous" 😊`;
+            if (q.includes('recommend')) return `⭐ Top picks: Margherita Pizza ($12.99) 🍕, Pasta Carbonara ($14.99) 🍝, Tiramisu ($8.99) 🍰 | Total: $36.97`;
+            return `Try: "Margherita" | "Show pizzas" | "Recommend" | "I'm feeling adventurous" 😊`;
         }
 
-        function addMessage(type, text) {
-            const c = document.getElementById('chatMessages'), div = document.createElement('div');
-            div.className = `message ${type}`; div.textContent = text;
-            c.appendChild(div); c.scrollTop = c.scrollHeight;
-        }
-        function removeLastBot() {
-            const msgs = document.querySelectorAll('.message.bot'), last = msgs[msgs.length-1];
-            if (last && last.textContent === '...') last.remove();
-        }
+        function addMessage(type, text) { const c = document.getElementById('chatMessages'), div = document.createElement('div'); div.className = `message ${type}`; div.textContent = text; c.appendChild(div); c.scrollTop = c.scrollHeight; }
+        function removeLastBot() { const msgs = document.querySelectorAll('.message.bot'), last = msgs[msgs.length-1]; if (last && last.textContent === '...') last.remove(); }
 
-        // ============================================
         // VOICE
-        // ============================================
         let recognition = null, isRecording = false;
         function initVoice() {
             const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SR) { document.getElementById('voiceBtn').style.display = 'none'; return; }
-            recognition = new SR();
-            recognition.lang = 'en-US';
-            recognition.interimResults = false;
-            recognition.onresult = e => {
-                document.getElementById('chatInput').value = e.results[0][0].transcript;
-                document.getElementById('voiceIndicator').style.display = 'none';
-                document.getElementById('voiceBtn').classList.remove('recording');
-                isRecording = false;
-                setTimeout(sendMessage, 500);
-            };
-            recognition.onerror = () => {
-                document.getElementById('voiceIndicator').style.display = 'none';
-                document.getElementById('voiceBtn').classList.remove('recording');
-                isRecording = false;
-            };
+            recognition = new SR(); recognition.lang = 'en-US'; recognition.interimResults = false;
+            recognition.onresult = e => { document.getElementById('chatInput').value = e.results[0][0].transcript; stopVoice(); setTimeout(sendMessage, 500); };
+            recognition.onerror = () => stopVoice();
+            recognition.onend = () => stopVoice();
         }
+        function stopVoice() { document.getElementById('voiceIndicator').style.display = 'none'; document.getElementById('voiceBtn').classList.remove('recording'); isRecording = false; }
         function toggleVoice() {
             if (!recognition) return;
-            if (isRecording) {
-                recognition.stop();
-                document.getElementById('voiceIndicator').style.display = 'none';
-                document.getElementById('voiceBtn').classList.remove('recording');
-            } else {
-                recognition.start();
-                document.getElementById('voiceIndicator').style.display = 'block';
-                document.getElementById('voiceBtn').classList.add('recording');
-            }
-            isRecording = !isRecording;
+            if (isRecording) { recognition.stop(); stopVoice(); }
+            else { recognition.start(); document.getElementById('voiceIndicator').style.display = 'block'; document.getElementById('voiceBtn').classList.add('recording'); isRecording = true; }
         }
 
-        // ============================================
         // INIT
-        // ============================================
-        document.addEventListener('DOMContentLoaded', () => {
-            renderCategories();
-            renderMenu(menuItems);
-            initVoice();
-        });
+        document.addEventListener('DOMContentLoaded', () => { loadMenu(); initVoice(); });
         document.addEventListener('click', e => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
     </script>
 </body>
