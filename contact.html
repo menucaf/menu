@@ -1,161 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Locations - Premium Restaurant</title>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGS Locations</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8f9fa;color:#2d3436}
-        .header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px 0;position:sticky;top:0;z-index:1000}
-        .container{max-width:1000px;margin:0 auto;padding:0 16px}
-        .header .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-        .logo{font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px}
-        .nav{display:flex;gap:14px;align-items:center}
-        .nav a{color:#fff;text-decoration:none;font-weight:500;font-size:14px}
-        .nav a.active{border-bottom:2px solid #e85d04;padding-bottom:2px}
-        .btn-order{background:#e85d04;padding:6px 14px;border-radius:16px;font-weight:600;font-size:13px}
-        
-        .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:40px 0}
-        .hero h2{font-size:32px;margin-bottom:6px}
-        .hero p{font-size:15px;opacity:.9}
-        
-        .branches-section{padding:30px 0}
-        .branches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-        .branch-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:all .3s}
-        .branch-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-        .branch-header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:16px 20px}
-        .branch-header h3{font-size:20px}
-        .branch-body{padding:20px}
-        .info-row{display:flex;gap:8px;margin-bottom:10px;color:#636e72;font-size:14px;align-items:start}
-        .info-row .icon{min-width:20px;font-size:16px}
-        .features{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
-        .feature-tag{background:#f0f0f0;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:500}
-        .branch-actions{display:flex;gap:8px;margin-top:16px}
-        .btn-call,.btn-directions{flex:1;padding:10px;border:none;border-radius:8px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;font-size:13px;transition:all .3s}
-        .btn-call{background:#e85d04;color:#fff}
-        .btn-call:hover{background:#dc2f02}
-        .btn-directions{background:#f0f0f0;color:#2d3436}
-        .btn-directions:hover{background:#e0e0e0}
-        
-        .info-bar{background:#fff;border-top:1px solid #e0e0e0;padding:12px 0;text-align:center;font-size:13px;color:#636e72;margin-top:20px}
-        
-        .footer{background:#1a1a2e;color:#fff;padding:24px 0;text-align:center;margin-top:40px}
-        .footer a{color:#b2bec3;text-decoration:none;margin:0 8px;font-size:12px}
-        
-        .loading{text-align:center;padding:40px}
-        .spinner{width:32px;height:32px;border:3px solid #f0f0f0;border-top-color:#e85d04;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
-        @keyframes spin{to{transform:rotate(360deg)}}
-        
-        @media(max-width:768px){.hero h2{font-size:26px}.branches-grid{grid-template-columns:1fr}.branch-actions{flex-direction:column}}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#1a1a2e;color:#fff}
+        .header{background:#e85d04;padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:999}
+        .header a{color:#fff;text-decoration:none;font-size:14px}
+        .hero{text-align:center;padding:30px 16px;background:linear-gradient(135deg,#e85d04,#dc2f02)}
+        .hero h2{font-size:24px;margin-bottom:4px}
+        .branches{padding:20px 16px;display:grid;gap:12px}
+        .branch-card{background:#16213e;border-radius:10px;padding:16px}
+        .branch-card h3{color:#e85d04;margin-bottom:8px}
+        .branch-card p{font-size:13px;color:#b2bec3;margin-bottom:4px}
+        .call-btn{display:inline-block;margin-top:8px;padding:8px 16px;background:#e85d04;color:#fff;text-decoration:none;border-radius:16px;font-size:12px;margin-right:6px}
+        .footer{text-align:center;padding:20px;font-size:11px;color:#b2bec3}
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo"><span>🍽️</span><span>Premium Restaurant</span></div>
-            <nav class="nav">
-                <a href="index.html">Menu</a>
-                <a href="contact.html" class="active">Locations</a>
-                <a href="index.html" class="btn-order">Order Now</a>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h2>📍 Our Locations</h2>
-            <p>4 beautiful branches across the city — all with free parking</p>
-        </div>
-    </section>
-
-    <section class="branches-section">
-        <div class="container">
-            <div class="branches-grid" id="branchesGrid">
-                <div class="loading"><div class="spinner"></div><p>Loading locations...</p></div>
-            </div>
-        </div>
-    </section>
-
-    <div class="info-bar">
-        <div class="container">🕐 All locations accept: Cash, Credit Cards, Apple Pay & Google Pay</div>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p style="margin-bottom:6px">Powered by <strong>AddisPower</strong></p>
-            <div>
-                <a href="index.html">Menu</a>
-                <a href="contact.html">Locations</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-
+    <header class="header"><a href="index.html">← Menu</a><span>📍 BGS Locations</span></header>
+    <section class="hero"><h2>7 Branches</h2><p>Loyal to Quality</p></section>
+    <div class="branches" id="branchesGrid"></div>
+    <div class="footer">📞 0924131415 | 0984131415 | 0985131415</div>
     <script>
-        const WORKER_URL = 'https://restaurant-menu-api.ai-menu-d29.workers.dev';
-
-        async function loadBranches() {
-            try {
-                const response = await fetch(`${WORKER_URL}/api/branches`);
-                const data = await response.json();
-                
-                if (data.success && data.data.branches) {
-                    renderBranches(data.data.branches);
-                } else {
-                    throw new Error('No branches data');
-                }
-            } catch (error) {
-                document.getElementById('branchesGrid').innerHTML = `
-                    <div style="text-align:center;padding:40px;grid-column:1/-1">
-                        <p>Unable to load locations. Please refresh.</p>
-                        <button onclick="loadBranches()" style="margin-top:12px;padding:10px 20px;background:#e85d04;color:#fff;border:none;border-radius:20px;cursor:pointer;font-weight:600">Retry</button>
-                    </div>
-                `;
-            }
-        }
-
-        function renderBranches(branches) {
-            const grid = document.getElementById('branchesGrid');
-            
-            grid.innerHTML = branches.map(branch => `
-                <div class="branch-card">
-                    <div class="branch-header">
-                        <h3>${branch.name}</h3>
-                    </div>
-                    <div class="branch-body">
-                        <div class="info-row">
-                            <span class="icon">📍</span>
-                            <span>${branch.address}</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="icon">📞</span>
-                            <span><a href="tel:${branch.phone.replace(/[^0-9]/g,'')}" style="color:#e85d04;text-decoration:none;font-weight:600">${branch.phone}</a></span>
-                        </div>
-                        <div class="info-row">
-                            <span class="icon">🕐</span>
-                            <span>${branch.hours}</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="icon">🅿️</span>
-                            <span>${branch.parking}</span>
-                        </div>
-                        ${branch.features ? `
-                        <div class="features">
-                            ${branch.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
-                        </div>` : ''}
-                        <div class="branch-actions">
-                            <a href="tel:${branch.phone.replace(/[^0-9]/g,'')}" class="btn-call">📞 Call Now</a>
-                            <a href="https://maps.google.com/?q=${branch.coordinates.lat},${branch.coordinates.lng}" target="_blank" class="btn-directions">🗺️ Directions</a>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Load branches on page load
-        document.addEventListener('DOMContentLoaded', loadBranches);
+        const branches=[
+            {n:'ሰማት ፍፀል',a:'ሰማት ፍፀል ቤት አጽራ ፊት ለፊት ሰንግድን መግቢያ',ph:'0924131415'},
+            {n:'አያት',a:'አያት ለሚከሩ ከ/ከተማ አጠንብ',ph:'0984131415'},
+            {n:'ለቡ መብቃ',a:'ለቡ መብቃ ሰፈር',ph:'0985131415'},
+            {n:'ቤተል',a:'ቤተል ቢጫ ፎቶ ሪፖ ህንፃ አጠንብ',ph:'0948131415'},
+            {n:'ና ኪሎ',a:'ና ኪሎ ት/ማርያም ቤ/ክ ፊት ለፊት',ph:'0986131415'},
+            {n:'ፍላጧን',a:'ፍላጧንን ከሆች ፊጆንሲ ፊት ለፊት',ph:'0968131415'},
+            {n:'በሌ መድንጋግለም',a:'በሌ መድንጋግለም ከቴሌ አጠንብ',ph:'0961131415'}
+        ];
+        document.getElementById('branchesGrid').innerHTML=branches.map(b=>`
+            <div class="branch-card"><h3>${b.n}</h3><p>📍 ${b.a}</p><p>📞 ${b.ph}</p><a href="tel:${b.ph}" class="call-btn">📞 Call</a></div>
+        `).join('');
     </script>
 </body>
 </html>
