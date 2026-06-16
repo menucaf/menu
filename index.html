@@ -13,70 +13,55 @@
         .logo{font-size:22px;font-weight:800;display:flex;align-items:center;gap:8px}
         .nav{display:flex;gap:14px;align-items:center}
         .nav a{color:#fff;text-decoration:none;font-weight:500;font-size:13px}
-        
-        .radio-bar{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:14px 0;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
-        .radio-bar:hover{background:linear-gradient(135deg,#1a0a3e,#5f27cd)}
+        .radio-bar{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:14px 0;cursor:pointer}
         .radio-bar .container{display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap}
         .radio-live{background:#ff0000;color:#fff;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700;animation:pulse 2s infinite;display:inline-flex;align-items:center;gap:4px}
         .radio-live::before{content:'';width:6px;height:6px;background:#fff;border-radius:50%}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-        .radio-info{text-align:left}
-        .radio-info strong{font-size:15px;display:block}
-        .radio-info span{font-size:12px;opacity:.8}
-        .radio-btn{background:#fff;color:#6c5ce7;padding:8px 18px;border-radius:20px;font-weight:700;font-size:13px;border:none;cursor:pointer;text-decoration:none}
-        
+        .radio-btn{background:#fff;color:#6c5ce7;padding:8px 18px;border-radius:20px;font-weight:700;font-size:13px;border:none;cursor:pointer}
         .hero{background:linear-gradient(135deg,#e85d04,#dc2f02);color:#fff;text-align:center;padding:36px 0}
         .hero h2{font-size:30px;margin-bottom:6px}
-        .hero p{font-size:15px;opacity:.9}
         .hero-buttons{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-        .btn{padding:10px 20px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s}
-        .btn:hover{background:rgba(255,255,255,.2)}
+        .btn{padding:10px 20px;border:2px solid #fff;background:rgba(255,255,255,.1);color:#fff;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer}
         .btn-solid{background:#fff;color:#e85d04;border:none}
-        
-        .search-section{padding:20px 0}
-        .search-bar{max-width:600px;margin:0 auto}
+        .search-bar{max-width:600px;margin:20px auto}
         .search-bar input{width:100%;padding:11px 18px;border:2px solid #e0e0e0;border-radius:25px;font-size:14px}
-        .search-bar input:focus{outline:none;border-color:#e85d04}
         .filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:14px 0}
         .filter-btn{padding:6px 14px;border:2px solid #e0e0e0;background:#fff;border-radius:18px;cursor:pointer;font-weight:500;font-size:12px}
         .filter-btn.active,.filter-btn:hover{background:#e85d04;color:#fff;border-color:#e85d04}
         .quick-filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
         .quick-btn{padding:6px 12px;background:#fff;border:none;border-radius:18px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);font-size:12px}
         .quick-btn:hover{background:#e85d04;color:#fff}
-        
         .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;padding:14px 0 36px}
-        .menu-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06);transition:all .3s;cursor:pointer}
+        .menu-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06);cursor:pointer}
         .menu-card:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
         .menu-card-image{width:100%;height:170px;object-fit:cover;background:#f0f0f0}
         .menu-card-body{padding:14px}
         .menu-card h3{font-size:16px;margin-bottom:4px}
-        .menu-card .desc{color:#636e72;font-size:12px;margin-bottom:10px;line-height:1.4}
-        .menu-card-footer{display:flex;justify-content:space-between;align-items:center}
+        .desc{color:#636e72;font-size:12px;margin-bottom:10px}
         .price{font-size:20px;font-weight:800;color:#e85d04}
         .badges{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
-        .badge{padding:2px 7px;border-radius:8px;font-size:10px;font-weight:700;text-transform:uppercase}
+        .badge{padding:2px 7px;border-radius:8px;font-size:10px;font-weight:700}
+        .badge-hot{background:#ff6b6b;color:#fff}
+        .badge-cold{background:#74b9ff;color:#fff}
         .badge-new{background:#00b894;color:#fff}
         .badge-popular{background:#fdcb6e;color:#2d3436}
-        .badge-vegetarian{background:#55efc4;color:#2d3436}
+        .badge-veg{background:#55efc4;color:#2d3436}
         .badge-secret{background:#9b59b6;color:#fff}
         .btn-order{width:100%;margin-top:8px;padding:9px;background:#e85d04;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px}
-        .btn-order:hover{background:#dc2f02}
-        
-        .location-bar{background:#fff;border-top:1px solid #e0e0e0;padding:8px 0;font-size:12px;color:#636e72}
-        
         .chat-widget{position:fixed;bottom:16px;right:16px;z-index:1000}
         .chat-toggle{width:52px;height:52px;border-radius:50%;background:#e85d04;color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 3px 12px rgba(232,93,4,.4)}
-        .chat-toggle:hover{transform:scale(1.1)}
         .chat-window{position:absolute;bottom:64px;right:0;width:340px;height:440px;background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.18);display:none;flex-direction:column;overflow:hidden}
-        .chat-header{background:#e85d04;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center}
+        .chat-header{background:#e85d04;color:#fff;padding:12px;display:flex;justify-content:space-between}
         .chat-messages{flex:1;padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
-        .message{max-width:84%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.5;white-space:pre-line}
+        .message{max-width:84%;padding:8px 12px;border-radius:10px;font-size:12px;white-space:pre-line}
         .message.user{background:#e85d04;color:#fff;align-self:flex-end}
         .message.bot{background:#f0f0f0;align-self:flex-start}
-        .chat-input-area{padding:8px;border-top:1px solid #e0e0e0;display:flex;gap:5px}
+        .chat-input-area{padding:8px;border-top:1px solid #e0e0e0;display:flex;gap:5px;align-items:center}
         .chat-input-area input{flex:1;padding:8px 12px;border:1px solid #e0e0e0;border-radius:18px;font-size:12px}
         .chat-input-area button{padding:8px 14px;background:#e85d04;color:#fff;border:none;border-radius:18px;cursor:pointer;font-size:13px}
-        
+        .voice-btn{width:36px;height:36px;border-radius:50%;background:#6c5ce7;color:#fff;border:none;font-size:16px;cursor:pointer}
+        .voice-btn.recording{background:#ff0000;animation:pulse 1s infinite}
         .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:2000;align-items:center;justify-content:center}
         .modal.active{display:flex}
         .modal-content{background:#fff;border-radius:12px;padding:22px;max-width:480px;width:92%;text-align:center;position:relative;max-height:80vh;overflow-y:auto}
@@ -84,276 +69,333 @@
         .story-card{background:linear-gradient(135deg,#ffeaa7,#fdcb6e);padding:14px;border-radius:8px;margin:10px 0;text-align:left}
         .fun-fact{background:#00b894;color:#fff;padding:8px;border-radius:6px;margin-top:8px;font-weight:600;font-size:12px}
         .music-player{background:linear-gradient(135deg,#2d1b69,#6c5ce7);color:#fff;padding:14px;border-radius:8px;margin:10px 0}
-        .song-item{background:rgba(255,255,255,.1);padding:8px;border-radius:6px;margin:4px 0;cursor:pointer;transition:all .3s;text-align:left}
-        .song-item:hover{background:rgba(255,255,255,.2)}
-        .song-item.live{background:rgba(255,0,0,.3);border:1px solid rgba(255,255,255,.3)}
-        .song-item.live:hover{background:rgba(255,0,0,.5)}
-        
+        .song-item{background:rgba(255,255,255,.1);padding:8px;border-radius:6px;margin:4px 0;cursor:pointer}
+        .song-item.live{background:rgba(255,0,0,.3)}
         .footer{background:#1a1a2e;color:#fff;padding:24px 0;text-align:center;margin-top:32px}
         .footer a{color:#b2bec3;text-decoration:none;margin:0 8px;font-size:12px}
-        .loading{text-align:center;padding:40px 0}
-        .spinner{width:32px;height:32px;border:3px solid #f0f0f0;border-top-color:#e85d04;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
-        @keyframes spin{to{transform:rotate(360deg)}}
-        @media(max-width:768px){.hero h2{font-size:24px}.chat-window{width:calc(100vw - 28px);height:50vh;right:2px}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}.radio-bar .container{flex-direction:column;text-align:center}}
+        .voice-indicator{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#ff0000;color:#fff;padding:12px 24px;border-radius:30px;font-weight:600;display:none;z-index:3000}
+        @media(max-width:768px){.hero h2{font-size:24px}.chat-window{width:calc(100vw - 28px);height:50vh;right:2px}.menu-grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}}
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="logo"><span>🍽️</span><span>Premium Restaurant</span></div>
-            <nav class="nav"><a href="index.html">Menu</a><a href="contact.html">Locations</a><a href="#" style="background:#e85d04;padding:6px 14px;border-radius:16px">Order Now</a></nav>
+            <nav class="nav"><a href="index.html">Menu</a><a href="contact.html">Locations</a></nav>
         </div>
     </header>
 
-    <!-- 🎵 RADIO SWISS JAZZ BAR -->
-    <div class="radio-bar" onclick="openPlaylist()">
-        <div class="container">
-            <span class="radio-live">● LIVE</span>
-            <div class="radio-info">
-                <strong>🎷 Radio Swiss Jazz</strong>
-                <span>24/7 Non-stop jazz — Tap to listen</span>
-            </div>
-            <button class="radio-btn">▶ Listen Now</button>
-        </div>
+    <div class="radio-bar" onclick="document.getElementById('playlistModal').classList.add('active');loadPlaylist();">
+        <div class="container"><span class="radio-live">● LIVE</span><span>🎷 Radio Swiss Jazz — Tap to listen</span><button class="radio-btn">▶ Listen</button></div>
     </div>
 
     <section class="hero">
         <div class="container">
             <h2>Discover Your Perfect Dish</h2>
-            <p>AI-powered menu • Live jazz • Food stories</p>
+            <p>AI-powered menu • Live jazz • Voice chat</p>
             <div class="hero-buttons">
                 <button class="btn" onclick="feelingLucky()">🎲 I'm Feeling Lucky</button>
-                <button class="btn btn-solid" onclick="openMoodMatcher()">🎭 Food Mood</button>
+                <button class="btn btn-solid" onclick="document.getElementById('moodModal').classList.add('active')">🎭 Food Mood</button>
                 <button class="btn" onclick="toggleChat(true)">💬 Chat with AI</button>
             </div>
         </div>
     </section>
 
-    <section class="search-section">
-        <div class="container">
-            <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search menu..." oninput="filterMenu()"></div>
-            <div class="filters" id="categoryFilters"></div>
-            <div class="quick-filters">
-                <button class="quick-btn" onclick="quickFilter('under10')">💰 Under $10</button>
-                <button class="quick-btn" onclick="quickFilter('vegetarian')">🥬 Vegetarian</button>
-                <button class="quick-btn" onclick="quickFilter('new')">🆕 New</button>
-                <button class="quick-btn" onclick="quickFilter('popular')">⭐ Popular</button>
-                <button class="quick-btn" onclick="quickFilter('secret')">🤫 Secret</button>
-            </div>
+    <div class="container">
+        <div class="search-bar"><input type="text" id="searchInput" placeholder="🔍 Search 37 menu items..." oninput="applyFilters()"></div>
+        <div class="filters" id="categoryFilters"></div>
+        <div class="quick-filters">
+            <button class="quick-btn" onclick="quickFilter('under10')">💰 Under $10</button>
+            <button class="quick-btn" onclick="quickFilter('vegetarian')">🥬 Vegetarian</button>
+            <button class="quick-btn" onclick="quickFilter('new')">🆕 New</button>
+            <button class="quick-btn" onclick="quickFilter('popular')">⭐ Popular</button>
+            <button class="quick-btn" onclick="quickFilter('hot')">🔥 Hot</button>
+            <button class="quick-btn" onclick="quickFilter('cold')">❄️ Cold</button>
+            <button class="quick-btn" onclick="quickFilter('secret')">🤫 Secret</button>
         </div>
-    </section>
+    </div>
 
-    <main class="container">
-        <div class="menu-grid" id="menuGrid"><div class="loading"><div class="spinner"></div><p>Loading menu...</p></div></div>
-    </main>
-
-    <div class="location-bar"><div class="container" id="locationText">📍 Premium Restaurant — 4 locations across the city</div></div>
+    <main class="container"><div class="menu-grid" id="menuGrid"></div></main>
 
     <div class="chat-widget">
         <button class="chat-toggle" onclick="toggleChat()">💬</button>
         <div class="chat-window" id="chatWindow">
-            <div class="chat-header"><div><strong>🤖 Menu Assistant</strong><div style="font-size:10px;opacity:.9">Online · Instant replies</div></div><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:16px;cursor:pointer">✕</button></div>
-            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 I'm your menu guide!\n\n🍕 Recommend dishes\n🎭 Match food to mood\n📖 Food stories\n🤫 Secret menu\n🎵 Live jazz info\n\nWhat interests you?</div></div>
-            <div class="chat-input-area"><input type="text" id="chatInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">Send</button></div>
-        </div>
-    </div>
-
-    <!-- Order Modal -->
-    <div class="modal" id="orderModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('orderModal')">✕</span>
-            <div style="font-size:44px">✅</div>
-            <h2>Order Confirmed!</h2>
-            <p id="orderItemName" style="margin:6px 0;font-size:16px"></p>
-            <div id="foodStory"></div>
-            <div id="musicSection"></div>
-            <button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:8px;padding:10px 24px" onclick="closeModal('orderModal')">Continue Browsing</button>
-        </div>
-    </div>
-
-    <!-- Playlist Modal -->
-    <div class="modal" id="playlistModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('playlistModal')">✕</span>
-            <div style="font-size:36px">🎷</div>
-            <h2>Radio Swiss Jazz</h2>
-            <p style="color:#636e72;margin:6px 0;font-size:13px">Live 24/7 — Perfect dinner music</p>
-            <div id="playlistContent"></div>
-        </div>
-    </div>
-
-    <!-- Mood Modal -->
-    <div class="modal" id="moodModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('moodModal')">✕</span>
-            <h2>What's Your Food Mood? 🎭</h2>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
-                <div onclick="matchMood('tired')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😴</div><h3>Tired</h3><p style="color:#636e72;font-size:12px">Need energy</p></div>
-                <div onclick="matchMood('happy')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😊</div><h3>Happy</h3><p style="color:#636e72;font-size:12px">Celebrate!</p></div>
-                <div onclick="matchMood('comfort')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🤗</div><h3>Comfort</h3><p style="color:#636e72;font-size:12px">Warm food</p></div>
-                <div onclick="matchMood('adventurous')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🌍</div><h3>Adventurous</h3><p style="color:#636e72;font-size:12px">Try new</p></div>
+            <div class="chat-header"><strong>🤖 Menu Assistant</strong><button onclick="toggleChat()" style="background:none;border:none;color:#fff;font-size:18px;cursor:pointer">✕</button></div>
+            <div class="chat-messages" id="chatMessages"><div class="message bot">Ciao! 👋 I'm your menu guide! Ask me about any dish or try "I'm feeling adventurous!" 🍕</div></div>
+            <div class="chat-input-area">
+                <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()">🎤</button>
+                <input type="text" id="chatInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')sendMessage()">
+                <button onclick="sendMessage()">Send</button>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p style="margin-bottom:6px">Powered by <strong>AddisPower</strong></p>
-            <div><a href="contact.html">Contact & Locations</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
-        </div>
-    </footer>
+    <div class="voice-indicator" id="voiceIndicator">🎤 Listening...</div>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal"><div class="modal-content"><span class="modal-close" onclick="this.parentElement.parentElement.classList.remove('active')">✕</span><div style="font-size:44px">✅</div><h2>Order Confirmed!</h2><p id="orderItemName"></p><div id="foodStory"></div><div id="musicSection"></div><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:8px" onclick="this.parentElement.parentElement.classList.remove('active')">Continue</button></div></div>
+
+    <!-- Playlist Modal -->
+    <div class="modal" id="playlistModal"><div class="modal-content"><span class="modal-close" onclick="this.parentElement.parentElement.classList.remove('active')">✕</span><div style="font-size:36px">🎷</div><h2>Radio Swiss Jazz</h2><div id="playlistContent"></div></div></div>
+
+    <!-- Mood Modal -->
+    <div class="modal" id="moodModal"><div class="modal-content"><span class="modal-close" onclick="this.parentElement.parentElement.classList.remove('active')">✕</span><h2>Food Mood 🎭</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px"><div onclick="matchMood('tired')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😴</div><h3>Tired</h3></div><div onclick="matchMood('happy')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">😊</div><h3>Happy</h3></div><div onclick="matchMood('comfort')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🤗</div><h3>Comfort</h3></div><div onclick="matchMood('adventurous')" style="padding:14px;border:2px solid #e0e0e0;border-radius:8px;cursor:pointer"><div style="font-size:32px">🌍</div><h3>Adventurous</h3></div></div></div></div>
+
+    <footer class="footer"><div class="container"><p>Powered by <strong>AddisPower</strong></p><div><a href="contact.html">Locations</a></div></div></footer>
 
     <script>
+        // ============================================
+        // WORKER URL
+        // ============================================
         const WORKER_URL = 'https://restaurant-menu-api.ai-menu-d29.workers.dev';
-        let menuItems = [], currentCategory = 'all';
+        
+        // ============================================
+        // BUILT-IN MENU (loads instantly)
+        // ============================================
+        const BUILTIN_MENU = [
+            { id:'1',name:'Bruschetta Classica',price:7.99,category:'🔥 Hot Starters',description:'Toasted ciabatta, fresh tomatoes, garlic, basil, EVOO',image:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=400',portionSize:'4 pieces',waitTime:7,temperature:'hot',isVegetarian:true,isPopular:true },
+            { id:'2',name:'Garlic Bread',price:5.99,category:'🔥 Hot Starters',description:'Wood-fired bread, roasted garlic butter, parmesan, herbs',image:'https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=400',portionSize:'6 slices',waitTime:6,temperature:'hot',isVegetarian:true },
+            { id:'3',name:'Arancini',price:8.99,category:'🔥 Hot Starters',description:'Crispy fried risotto balls, mozzarella, ragu',image:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400',portionSize:'5 pieces',waitTime:10,temperature:'hot',isNew:true },
+            { id:'4',name:'Calamari Fritti',price:10.99,category:'🔥 Hot Starters',description:'Lightly battered squid, lemon aioli, marinara',image:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400',portionSize:'Generous portion',waitTime:9,temperature:'hot',isPopular:true },
+            { id:'5',name:'Stuffed Mushrooms',price:8.49,category:'🔥 Hot Starters',description:'Button mushrooms, herbed ricotta, spinach, baked golden',image:'https://images.unsplash.com/photo-1635094496696-7e3c2b9a7a8f?w=400',portionSize:'6 pieces',waitTime:11,temperature:'hot',isVegetarian:true },
+            { id:'6',name:'Caprese Salad',price:9.99,category:'❄️ Cold Starters',description:'Buffalo mozzarella, vine tomatoes, basil, balsamic glaze',image:'https://images.unsplash.com/photo-1608032077018-c9aad9565d2b?w=400',portionSize:'Medium plate',waitTime:5,temperature:'cold',isVegetarian:true,isPopular:true },
+            { id:'7',name:'Prosciutto e Melone',price:11.99,category:'❄️ Cold Starters',description:'Parma ham, sweet cantaloupe, mint, balsamic pearls',image:'https://images.unsplash.com/photo-1626200419199-391ae4be7a41?w=400',portionSize:'Elegant plate',waitTime:5,temperature:'cold' },
+            { id:'8',name:'Carpaccio di Manzo',price:13.99,category:'❄️ Cold Starters',description:'Beef tenderloin, arugula, parmesan, truffle oil',image:'https://images.unsplash.com/photo-1603073206124-2da28bfb0948?w=400',portionSize:'Artisan plate',waitTime:7,temperature:'cold',isNew:true },
+            { id:'9',name:'Antipasto Platter',price:14.99,category:'❄️ Cold Starters',description:'Italian cured meats, cheeses, olives, artichokes',image:'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=400',portionSize:'Sharing board',waitTime:6,temperature:'cold',isPopular:true },
+            { id:'10',name:'Margherita Pizza',price:12.99,category:'🍕 Pizza',description:'San Marzano tomatoes, fresh mozzarella, basil, wood-fired',image:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400',portionSize:'12 inches',waitTime:12,temperature:'hot',isVegetarian:true,isPopular:true },
+            { id:'11',name:'Diavola Pizza',price:13.99,category:'🍕 Pizza',description:'Spicy salami, chili flakes, mozzarella, tomato sauce',image:'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',portionSize:'12 inches',waitTime:14,temperature:'hot',isPopular:true },
+            { id:'12',name:'Quattro Formaggi',price:14.99,category:'🍕 Pizza',description:'Mozzarella, gorgonzola, fontina, parmesan',image:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400',portionSize:'12 inches',waitTime:13,temperature:'hot',isVegetarian:true },
+            { id:'13',name:'Prosciutto & Arugula Pizza',price:15.99,category:'🍕 Pizza',description:'Mozzarella, Parma ham, fresh arugula, parmesan',image:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400',portionSize:'12 inches',waitTime:14,temperature:'hot',isNew:true },
+            { id:'14',name:'Pizza Marinara',price:10.99,category:'🍕 Pizza',description:'Tomato, garlic, oregano, EVOO',image:'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=400',portionSize:'12 inches',waitTime:11,temperature:'hot',isVegetarian:true },
+            { id:'15',name:'Pasta Carbonara',price:14.99,category:'🍝 Pasta',description:'Creamy egg sauce, pancetta, pecorino, black pepper',image:'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400',portionSize:'Large plate',waitTime:15,temperature:'hot',isPopular:true },
+            { id:'16',name:'Penne Arrabiata',price:11.99,category:'🍝 Pasta',description:'Penne in spicy tomato sauce, garlic, chili, basil',image:'https://images.unsplash.com/photo-1608219992759-8d74ed8d76eb?w=400',portionSize:'Large plate',waitTime:12,temperature:'hot',isVegetarian:true },
+            { id:'17',name:'Linguine Frutti di Mare',price:17.99,category:'🍝 Pasta',description:'Mussels, clams, shrimp, calamari, white wine garlic',image:'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400',portionSize:'Large plate',waitTime:18,temperature:'hot',isNew:true },
+            { id:'18',name:'Lasagna al Forno',price:15.99,category:'🍝 Pasta',description:'Layers of pasta, beef ragu, béchamel, mozzarella',image:'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400',portionSize:'Large portion',waitTime:20,temperature:'hot',isPopular:true },
+            { id:'19',name:'Gnocchi al Pesto',price:13.99,category:'🍝 Pasta',description:'Potato gnocchi, fresh basil pesto, pine nuts, parmesan',image:'https://images.unsplash.com/photo-1633337474564-1d9478ca4e2e?w=400',portionSize:'Medium plate',waitTime:14,temperature:'hot',isVegetarian:true },
+            { id:'20',name:'Chicken Parmigiana',price:16.99,category:'🥩 Mains',description:'Breaded chicken, tomato sauce, mozzarella, spaghetti',image:'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400',portionSize:'Large plate',waitTime:18,temperature:'hot',isPopular:true },
+            { id:'21',name:'Grilled Salmon',price:19.99,category:'🥩 Mains',description:'Atlantic salmon, lemon butter, capers, vegetables',image:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400',portionSize:'Elegant plate',waitTime:20,temperature:'hot',isNew:true },
+            { id:'22',name:'Osso Buco',price:22.99,category:'🥩 Mains',description:'Slow-braised veal shank, gremolata, saffron risotto',image:'https://images.unsplash.com/photo-1544025162-d76694265947?w=400',portionSize:'Premium plate',waitTime:25,temperature:'hot' },
+            { id:'23',name:'Caesar Salad',price:9.99,category:'🥗 Salads',description:'Crisp romaine, parmesan, croutons, house dressing',image:'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400',portionSize:'Large bowl',waitTime:8,temperature:'cold',isPopular:true },
+            { id:'24',name:'Mediterranean Salad',price:10.99,category:'🥗 Salads',description:'Mixed greens, feta, olives, sun-dried tomatoes, oregano',image:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400',portionSize:'Large bowl',waitTime:7,temperature:'cold',isVegetarian:true },
+            { id:'25',name:'Spinach & Walnut Salad',price:10.49,category:'🥗 Salads',description:'Baby spinach, candied walnuts, goat cheese, balsamic',image:'https://images.unsplash.com/photo-1572449043416-55f6a5a1cb4a?w=400',portionSize:'Medium bowl',waitTime:7,temperature:'cold',isVegetarian:true,isNew:true },
+            { id:'26',name:'Tiramisu',price:8.99,category:'🍰 Desserts',description:'Espresso-soaked ladyfingers, mascarpone, cocoa',image:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400',portionSize:'Single serving',waitTime:5,temperature:'cold',isPopular:true,isVegetarian:true },
+            { id:'27',name:'Panna Cotta',price:7.99,category:'🍰 Desserts',description:'Vanilla cream, strawberry coulis, fresh mint',image:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400',portionSize:'Single serving',waitTime:4,temperature:'cold',isVegetarian:true },
+            { id:'28',name:'Cannoli Siciliani',price:8.49,category:'🍰 Desserts',description:'Crispy pastry, sweet ricotta, chocolate chips, pistachio',image:'https://images.unsplash.com/photo-1607937234387-75d435b3a51d?w=400',portionSize:'3 pieces',waitTime:5,temperature:'cold',isNew:true },
+            { id:'29',name:'Chocolate Lava Cake',price:9.99,category:'🍰 Desserts',description:'Warm chocolate cake, molten center, vanilla gelato',image:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400',portionSize:'Single serving',waitTime:12,temperature:'hot',isPopular:true },
+            { id:'30',name:'Espresso',price:3.99,category:'☕ Hot Drinks',description:'Rich Italian dark roast, perfectly extracted',image:'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400',portionSize:'Single shot',waitTime:3,temperature:'hot',isPopular:true },
+            { id:'31',name:'Cappuccino',price:4.99,category:'☕ Hot Drinks',description:'Espresso, steamed milk, thick foam, cocoa',image:'https://images.unsplash.com/photo-1534778101976-62847782c213?w=400',portionSize:'8oz cup',waitTime:4,temperature:'hot',isPopular:true },
+            { id:'32',name:'Hot Chocolate Italiano',price:5.49,category:'☕ Hot Drinks',description:'Thick Italian hot chocolate, whipped cream',image:'https://images.unsplash.com/photo-1542990253-0d0f5be5f80b?w=400',portionSize:'8oz cup',waitTime:4,temperature:'hot',isVegetarian:true },
+            { id:'33',name:'Fresh Lemonade',price:4.99,category:'🧊 Cold Drinks',description:'Fresh Sorrento lemons, mint, ice cold',image:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold',isVegetarian:true },
+            { id:'34',name:'Iced Latte',price:5.49,category:'🧊 Cold Drinks',description:'Double espresso, cold milk, ice',image:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold' },
+            { id:'35',name:'Italian Soda',price:4.49,category:'🧊 Cold Drinks',description:'Sparkling water, raspberry/peach/blood orange',image:'https://images.unsplash.com/photo-1523362628745-0c100150b504?w=400',portionSize:'16oz glass',waitTime:3,temperature:'cold',isVegetarian:true },
+            { id:'36',name:'Aperol Spritz',price:9.99,category:'🧊 Cold Drinks',description:'Aperol, prosecco, soda, orange slice',image:'https://images.unsplash.com/photo-1560512823-829485b8bf24?w=400',portionSize:'12oz glass',waitTime:4,temperature:'cold',isPopular:true },
+            { id:'99',name:'Secret Truffle Pasta',price:24.99,category:'🍝 Pasta',description:'🤫 Hand-made tagliatelle, black truffle cream',image:'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=400',portionSize:'Premium plate',waitTime:20,temperature:'hot',isSecret:true }
+        ];
+        
+        const CATS = ['🔥 Hot Starters','❄️ Cold Starters','🍕 Pizza','🍝 Pasta','🥩 Mains','🥗 Salads','🍰 Desserts','☕ Hot Drinks','🧊 Cold Drinks'];
+        
+        let menuItems = [...BUILTIN_MENU];
+        let currentCategory = 'all';
+        let currentQuickFilter = null;
 
-        async function loadMenu() {
-            try {
-                const r = await fetch(WORKER_URL + '/api/menu');
-                const d = await r.json();
-                if (d.success) { menuItems = d.data.items; renderCategories(d.data.categories); renderMenu(menuItems); }
-            } catch(e) {
-                document.getElementById('menuGrid').innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><p>Unable to load menu.</p><button class="btn" style="background:#e85d04;color:#fff;border:none;margin-top:8px" onclick="loadMenu()">Retry</button></div>';
-            }
-        }
-
-        function renderCategories(cats) {
-            document.getElementById('categoryFilters').innerHTML = '<button class="filter-btn active" onclick="filterByCategory(\'all\')">All</button>' + cats.map(c => `<button class="filter-btn" onclick="filterByCategory('${c}')">${c}</button>`).join('');
+        // ============================================
+        // RENDER FUNCTIONS
+        // ============================================
+        function renderCategories() {
+            document.getElementById('categoryFilters').innerHTML = '<button class="filter-btn active" onclick="filterByCategory(\'all\')">All</button>' + CATS.map(c => `<button class="filter-btn" onclick="filterByCategory('${c}')">${c}</button>`).join('');
         }
 
         function renderMenu(items) {
             const g = document.getElementById('menuGrid');
-            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><div style="font-size:36px">🍽️</div><h3>No items found</h3><p>Try adjusting filters</p></div>'; return; }
+            if (!items.length) { g.innerHTML = '<div style="text-align:center;padding:40px;grid-column:1/-1"><div style="font-size:40px">🍽️</div><h3>No items found</h3></div>'; return; }
             g.innerHTML = items.map(i => `
-                <div class="menu-card" onclick="askAboutItem('${i.id}')">
+                <div class="menu-card" onclick="askAbout('${i.id}')">
                     <img class="menu-card-image" src="${i.image}" alt="${i.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300?text=Food'">
                     <div class="menu-card-body">
-                        <div class="badges">${i.isNew?'<span class="badge badge-new">🆕 New</span>':''}${i.isPopular?'<span class="badge badge-popular">⭐ Popular</span>':''}${i.isVegetarian?'<span class="badge badge-vegetarian">🥬 Veg</span>':''}${i.isSecret?'<span class="badge badge-secret">🤫 Secret</span>':''}</div>
+                        <div class="badges">${i.temperature==='hot'?'<span class="badge badge-hot">🔥 Hot</span>':''}${i.temperature==='cold'?'<span class="badge badge-cold">❄️ Cold</span>':''}${i.isNew?'<span class="badge badge-new">🆕</span>':''}${i.isPopular?'<span class="badge badge-popular">⭐</span>':''}${i.isVegetarian?'<span class="badge badge-veg">🥬</span>':''}${i.isSecret?'<span class="badge badge-secret">🤫</span>':''}</div>
                         <h3>${i.name}</h3><p class="desc">${i.description}</p>
-                        <div class="menu-card-footer"><span class="price">$${i.price.toFixed(2)}</span>${i.waitTime?`<span style="font-size:10px;color:#636e72">⏱️ ${i.waitTime}min</span>`:''}</div>
+                        <div style="display:flex;justify-content:space-between;align-items:center"><span class="price">$${i.price.toFixed(2)}</span>${i.waitTime?`<span style="font-size:10px;color:#636e72">⏱️ ${i.waitTime}min</span>`:''}</div>
                         <button class="btn-order" onclick="event.stopPropagation();placeOrder('${i.id}')">🛒 Order Now</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        function filterByCategory(c) { currentCategory = c; document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === c || (c === 'all' && b.textContent.trim() === 'All'))); applyFilters(); }
-        function filterMenu() { applyFilters(); }
-        function quickFilter(t) { applyFilters(t); }
+        function filterByCategory(c) {
+            currentCategory = c;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', (c==='all'&&b.textContent==='All')||b.textContent===c));
+            applyFilters();
+        }
 
-        function applyFilters(qf = null) {
+        function quickFilter(t) { currentQuickFilter = currentQuickFilter===t ? null : t; applyFilters(); }
+
+        function applyFilters() {
             let f = [...menuItems];
             const q = document.getElementById('searchInput').value.toLowerCase();
             if (currentCategory !== 'all') f = f.filter(i => i.category === currentCategory);
             if (q) f = f.filter(i => i.name.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
-            if (qf === 'under10') f = f.filter(i => i.price < 10);
-            else if (qf === 'vegetarian') f = f.filter(i => i.isVegetarian);
-            else if (qf === 'new') f = f.filter(i => i.isNew);
-            else if (qf === 'popular') f = f.filter(i => i.isPopular);
-            else if (qf === 'secret') f = f.filter(i => i.isSecret);
+            if (currentQuickFilter === 'under10') f = f.filter(i => i.price < 10);
+            else if (currentQuickFilter === 'vegetarian') f = f.filter(i => i.isVegetarian);
+            else if (currentQuickFilter === 'new') f = f.filter(i => i.isNew);
+            else if (currentQuickFilter === 'popular') f = f.filter(i => i.isPopular);
+            else if (currentQuickFilter === 'hot') f = f.filter(i => i.temperature==='hot');
+            else if (currentQuickFilter === 'cold') f = f.filter(i => i.temperature==='cold');
+            else if (currentQuickFilter === 'secret') f = f.filter(i => i.isSecret);
             renderMenu(f);
         }
 
+        // ============================================
+        // SPECIAL FEATURES
+        // ============================================
         function feelingLucky() {
-            if (!menuItems.length) return;
             const r = menuItems[Math.floor(Math.random() * menuItems.length)];
             toggleChat(true);
-            setTimeout(() => { document.getElementById('chatInput').value = `I'm feeling lucky! Tell me about the ${r.name} 🎲`; sendMessage(); }, 300);
+            setTimeout(() => { document.getElementById('chatInput').value = `Tell me about ${r.name} 🎲`; sendMessage(); }, 300);
         }
 
-        function openMoodMatcher() { document.getElementById('moodModal').classList.add('active'); }
-
         function matchMood(m) {
-            closeModal('moodModal');
+            document.getElementById('moodModal').classList.remove('active');
             toggleChat(true);
-            const msgs = { tired: "I'm feeling tired, what do you recommend? 😴", happy: "I'm feeling happy and want to celebrate! 🎉", comfort: "I need comfort food 🤗", adventurous: "I'm feeling adventurous! Surprise me 🌍" };
+            const msgs = { tired:"I'm tired, need energy! 😴", happy:"I'm happy, let's celebrate! 🎉", comfort:"I need comfort food 🤗", adventurous:"I'm feeling adventurous! 🌍" };
             setTimeout(() => { document.getElementById('chatInput').value = msgs[m]; sendMessage(); }, 300);
         }
 
-        function askAboutItem(id) {
+        function askAbout(id) {
             const item = menuItems.find(i => i.id === id);
             if (!item) return;
             toggleChat(true);
-            setTimeout(() => { document.getElementById('chatInput').value = `Tell me about the ${item.name}`; sendMessage(); }, 300);
+            setTimeout(() => { document.getElementById('chatInput').value = `Tell me about ${item.name}`; sendMessage(); }, 300);
         }
 
-        async function openPlaylist() {
-            document.getElementById('playlistModal').classList.add('active');
-            document.getElementById('playlistContent').innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-            try {
-                const r = await fetch(WORKER_URL + '/api/playlist');
-                const d = await r.json();
-                if (d.success) {
-                    document.getElementById('playlistContent').innerHTML = `
-                        <div class="music-player">
-                            <h3>🔴 ${d.data.title}</h3>
-                            <p style="font-size:12px;margin:4px 0">${d.data.liveRadio.description}</p>
-                            <div class="song-item live" onclick="window.open('${d.data.liveRadio.website}','_blank')">
-                                🔴 <strong>LIVE NOW</strong> — Radio Swiss Jazz<br><small>24/7 Non-Stop Jazz Stream</small>
-                            </div>
-                            ${d.data.songs.filter(s => !s.isLive).map(s => `
-                                <div class="song-item" onclick="window.open('${s.url}','_blank')">
-                                    🎶 <strong>${s.title}</strong> — ${s.artist}
-                                </div>
-                            `).join('')}
-                        </div>
-                        <p style="font-size:11px;color:#636e72;margin-top:6px">Click any song to open</p>
-                    `;
-                }
-            } catch(e) { document.getElementById('playlistContent').innerHTML = '<p>Unable to load playlist.</p>'; }
-        }
-
-        async function placeOrder(id) {
+        function placeOrder(id) {
             const item = menuItems.find(i => i.id === id);
             if (!item) return;
             document.getElementById('orderItemName').textContent = `You ordered: ${item.name}`;
             document.getElementById('foodStory').innerHTML = '';
-            document.getElementById('musicSection').innerHTML = '';
-            
-            const storyKey = item.name.toLowerCase().includes('pizza') ? 'pizza' : item.name.toLowerCase().includes('salad') ? 'salad' : item.name.toLowerCase().includes('pasta') ? 'pasta' : item.name.toLowerCase().includes('tiramisu') ? 'tiramisu' : item.name.toLowerCase().includes('bruschetta') ? 'bruschetta' : item.name.toLowerCase().includes('espresso') ? 'espresso' : item.name.toLowerCase().includes('lemonade') ? 'lemonade' : item.isSecret ? 'secret' : 'pizza';
-            
-            try {
-                const sRes = await fetch(`${WORKER_URL}/api/story?item=${storyKey}`);
-                const sData = await sRes.json();
-                if (sData.success) {
-                    document.getElementById('foodStory').innerHTML = `<div class="story-card"><h3>${sData.data.title}</h3><p style="margin-top:4px;line-height:1.5;font-size:13px">${sData.data.story}</p><div class="fun-fact">💡 ${sData.data.funFact}</div></div>`;
-                }
-            } catch(e) {}
-
             document.getElementById('musicSection').innerHTML = `
-                <div class="music-player">
-                    <h3>🎷 Listen while you wait!</h3>
-                    <div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">
-                        🔴 <strong>Radio Swiss Jazz</strong> — Live Now
-                    </div>
-                </div>
-            `;
-            
+                <div class="music-player"><h3>🎷 Listen while you wait!</h3>
+                <div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">🔴 Radio Swiss Jazz — Live Now</div></div>`;
             document.getElementById('orderModal').classList.add('active');
         }
 
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function loadPlaylist() {
+            document.getElementById('playlistContent').innerHTML = `
+                <div class="music-player"><h3>🎷 Radio Swiss Jazz — Live 24/7</h3>
+                <div class="song-item live" onclick="window.open('https://www.radioswissjazz.ch/en','_blank')">🔴 LIVE NOW — Radio Swiss Jazz</div>
+                <div class="song-item" onclick="window.open('https://www.youtube.com/watch?v=4udavF0PIko','_blank')">🎶 Italian Dinner Jazz</div>
+                <div class="song-item" onclick="window.open('https://www.youtube.com/watch?v=MV_3Dpw-BRY','_blank')">🎶 Romantic Cafe</div></div>`;
+        }
 
+        // ============================================
+        // CHAT
+        // ============================================
         let chatOpen = false, chatHistory = [];
-        function toggleChat(f = null) { chatOpen = f !== null ? f : !chatOpen; document.getElementById('chatWindow').style.display = chatOpen ? 'flex' : 'none'; if (chatOpen) document.getElementById('chatInput').focus(); }
+        function toggleChat(f) {
+            chatOpen = f !== undefined ? f : !chatOpen;
+            document.getElementById('chatWindow').style.display = chatOpen ? 'flex' : 'none';
+            if (chatOpen) document.getElementById('chatInput').focus();
+        }
 
         async function sendMessage() {
             const input = document.getElementById('chatInput'), msg = input.value.trim();
             if (!msg) return;
-            input.value = ''; addMessage('user', msg); chatHistory.push({ role: 'user', content: msg }); addMessage('bot', '...');
+            input.value = '';
+            addMessage('user', msg);
+            chatHistory.push({ role: 'user', content: msg });
+            addMessage('bot', '...');
+            
             try {
-                const r = await fetch(WORKER_URL + '/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: msg, history: chatHistory }) });
-                const d = await r.json(); removeLastBot();
-                if (d.success) { addMessage('bot', d.response); chatHistory.push({ role: 'assistant', content: d.response }); }
-            } catch(e) { removeLastBot(); addMessage('bot', 'Sorry, try again! 😅'); }
+                const r = await fetch(WORKER_URL + '/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg, history: chatHistory.slice(-4) })
+                });
+                const d = await r.json();
+                removeLastBot();
+                if (d.ok && d.reply) {
+                    addMessage('bot', d.reply);
+                    chatHistory.push({ role: 'assistant', content: d.reply });
+                } else if (d.success && d.response) {
+                    addMessage('bot', d.response);
+                    chatHistory.push({ role: 'assistant', content: d.response });
+                } else {
+                    addMessage('bot', smartFallback(msg));
+                }
+            } catch(e) {
+                removeLastBot();
+                addMessage('bot', smartFallback(msg));
+            }
         }
 
-        function addMessage(type, text) { const c = document.getElementById('chatMessages'), div = document.createElement('div'); div.className = `message ${type}`; div.textContent = text; c.appendChild(div); c.scrollTop = c.scrollHeight; }
-        function removeLastBot() { const msgs = document.querySelectorAll('.message.bot'), last = msgs[msgs.length - 1]; if (last && last.textContent === '...') last.remove(); }
+        function smartFallback(msg) {
+            const q = msg.toLowerCase();
+            const found = menuItems.filter(i => i.name.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
+            if (found.length > 0) {
+                const i = found[0];
+                return `🔥 **${i.name}** — $${i.price.toFixed(2)}\n   ${i.description}\n   📏 ${i.portionSize} | ⏱️ ${i.waitTime} min\n\nWant to order? 😋`;
+            }
+            if (q.includes('pizza')) return `🍕 Our Pizzas:\n\n${menuItems.filter(i=>i.category==='🍕 Pizza').map(i=>`• ${i.name} ($${i.price.toFixed(2)})`).join('\n')}`;
+            if (q.includes('pasta')) return `🍝 Our Pastas:\n\n${menuItems.filter(i=>i.category==='🍝 Pasta').map(i=>`• ${i.name} ($${i.price.toFixed(2)})`).join('\n')}`;
+            if (q.includes('recommend')) return `⭐ I recommend: Margherita Pizza ($12.99) 🍕, Pasta Carbonara ($14.99) 🍝, and Tiramisu ($8.99) 🍰! Total: $36.97!`;
+            return `I can help! Try:\n• Any dish name\n• "Show pizzas"\n• "Recommend"\n• "I'm feeling adventurous" 😊`;
+        }
 
-        document.addEventListener('DOMContentLoaded', () => { loadMenu(); });
-        document.addEventListener('click', (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active')); });
+        function addMessage(type, text) {
+            const c = document.getElementById('chatMessages'), div = document.createElement('div');
+            div.className = `message ${type}`; div.textContent = text;
+            c.appendChild(div); c.scrollTop = c.scrollHeight;
+        }
+        function removeLastBot() {
+            const msgs = document.querySelectorAll('.message.bot'), last = msgs[msgs.length-1];
+            if (last && last.textContent === '...') last.remove();
+        }
+
+        // ============================================
+        // VOICE
+        // ============================================
+        let recognition = null, isRecording = false;
+        function initVoice() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) { document.getElementById('voiceBtn').style.display = 'none'; return; }
+            recognition = new SR();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.onresult = e => {
+                document.getElementById('chatInput').value = e.results[0][0].transcript;
+                document.getElementById('voiceIndicator').style.display = 'none';
+                document.getElementById('voiceBtn').classList.remove('recording');
+                isRecording = false;
+                setTimeout(sendMessage, 500);
+            };
+            recognition.onerror = () => {
+                document.getElementById('voiceIndicator').style.display = 'none';
+                document.getElementById('voiceBtn').classList.remove('recording');
+                isRecording = false;
+            };
+        }
+        function toggleVoice() {
+            if (!recognition) return;
+            if (isRecording) {
+                recognition.stop();
+                document.getElementById('voiceIndicator').style.display = 'none';
+                document.getElementById('voiceBtn').classList.remove('recording');
+            } else {
+                recognition.start();
+                document.getElementById('voiceIndicator').style.display = 'block';
+                document.getElementById('voiceBtn').classList.add('recording');
+            }
+            isRecording = !isRecording;
+        }
+
+        // ============================================
+        // INIT
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderMenu(menuItems);
+            initVoice();
+        });
+        document.addEventListener('click', e => { if (e.target.classList.contains('modal')) e.target.classList.remove('active'); });
     </script>
 </body>
 </html>
